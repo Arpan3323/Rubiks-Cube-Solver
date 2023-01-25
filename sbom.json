@@ -1,0 +1,29 @@
+{
+	"bomFormat": "CycloneDX",
+	"specVersion": "1.4",
+	"serialNumber": "urn:uuid:02c5b9be-aa6a-4bfb-ab2b-fec9661f60bb",
+	"version": 1,
+	"components": [
+		{
+			"type": "application",
+			"name": "rubik",
+			"author": "umphrda",
+			"publisher": "Auburn University COMP5700/6700",
+			"group": "edu.auburn.csse",
+			"version": "202320.0"
+		},
+		{
+			"type": "library",
+			"bom-ref": "ff42cd57-41e2-40f2-b002-04fcad12584c",
+			"name": "Flask",
+			"version": ">=2.1.3",
+			"purl": "pkg:pypi/flask@%3E%3D2.1.3"
+		}
+	],
+	"dependencies": [
+		{
+			"ref": "ff42cd57-41e2-40f2-b002-04fcad12584c",
+			"dependsOn": []
+		}
+	]
+}

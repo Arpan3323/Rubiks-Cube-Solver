@@ -1,0 +1,22 @@
+--argument-naming-style camelCase
+--attr-naming-style camelCase
+--bad-names-rgxs azAZ
+--class-naming-style PascalCase
+--const-naming-style UPPER_CASE
+--function-naming-style camelCase
+--good-names ["_"]
+--include-naming-hint True
+--method-naming-style camelCase
+--module-naming-style camelCase
+--variable-naming-style camelCase
+--max-statements 30
+--max-line-length 100
+--dummy-variables-rgx _+$|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unused_|temp|tmp|temporary
+--disable trailing-whitespace
+--disable missing-module-docstring
+--disable trailing-newlines
+--disable missing-final-newline
+--disable unused-wildcard-import
+--load-plugins=pylint.extensions.mccabe
+--load-plugins=pylint.extensions.code_style
+--load-plugins=pylint.extensions.magic_value
