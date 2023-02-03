@@ -13,27 +13,35 @@ class Cube:
         rotatedCubeList = cubeList[:]
         
         #rotating the front face of the cube clockwise
-        rotatedCubeList[2] = cubeList[0]
-        rotatedCubeList[5] = cubeList[1]
-        rotatedCubeList[8] = cubeList[2]
-        rotatedCubeList[1] = cubeList[3]
-        rotatedCubeList[4] = cubeList[4]
-        rotatedCubeList[7] = cubeList[5]
-        rotatedCubeList[0] = cubeList[6]
-        rotatedCubeList[3] = cubeList[7]
-        rotatedCubeList[6] = cubeList[8]
-        rotatedCubeList[47] = cubeList[9]
-        rotatedCubeList[46] = cubeList[12]
-        rotatedCubeList[45] = cubeList[15]
-        rotatedCubeList[44] = cubeList[29]
-        rotatedCubeList[43] = cubeList[32]
-        rotatedCubeList[42] = cubeList[35]
-        rotatedCubeList[9] = cubeList[42]
-        rotatedCubeList[12] = cubeList[43]
-        rotatedCubeList[15] = cubeList[44]
-        rotatedCubeList[29] = cubeList[45]
-        rotatedCubeList[32] = cubeList[46]
-        rotatedCubeList[35] = cubeList[47]
+        rotatedCubeList[FTR] = cubeList[FTL]
+        rotatedCubeList[FML] = cubeList[FTM]
+        rotatedCubeList[FBR] = cubeList[FTR]
+        rotatedCubeList[FTM] = cubeList[FML]
+        rotatedCubeList[FMM] = cubeList[FMM]
+        rotatedCubeList[FBM] = cubeList[FMR]
+        rotatedCubeList[FTL] = cubeList[FBL]
+        rotatedCubeList[FML] = cubeList[FBM]
+        rotatedCubeList[FBL] = cubeList[FBR]
+        
+        #rotating right to down
+        rotatedCubeList[DTR] = cubeList[RTL]
+        rotatedCubeList[DTM] = cubeList[RML]
+        rotatedCubeList[DTL] = cubeList[RBL]
+        
+        #rotating left to up
+        rotatedCubeList[UBR] = cubeList[LTR]
+        rotatedCubeList[UBM] = cubeList[LMR]
+        rotatedCubeList[UBL] = cubeList[LBR]
+        
+        #rotating up to right
+        rotatedCubeList[RTL] = cubeList[UBL]
+        rotatedCubeList[RML] = cubeList[UBM]
+        rotatedCubeList[RBL] = cubeList[UBR]
+        
+        #rotating down to left
+        rotatedCubeList[LTR] = cubeList[DTL]
+        rotatedCubeList[LMR] = cubeList[DTM]
+        rotatedCubeList[LBR] = cubeList[DTR]
         
         
         #coverting the list to a string
