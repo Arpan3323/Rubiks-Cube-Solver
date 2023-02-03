@@ -85,9 +85,9 @@ class Cube:
         rotatedCubeList[LTR] = cubeList[UBR]
         
     #rotating down to right
-        rotatedCubeList[RTL] = cubeList[DTL]
+        rotatedCubeList[RBL] = cubeList[DTL]
         rotatedCubeList[RML] = cubeList[DTM]
-        rotatedCubeList[RBL] = cubeList[DTR]
+        rotatedCubeList[RTL] = cubeList[DTR]
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
 
