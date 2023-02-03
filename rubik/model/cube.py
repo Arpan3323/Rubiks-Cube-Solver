@@ -103,12 +103,12 @@ class Cube:
         rotatedCubeList[FTR] = cubeList[RTL]
         rotatedCubeList[FMR] = cubeList[RTM]
         rotatedCubeList[FBR] = cubeList[RTR]
-        rotatedCubeList[FTM] = cubeList[RML]
-        rotatedCubeList[FMM] = cubeList[RMM]
-        rotatedCubeList[FBM] = cubeList[RMR]
-        rotatedCubeList[FTL] = cubeList[RBL]
+        rotatedCubeList[RTM] = cubeList[RML]
+        rotatedCubeList[RMM] = cubeList[RMM]
+        rotatedCubeList[RBM] = cubeList[RMR]
+        rotatedCubeList[RTL] = cubeList[RBL]
         rotatedCubeList[FML] = cubeList[RBM]
-        rotatedCubeList[FBL] = cubeList[RBR]
+        rotatedCubeList[RBL] = cubeList[RBR]
     
     #rotating back to down
         rotatedCubeList[DBR] = cubeList[BTL]
@@ -126,9 +126,9 @@ class Cube:
         rotatedCubeList[FBR] = cubeList[DBR]
         
     #rotating top to back
-        rotatedCubeList[LTR] = cubeList[UBR]
-        rotatedCubeList[LMR] = cubeList[UMR]
-        rotatedCubeList[LBR] = cubeList[UTR]
+        rotatedCubeList[BTL] = cubeList[UBR]
+        rotatedCubeList[BML] = cubeList[UMR]
+        rotatedCubeList[BBL] = cubeList[UTR]
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
