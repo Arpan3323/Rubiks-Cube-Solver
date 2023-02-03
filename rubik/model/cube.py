@@ -28,9 +28,12 @@ class Cube:
                 
             elif(directions == 'B'):
                 self._rotateB()
+            
+            elif(directions == 'b'):
+                self._rotateB_anti_clockwise()
                 
             else:
-                self._rotateB_anti_clockwise()
+                self._rotateL()
                 
         return self.cube
     
@@ -184,7 +187,8 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
-        
+    
+    #rotates the cubes back face clockwise    
     def _rotateB(self):
         cubeList = list(self.cube)
         rotatedCubeList = cubeList[:]
@@ -222,7 +226,9 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
-        
+     
+     
+    #rotates the cubes back face anti-clockwise    
     def _rotateB_anti_clockwise(self):
         cubeList = list(self.cube)
         rotatedCubeList = cubeList[:]
@@ -257,6 +263,46 @@ class Cube:
         rotatedCubeList[DBR] = cubeList[RTR]
         rotatedCubeList[DBM] = cubeList[RMR]
         rotatedCubeList[DBL] = cubeList[RBR]
+        
+    #converting the list to a string
+        self.cube = "".join(rotatedCubeList)
+
+
+    #rotates the cubes left face clockwise
+    def _rotateL(self):
+        cubeList = list(self.cube)
+        rotatedCubeList = cubeList[:]
+        
+    #rotating the back face of the cube anti-clockwise
+        rotatedCubeList[LTR] = cubeList[LTL]
+        rotatedCubeList[LMR] = cubeList[LTM]
+        rotatedCubeList[LBR] = cubeList[LTR]
+        rotatedCubeList[LTM] = cubeList[LML]
+        rotatedCubeList[LMM] = cubeList[LMM]
+        rotatedCubeList[LBM] = cubeList[LMR]
+        rotatedCubeList[LTL] = cubeList[LBL]
+        rotatedCubeList[LML] = cubeList[LBM]
+        rotatedCubeList[LBL] = cubeList[LBR]
+    
+    #rotating up to front
+        rotatedCubeList[FTL] = cubeList[UTL]
+        rotatedCubeList[FML] = cubeList[UML]
+        rotatedCubeList[FBL] = cubeList[UBL]
+        
+    #rotating back to up
+        rotatedCubeList[UBL] = cubeList[BTR]
+        rotatedCubeList[UML] = cubeList[BMR]
+        rotatedCubeList[UTL] = cubeList[BBR]
+        
+    #rotating front to down
+        rotatedCubeList[DTL] = cubeList[FTL]
+        rotatedCubeList[DML] = cubeList[FML]
+        rotatedCubeList[DBL] = cubeList[FBL]
+        
+    #rotating down to back
+        rotatedCubeList[BBR] = cubeList[DTL]
+        rotatedCubeList[BMR] = cubeList[DML]
+        rotatedCubeList[BTR] = cubeList[DBL]
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
