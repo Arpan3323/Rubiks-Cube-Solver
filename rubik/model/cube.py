@@ -38,6 +38,7 @@ class Cube:
         
         #coverting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
     
     def get(self):
         return self.cube
