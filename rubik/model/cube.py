@@ -13,44 +13,44 @@ class Cube:
     
     def rotate(self, directions):
         
+        rotatedCube = ""
         #defaulting direction to F if direction is missing or empty
         if directions == None or directions == "":
             directions = 'F'
         
         directionList = list(directions)
         for direction in directionList:
-            
-            rotatedCube = ""
-            
             if direction == 'F':
-                rotatedCube = self._rotateF()
+                self._rotateF()
                 
             elif(directions == 'f'):
-                rotatedCube = self._rotateF_anti_clockwise()
+                self._rotateF_anti_clockwise()
                 
             elif(directions == 'R'):
-                rotatedCube = self._rotateR()
+                self._rotateR()
                 
             elif(directions == 'r'):
-                rotatedCube = self._rotateR_anti_clockwise()
+                self._rotateR_anti_clockwise()
                 
             elif(directions == 'B'):
-                rotatedCube = self._rotateB()
+                self._rotateB()
             
             elif(directions == 'b'):
-                rotatedCube = self._rotateB_anti_clockwise()
+                self._rotateB_anti_clockwise()
             
             elif(directions == 'L'):
-                rotatedCube = self._rotateL()
+                self._rotateL()
                 
             elif(directions == 'l'):
-                rotatedCube = self._rotateL_anti_clockwise()
+                self._rotateL_anti_clockwise()
             
             elif(directions == 'U'):
-                rotatedCube = self._rotateU()
+                self._rotateU()
                 
             elif(directions == 'u'):
-                rotatedCube = self._rotateU_anti_clockwise()
+                self._rotateU_anti_clockwise()
+                
+            rotatedCube = self.cube
                 
         return rotatedCube
     
