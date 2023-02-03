@@ -19,37 +19,40 @@ class Cube:
         
         directionList = list(directions)
         for direction in directionList:
+            
+            rotatedCube = ""
+            
             if direction == 'F':
-                self._rotateF()
+                rotatedCube = self._rotateF()
                 
             elif(directions == 'f'):
-                self._rotateF_anti_clockwise()
+                rotatedCube = self._rotateF_anti_clockwise()
                 
             elif(directions == 'R'):
-                self._rotateR()
+                rotatedCube = self._rotateR()
                 
             elif(directions == 'r'):
-                self._rotateR_anti_clockwise()
+                rotatedCube = self._rotateR_anti_clockwise()
                 
             elif(directions == 'B'):
-                self._rotateB()
+                rotatedCube = self._rotateB()
             
             elif(directions == 'b'):
-                self._rotateB_anti_clockwise()
+                rotatedCube = self._rotateB_anti_clockwise()
             
             elif(directions == 'L'):
-                self._rotateL()
+                rotatedCube = self._rotateL()
                 
             elif(directions == 'l'):
-                self._rotateL_anti_clockwise()
+                rotatedCube = self._rotateL_anti_clockwise()
             
             elif(directions == 'U'):
-                self._rotateU()
+                rotatedCube = self._rotateU()
                 
-            else:
-                self._rotateU_anti_clockwise()
+            elif(directions == 'u'):
+                rotatedCube = self._rotateU_anti_clockwise()
                 
-        return self.cube
+        return rotatedCube
     
     
     
