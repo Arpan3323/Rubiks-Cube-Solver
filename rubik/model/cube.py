@@ -13,8 +13,8 @@ class Cube:
     
     def rotate(self, directions):
         
-        #defaulting direction to F if direction is missing
-        if directions == None:
+        #defaulting direction to F if direction is missing or empty
+        if directions == None or directions == "":
             directions = 'F'
         
         directionList = list(directions)
