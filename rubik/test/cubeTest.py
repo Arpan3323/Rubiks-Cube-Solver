@@ -35,6 +35,7 @@ import rubik.model.cube as cube
 #                test 008: checks cube rotation in l direction
 #                test 009: checks cube rotation in U direction
 #                test 010: checks cube rotation in u direction
+#                test 011: checks for missing direction, dir=None
 #
 #
 #    sad path tests:
@@ -109,7 +110,11 @@ class CubeTest(unittest.TestCase):
         rotatedCube = theCube.rotate('u')
         self.assertEqual(rotatedCube, 'ooogggggggggrrrrrrrrrbbbbbbbbboooooowwwwwwwwwyyyyyyyyy')
 
-
+    def  test_rotate_011_RotatesCubeInFDirection_IfDirectionIsMissing(self):
+        cubeToRotate = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+        theCube = cube.Cube(cubeToRotate)
+        rotatedCube = theCube.rotate()
+        self.assertEqual(rotatedCube, 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy')
 
 
 
