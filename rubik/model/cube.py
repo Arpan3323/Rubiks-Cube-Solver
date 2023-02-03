@@ -14,7 +14,7 @@ class Cube:
         
         #rotating the front face of the cube clockwise
         rotatedCubeList[FTR] = cubeList[FTL]
-        rotatedCubeList[FML] = cubeList[FTM]
+        rotatedCubeList[FMR] = cubeList[FTM]
         rotatedCubeList[FBR] = cubeList[FTR]
         rotatedCubeList[FTM] = cubeList[FML]
         rotatedCubeList[FMM] = cubeList[FMM]
