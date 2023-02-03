@@ -19,10 +19,15 @@ class Cube:
                 
             elif(directions == 'f'):
                 self._rotateF_anti_clockwise()
+                
             elif(directions == 'R'):
                 self._rotateR()
-            else:
+                
+            elif(directions == 'r'):
                 self._rotateR_anti_clockwise()
+                
+            else:
+                self._rotateB()
                 
         return self.cube
     
@@ -173,6 +178,44 @@ class Cube:
         rotatedCubeList[FBR] = cubeList[UBR]
         rotatedCubeList[FMR] = cubeList[UMR]
         rotatedCubeList[FTR] = cubeList[UTR]
+        
+    #converting the list to a string
+        self.cube = "".join(rotatedCubeList)
+        
+    def _rotateB(self):
+        cubeList = list(self.cube)
+        rotatedCubeList = cubeList[:]
+        
+    #rotating the back face of the cube clockwise
+        rotatedCubeList[BTR] = cubeList[BTL]
+        rotatedCubeList[BMR] = cubeList[BTM]
+        rotatedCubeList[BBR] = cubeList[BTR]
+        rotatedCubeList[BTM] = cubeList[BML]
+        rotatedCubeList[BMM] = cubeList[BMM]
+        rotatedCubeList[BBM] = cubeList[BMR]
+        rotatedCubeList[BTL] = cubeList[BBL]
+        rotatedCubeList[BML] = cubeList[BBM]
+        rotatedCubeList[BBL] = cubeList[BBR]
+    
+    #rotating up to left
+        rotatedCubeList[LBL] = cubeList[UTL]
+        rotatedCubeList[LML] = cubeList[UTM]
+        rotatedCubeList[LTL] = cubeList[UTR]
+        
+    #rotating left to down
+        rotatedCubeList[DBL] = cubeList[LTL]
+        rotatedCubeList[DBM] = cubeList[LML]
+        rotatedCubeList[DBR] = cubeList[LBL]
+        
+    #rotating down to right
+        rotatedCubeList[RBR] = cubeList[DBL]
+        rotatedCubeList[RMR] = cubeList[DBM]
+        rotatedCubeList[RTR] = cubeList[DBR]
+        
+    #rotating right to up
+        rotatedCubeList[UTL] = cubeList[RTR]
+        rotatedCubeList[UTM] = cubeList[RMR]
+        rotatedCubeList[UTR] = cubeList[RBR]
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
