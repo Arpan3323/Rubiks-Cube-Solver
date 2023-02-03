@@ -35,8 +35,11 @@ class Cube:
             elif(directions == 'L'):
                 self._rotateL()
                 
-            else:
+            elif(directions == 'l'):
                 self._rotateL_anti_clockwise()
+            
+            else:
+                self._rotateU()
                 
         return self.cube
     
@@ -346,6 +349,45 @@ class Cube:
         rotatedCubeList[DTL] = cubeList[BBR]
         rotatedCubeList[DML] = cubeList[BMR]
         rotatedCubeList[DBL] = cubeList[BTR]
+        
+    #converting the list to a string
+        self.cube = "".join(rotatedCubeList)
+        
+    #rotating the cubes up face clockwise
+    def _rotateU(self):
+        cubeList = list(self.cube)
+        rotatedCubeList = cubeList[:]
+        
+    #rotating the left face of the cube clockwise
+        rotatedCubeList[UTR] = cubeList[UTL]
+        rotatedCubeList[UMR] = cubeList[UTM]
+        rotatedCubeList[UBR] = cubeList[UTR]
+        rotatedCubeList[UTM] = cubeList[UML]
+        rotatedCubeList[UMM] = cubeList[UMM]
+        rotatedCubeList[UBM] = cubeList[UMR]
+        rotatedCubeList[UTL] = cubeList[UBL]
+        rotatedCubeList[UML] = cubeList[UBM]
+        rotatedCubeList[UBL] = cubeList[UBR]
+    
+    #rotating up to front
+        rotatedCubeList[BTL] = cubeList[LTL]
+        rotatedCubeList[BTM] = cubeList[LTM]
+        rotatedCubeList[BTR] = cubeList[LTR]
+        
+    #rotating back to up
+        rotatedCubeList[RTL] = cubeList[BTL]
+        rotatedCubeList[RTM] = cubeList[BTM]
+        rotatedCubeList[RTR] = cubeList[BTR]
+        
+    #rotating front to down
+        rotatedCubeList[FTL] = cubeList[RTL]
+        rotatedCubeList[FTM] = cubeList[RTM]
+        rotatedCubeList[FTR] = cubeList[RTR]
+        
+    #rotating down to back
+        rotatedCubeList[LTL] = cubeList[FTL]
+        rotatedCubeList[LTM] = cubeList[FTM]
+        rotatedCubeList[LTR] = cubeList[FTR]
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
