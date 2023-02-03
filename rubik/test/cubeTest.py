@@ -29,6 +29,7 @@ import rubik.model.cube as cube
 #                test 002: checks cube rotation in f direction
 #                test 003: checks cube rotation in R direction
 #                test 004: checks cube rotation in R direction
+#                test 005: checks cube rotation in B direction
 #
 #
 #    sad path tests:
@@ -65,9 +66,13 @@ class CubeTest(unittest.TestCase):
         theCube = cube.Cube(cubeToRotate)
         rotatedCube = theCube.rotate('r')
         self.assertEqual(rotatedCube, 'ggwggwggwrrrrrrrrrybbybbybbooooooooowwbwwbwwbyygyygyyg')
+    
 
-
-
+    def  test_rotate_005_RotatesCubeInBDirection(self):
+        cubeToRotate = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+        theCube = cube.Cube(cubeToRotate)
+        rotatedCube = theCube.rotate('B')
+        self.assertEqual(rotatedCube, 'gggggggggrryrryrrybbbbbbbbbwoowoowoorrrwwwwwwyyyyyyooo')
 
 
 
