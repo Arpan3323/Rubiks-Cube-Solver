@@ -12,14 +12,16 @@ class Cube:
         return self.cube
     
     def rotate(self, directions):
-        if directions == 'F':
-            self._rotateF()
-            
-        elif(directions == 'f'):
-            self._rotateF_anti_clockwise()
-        else:
-            self._rotateR()
-            
+        directionList = list(directions)
+        for direction in directionList:
+            if direction == 'F':
+                self._rotateF()
+                
+            elif(directions == 'f'):
+                self._rotateF_anti_clockwise()
+            else:
+                self._rotateR()
+                
         return self.cube
     
     
