@@ -107,7 +107,7 @@ class Cube:
         rotatedCubeList[RMM] = cubeList[RMM]
         rotatedCubeList[RBM] = cubeList[RMR]
         rotatedCubeList[RTL] = cubeList[RBL]
-        rotatedCubeList[FML] = cubeList[RBM]
+        rotatedCubeList[RML] = cubeList[RBM]
         rotatedCubeList[RBL] = cubeList[RBR]
     
     #rotating back to down
