@@ -113,7 +113,7 @@ class CubeTest(unittest.TestCase):
     def  test_rotate_011_RotatesCubeInFDirection_IfDirectionIsMissing(self):
         cubeToRotate = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         theCube = cube.Cube(cubeToRotate)
-        rotatedCube = theCube.rotate()
+        rotatedCube = theCube.rotate(None)
         self.assertEqual(rotatedCube, 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy')
 
 
