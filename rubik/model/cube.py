@@ -14,13 +14,17 @@ class Cube:
     def rotate(self, directions):
         if directions == 'F':
             self._rotateF()
-        else:
+            
+        elif(directions == 'f'):
             self._rotateF_anti_clockwise()
+        else:
+            self._rotateR()
+            
         return self.cube
     
     
     
-    #rotates the cube front face clockwise
+    #rotates the cubes front face clockwise
     def _rotateF(self):
         cubeList = list(self.cube)
         rotatedCubeList = cubeList[:]
@@ -90,5 +94,44 @@ class Cube:
         rotatedCubeList[RTL] = cubeList[DTR]
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        
+    #rotates the cubes right face clockwise
+    def _rotateR(self):
+        cubeList = list(self.cube)
+        rotatedCubeList = cubeList[:]
+    #rotating the right face of the cube clockwise
+        rotatedCubeList[FTR] = cubeList[RTL]
+        rotatedCubeList[FMR] = cubeList[RTM]
+        rotatedCubeList[FBR] = cubeList[RTR]
+        rotatedCubeList[FTM] = cubeList[RML]
+        rotatedCubeList[FMM] = cubeList[RMM]
+        rotatedCubeList[FBM] = cubeList[RMR]
+        rotatedCubeList[FTL] = cubeList[RBL]
+        rotatedCubeList[FML] = cubeList[RBM]
+        rotatedCubeList[FBL] = cubeList[RBR]
+    
+    #rotating back to down
+        rotatedCubeList[DBR] = cubeList[BTL]
+        rotatedCubeList[DMR] = cubeList[BML]
+        rotatedCubeList[DTR] = cubeList[BBL]
+        
+    #rotating front to up
+        rotatedCubeList[UTR] = cubeList[FTR]
+        rotatedCubeList[UMR] = cubeList[FMR]
+        rotatedCubeList[UBR] = cubeList[FBR]
+        
+    #rotating down to front
+        rotatedCubeList[FTR] = cubeList[DTR]
+        rotatedCubeList[FMR] = cubeList[DMR]
+        rotatedCubeList[FBR] = cubeList[DBR]
+        
+    #rotating top to back
+        rotatedCubeList[LTR] = cubeList[UBR]
+        rotatedCubeList[LMR] = cubeList[UMR]
+        rotatedCubeList[LBR] = cubeList[UTR]
+        
+    #converting the list to a string
+        self.cube = "".join(rotatedCubeList)
+        
 
         
