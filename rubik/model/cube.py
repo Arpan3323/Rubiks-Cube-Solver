@@ -51,8 +51,10 @@ class Cube:
                 
             elif(directions == 'u'):
                 rotatedCube = self._rotateU_anti_clockwise(cube)
+            
+            finalCube = rotatedCube
                 
-        return rotatedCube
+        return finalCube
     
     
     
