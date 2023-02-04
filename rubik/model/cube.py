@@ -13,7 +13,7 @@ class Cube:
     
     def rotate(self, directions):
         
-        rotatedCube = self.cube
+        finalCube = ""
         #defaulting direction to F if direction is missing or empty
         if directions == None or directions == "":
             directions = 'F'
@@ -21,36 +21,38 @@ class Cube:
         directionList = list(directions)
         for direction in directionList:
             if direction == 'F':
-                rotatedCube._rotateF()
+                rotatedCube = self._rotateF()
                 
             elif(directions == 'f'):
-                rotatedCube._rotateF_anti_clockwise()
+                rotatedCube = self._rotateF_anti_clockwise()
                 
             elif(directions == 'R'):
-                rotatedCube._rotateR()
+                rotatedCube = self._rotateR()
                 
             elif(directions == 'r'):
-                rotatedCube._rotateR_anti_clockwise()
+                rotatedCube = self._rotateR_anti_clockwise()
                 
             elif(directions == 'B'):
-                rotatedCube._rotateB()
+                rotatedCube = self._rotateB()
             
             elif(directions == 'b'):
-                rotatedCube._rotateB_anti_clockwise()
+                rotatedCube = self._rotateB_anti_clockwise()
             
             elif(directions == 'L'):
-                rotatedCube._rotateL()
+                rotatedCube = self._rotateL()
                 
             elif(directions == 'l'):
-                rotatedCube._rotateL_anti_clockwise()
+                rotatedCube = self._rotateL_anti_clockwise()
             
             elif(directions == 'U'):
-                rotatedCube._rotateU()
+                rotatedCube = self._rotateU()
                 
             elif(directions == 'u'):
-                rotatedCube._rotateU_anti_clockwise()
+                rotatedCube = self._rotateU_anti_clockwise()
+            
+            finalCube = rotatedCube
                 
-        return rotatedCube
+        return finalCube
     
     
     
