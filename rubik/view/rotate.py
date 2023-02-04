@@ -11,6 +11,10 @@ def rotate(parms):
         return result 
     
     directions = parms.get('dir')
+    if 'D' in directions:
+        result['status'] = "error: invalid rotation"
+        return result
+    
     theCube.rotate(directions)
     
     result['cube'] = theCube.get()
