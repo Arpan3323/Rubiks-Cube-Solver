@@ -97,7 +97,7 @@ class RotateTest(TestCase):
         self.assertEqual(result['status'], "error: invalid cube")
 
     def test008_rotate_CheckingIfCubeHasOnlyAlphabetsAndDigits(self):
-        encodedCube = '/*0000000BBBBBBBBBbbbbbbbbbrrrrrrrrrooooooooo6666666@_'
+        encodedCube = '/////////@@@@@@@@@bbbbbbbbbrrrrrrrrrooooooooo+++++++++'
         parms = {}
         parms['cube'] = encodedCube
         parms['dir'] = 'F'
