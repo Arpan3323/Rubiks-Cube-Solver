@@ -35,6 +35,12 @@ def rotate(parms):
         result['status'] = "error: invalid rotation"
         return result
     
+    #checking if the incoming directions are valid, [FfRrBbLlUu]
+    validDirections = "FfRrBbLlUu"
+    if not all(char in validDirections for char in directions):
+        result['status'] = "error: invalid rotation"
+        return result
+        
     theCube.rotate(directions)
     
     result['cube'] = theCube.get()
