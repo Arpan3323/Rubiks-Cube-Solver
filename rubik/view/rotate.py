@@ -11,7 +11,9 @@ def rotate(parms):
         return result 
     
     directions = parms.get('dir')
-    if 'D' in directions:
+    
+    #Checking if the incoming direction is 'D' or 'd'
+    if('D' in directions) or ('d' in directions):
         result['status'] = "error: invalid rotation"
         return result
     
