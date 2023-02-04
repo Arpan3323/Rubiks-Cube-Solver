@@ -73,7 +73,7 @@ def rotate(parms):
     
     
     #checking if the incoming directions are valid, [FfRrBbLlUu]
-    if not all(char in validDirections for char in directions):
+    if (directions != None) and (not all(char in validDirections for char in directions)):
         result['status'] = "error: invalid rotation"
         return result
     
