@@ -20,6 +20,17 @@ def rotate(parms):
     encodedCube = parms.get('cube')
     directions = parms.get('dir')
     
+    #checking if the cube cube is empty, None, or consists of characters outside [A-Z][a-z][0-9]
+    if (encodedCube == None) or (encodedCube.isalnum() == False):
+            result['status'] = "error: invalid cube"
+        
+            #checking if both cube and direction are invalid
+            if not all(char in validDirections for char in directions):
+                result['status'] = "error: invalid cube and invalid rotation"
+                return result
+            
+            return result
+    
     #creating a list that stores 5th, 14th, 23rd, 32nd, 41st, and 50th characters of the cube string
     cubeCharacterList = [encodedCube[FMM], 
                          encodedCube[RMM], 
@@ -32,10 +43,8 @@ def rotate(parms):
     cubeSetLength = len(set(cubeCharacterList))
     cubeListLength = len(cubeCharacterList)
     
-    #checking if the cube is none, contains only characters from [A-Z][a-z][0-9], contains exactly 54 characters
-    #and has six unique center faces
-    if (
-       (encodedCube == None) or (encodedCube.isalnum() == False) or 
+    #checking if the cube contains exactly 54 characters and has six unique center faces
+    if ( 
        (len(encodedCube) != mandatoryCharsInCube) or 
        (cubeSetLength != cubeListLength)
         ):
