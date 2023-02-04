@@ -11,7 +11,7 @@ class Cube:
     def get(self):
         return self.cube
     
-    def rotate(self, directions=None):
+    def rotate(self, directions="F"):
         
         #defaulting direction to F if direction is missing or empty
         if (directions == None) or (directions == ""):
