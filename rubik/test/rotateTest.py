@@ -34,6 +34,8 @@ class RotateTest(TestCase):
 #                test006 = checks if the cube is None
 #                test007 = checks if the cube has nine characters for each of the face
 #                test008 = checks if the cube string only contains alphabets and digits
+#                test009 = checks if the directions are valid
+#                test010 = checks if there are only two keys in the received dictionary called 'cube' and 'dir'
 #
 #                
                 
@@ -111,3 +113,12 @@ class RotateTest(TestCase):
         parms['dir'] = 'AaFfBKRT'
         result = rotate(parms)
         self.assertEqual(result['status'], "error: invalid rotation")
+        
+    def test010_rotate_CheckingIfIncomingDictionaryHasOnlyTwoKeys(self):
+        encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'F'
+        parms["thirdKey"] = 'A'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: extraneous key detected")
