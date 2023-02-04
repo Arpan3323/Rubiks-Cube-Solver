@@ -11,7 +11,7 @@ class RotateTest(TestCase):
 #                               the received dictionary and passes it to the cube class to perform rotations
 #        inputs:     
 #            Cube        string, 54 characters, must have six unique characters, 5th, 14th, 23rd, 32nd, 41st, and 50th
-#                        characters must be unique, mandatory, unvalidate
+#                        characters must be unique, mandatory, [A-Z][a-z][0-9], unvalidated
 #
 #            dir        string , len .GE. 0, [FfRrBbLlUu], optional, defaults to "F" if missing, D and d are not allowed, 
 #                       arrives unvalidated
@@ -33,6 +33,7 @@ class RotateTest(TestCase):
 #                test005 = checks if the cube has 6 unique characters
 #                test006 = checks if the cube is None
 #                test007 = checks if the cube has nine characters for each of the face
+#                test008 = checks if the cube string only contains alphabets and digits
 #
 #                
                 
@@ -89,6 +90,14 @@ class RotateTest(TestCase):
         
     def test007_rotate_CheckingIfCubeHasNineCharactersForEachFace(self):
         encodedCube = 'B00000000BBBBBBBBBbbbbbbbbbrrrrrrrrrooooooooo666666666'
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'F'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid cube")
+
+    def test008_rotate_CheckingIfCubeHasOnlyAlphabetsAndDigits(self):
+        encodedCube = '/*0000000BBBBBBBBBbbbbbbbbbrrrrrrrrrooooooooo6666666@_'
         parms = {}
         parms['cube'] = encodedCube
         parms['dir'] = 'F'
