@@ -37,6 +37,7 @@ class RotateTest(TestCase):
 #                test009 = checks if the directions are valid
 #                test010 = checks if there are only two keys in the received dictionary called 'cube' and 'dir'
 #                test011 = checks if the cube is empty, ""
+#                test012 = checks if the cube and direction are both invalid
 #
 #                
                 

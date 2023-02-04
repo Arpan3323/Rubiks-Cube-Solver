@@ -38,6 +38,7 @@ import rubik.model.cube as cube
 #                test 011: checks for missing direction, dir=None
 #                test 012: checks for empty direction, dir=""
 #                test 013: checks for multi-string rotation
+#                test 014: checks for rotation when no argument is provided
 #
 #
 #    sad path tests:
