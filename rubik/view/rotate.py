@@ -1,4 +1,5 @@
 from rubik.model.cube import Cube
+from collections import Counter
 
 def rotate(parms):
     """Return rotated cube""" 
@@ -10,6 +11,13 @@ def rotate(parms):
     if (encodedCube == None):
         result['status'] = "error: invalid cube"
         return result
+    
+    #Checking if each character is repeated exactly 9 times
+    for value in Counter(encodedCube).values():
+        if value != 9:
+            result['status'] = "error: invalid cube"
+            return result
+            
     
     #creating a list that stores 5th, 14th, 23rd, 32nd, 41st, and 50th characters of the cube string
     cubeCharacterList = [encodedCube[4], encodedCube[13], encodedCube[22], encodedCube[31], encodedCube[40], encodedCube[49]]
