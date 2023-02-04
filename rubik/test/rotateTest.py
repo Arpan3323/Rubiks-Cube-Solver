@@ -30,6 +30,7 @@ class RotateTest(TestCase):
 #                test002 = checks if the incoming cube has 54 characters
 #                test003 = checks if an error is returned when the incoming direction is D
 #                test004 = checks if an error is returned when the incoming direction is d
+#                test005 = checks if the cube has 6 unique characters
 #
 #                
                 
@@ -65,5 +66,13 @@ class RotateTest(TestCase):
         parms = {}
         parms['cube'] = encodedCube
         parms['dir'] = 'd'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid rotation")
+        
+    def test005_rotate_CheckingIfCubeHasSixUniqueCharacters(self):
+        encodedCube = 'gggggggggggggggggggggggggggggggggggggggggggggggggggggg'
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'F'
         result = rotate(parms)
         self.assertEqual(result['status'], "error: invalid rotation")
