@@ -29,6 +29,7 @@ class RotateTest(TestCase):
 #     Sad path test:
 #                test002 = checks if the incoming cube has 54 characters
 #                test003 = checks if an error is returned when the incoming direction is D
+#                test004 = checks if an error is returned when the incoming direction is d
 #
 #                
                 
@@ -59,4 +60,10 @@ class RotateTest(TestCase):
         result = rotate(parms)
         self.assertEqual(result['status'], "error: invalid rotation")
         
-        
+    def test004_rotate_CheckingIfDirectionToRotateIsd(self):
+        encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'd'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid rotation")
