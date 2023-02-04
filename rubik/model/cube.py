@@ -14,7 +14,7 @@ class Cube:
     def rotate(self, directions):
         
         #defaulting direction to F if direction is missing or empty
-        if directions == None or directions == "":
+        if (directions == None) or (directions == ""):
             directions = 'F'
             
         #converting directions string to a list to iterate the list of directions and perform rotations 

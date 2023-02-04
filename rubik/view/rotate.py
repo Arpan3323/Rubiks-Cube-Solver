@@ -13,7 +13,7 @@ def rotate(parms):
 
     #checking the dictionary for extra keys
     keyList = parms.keys()
-    if (len(keyList)) != numberOfKeys:
+    if (len(keyList)) > numberOfKeys:
         result['status'] = "error: extraneous key detected"
         return result
     
