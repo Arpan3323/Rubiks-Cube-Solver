@@ -103,3 +103,11 @@ class RotateTest(TestCase):
         parms['dir'] = 'F'
         result = rotate(parms)
         self.assertEqual(result['status'], "error: invalid cube")
+        
+    def test009_rotate_CheckingIfDirectionIsValid(self):
+        encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'AaFfBKRT'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid rotation")
