@@ -6,7 +6,7 @@ def rotate(parms):
     
     encodedCube = parms.get('cube')
     theCube = Cube(encodedCube)
-    if len(theCube) != 54:
+    if len(encodedCube) != 54:
         result['status'] = "error: invalid cube"
         return result 
     
