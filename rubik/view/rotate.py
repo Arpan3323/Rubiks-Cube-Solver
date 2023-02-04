@@ -5,6 +5,12 @@ def rotate(parms):
     """Return rotated cube""" 
     result = {}
     
+    #checking the dictionary for extra keys
+    keyList = parms.keys()
+    if (len(keyList)) != 2:
+        result['status'] = "error: extraneous key detected"
+        return result
+    
     encodedCube = parms.get('cube')
     
     #checking if the cube is none
