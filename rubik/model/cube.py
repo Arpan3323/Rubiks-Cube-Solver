@@ -13,7 +13,6 @@ class Cube:
     
     def rotate(self, directions):
         
-        finalCube = ""
         #defaulting direction to F if direction is missing or empty
         if directions == None or directions == "":
             directions = 'F'
@@ -21,38 +20,38 @@ class Cube:
         directionList = list(directions)
         for direction in directionList:
             if direction == 'F':
-                rotatedCube = self._rotateF()
+                self._rotateF()
                 
             elif(directions == 'f'):
-                rotatedCube = self._rotateF_anti_clockwise()
+                self._rotateF_anti_clockwise()
                 
             elif(directions == 'R'):
-                rotatedCube = self._rotateR()
+                self._rotateR()
                 
             elif(directions == 'r'):
-                rotatedCube = self._rotateR_anti_clockwise()
+                self._rotateR_anti_clockwise()
                 
             elif(directions == 'B'):
-                rotatedCube = self._rotateB()
+                self._rotateB()
             
             elif(directions == 'b'):
-                rotatedCube = self._rotateB_anti_clockwise()
+                self._rotateB_anti_clockwise()
             
             elif(directions == 'L'):
-                rotatedCube = self._rotateL()
+                self._rotateL()
                 
             elif(directions == 'l'):
-                rotatedCube = self._rotateL_anti_clockwise()
+                self._rotateL_anti_clockwise()
             
             elif(directions == 'U'):
-                rotatedCube = self._rotateU()
+                self._rotateU()
                 
             elif(directions == 'u'):
-                rotatedCube = self._rotateU_anti_clockwise()
-            
-            finalCube = rotatedCube
+                self._rotateU_anti_clockwise()
                 
-        return finalCube
+            rotatedCube = self.cube
+                
+        return rotatedCube
     
     
     
@@ -88,6 +87,8 @@ class Cube:
         rotatedCubeList[LBR] = cubeList[DTR]
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        
+        return self.cube
         
         
     #rotates the cubes front face anti-clockwise    
@@ -126,6 +127,7 @@ class Cube:
         rotatedCubeList[RTL] = cubeList[DTR]
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
         
     #rotates the cubes right face clockwise
     def _rotateR(self):
@@ -164,7 +166,7 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
-        
+        return self.cube
 
     #rotates the cubes right face anti-clockwise
     def _rotateR_anti_clockwise(self):
@@ -204,6 +206,7 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
     
     #rotates the cubes back face clockwise    
     def _rotateB(self):
@@ -243,6 +246,7 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
      
      
     #rotates the cubes back face anti-clockwise    
@@ -283,6 +287,7 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
 
 
     #rotates the cubes left face clockwise
@@ -323,6 +328,7 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
         
         
     #rotates the cubes left face anti-clockwise
@@ -363,6 +369,7 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
         
     #rotating the cubes up face clockwise
     def _rotateU(self):
@@ -402,6 +409,7 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
         
         
     #rotating the cubes up face anti-clockwise
@@ -442,3 +450,4 @@ class Cube:
         
     #converting the list to a string
         self.cube = "".join(rotatedCubeList)
+        return self.cube
