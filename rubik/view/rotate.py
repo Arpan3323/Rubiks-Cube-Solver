@@ -9,8 +9,8 @@ def rotate(parms):
     #creating a list that stores 5th, 14th, 23rd, 32nd, 41st, and 50th characters of the cube string
     cubeCharacterList = [encodedCube[4], encodedCube[13], encodedCube[22], encodedCube[31], encodedCube[40], encodedCube[49]]
     
-    #checking if the cube has exactly 54 characters and 6 unique characters
-    if (len(encodedCube) != 54) or len(set(cubeCharacterList)) != len(cubeCharacterList):
+    #checking if the cube has exactly 54 characters with 6 unique characters and the cube is not equal to none
+    if (len(encodedCube) != 54) or (len(set(cubeCharacterList)) != len(cubeCharacterList)) or (encodedCube == None):
         result['status'] = "error: invalid cube"
         return result
     
