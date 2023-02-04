@@ -5,19 +5,16 @@ def rotate(parms):
     result = {}
     
     encodedCube = parms.get('cube')
-    theCube = Cube(encodedCube)
-    if len(encodedCube) != 54:
-        result['status'] = "error: invalid cube"
-        return result
     
     #creating a list that stores 5th, 14th, 23rd, 32nd, 41st, and 50th characters of the cube string
     cubeCharacterList = [encodedCube[4], encodedCube[13], encodedCube[22], encodedCube[31], encodedCube[40], encodedCube[49]]
     
-    #checking if all elements in the cubeCharacterList are unique
-    if len(set(cubeCharacterList)) != len(cubeCharacterList):
+    #checking if the cube has exactly 54 characters and 6 unique characters
+    if (len(encodedCube) != 54) or len(set(cubeCharacterList)) != len(cubeCharacterList):
         result['status'] = "error: invalid cube"
         return result
     
+    theCube = Cube(encodedCube)
     directions = parms.get('dir')
     
     #Checking if the incoming direction is 'D' or 'd'
