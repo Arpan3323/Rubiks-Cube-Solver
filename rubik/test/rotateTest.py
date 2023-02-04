@@ -32,6 +32,7 @@ class RotateTest(TestCase):
 #                test004 = checks if an error is returned when the incoming direction is d
 #                test005 = checks if the cube has 6 unique characters
 #                test006 = checks if the cube is None
+#                test007 = checks if the cube has nine characters for each of the face
 #
 #                
                 
@@ -80,6 +81,14 @@ class RotateTest(TestCase):
         
     def test006_rotate_CheckingIfCubeIsNone(self):
         encodedCube = None
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'F'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid cube")
+        
+    def test007_rotate_CheckingIfCubeHasNineCharactersForEachFace(self):
+        encodedCube = 'B00000000BBBBBBBBBbbbbbbbbbrrrrrrrrrooooooooo666666666'
         parms = {}
         parms['cube'] = encodedCube
         parms['dir'] = 'F'
