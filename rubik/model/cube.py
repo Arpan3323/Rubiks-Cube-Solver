@@ -25,31 +25,31 @@ class Cube:
                 rotatedCube = self._rotateF(cube)
                 
                 
-            elif(directions == 'f'):
+            elif(direction == 'f'):
                 rotatedCube = self._rotateF_anti_clockwise(cube)
                 
-            elif(directions == 'R'):
+            elif(direction == 'R'):
                 rotatedCube = self._rotateR(cube)
                 
-            elif(directions == 'r'):
+            elif(direction == 'r'):
                 rotatedCube = self._rotateR_anti_clockwise(cube)
                 
-            elif(directions == 'B'):
+            elif(direction == 'B'):
                 rotatedCube = self._rotateB(cube)
             
-            elif(directions == 'b'):
+            elif(direction == 'b'):
                 rotatedCube = self._rotateB_anti_clockwise(cube)
             
-            elif(directions == 'L'):
+            elif(direction == 'L'):
                 rotatedCube =  self._rotateL(cube)
                 
-            elif(directions == 'l'):
+            elif(direction == 'l'):
                 rotatedCube = self._rotateL_anti_clockwise(cube)
             
-            elif(directions == 'U'):
+            elif(direction == 'U'):
                 rotatedCube = self._rotateU(cube)
                 
-            elif(directions == 'u'):
+            elif(direction == 'u'):
                 rotatedCube = self._rotateU_anti_clockwise(cube)
             
             finalCube = rotatedCube
