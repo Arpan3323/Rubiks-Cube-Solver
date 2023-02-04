@@ -36,4 +36,8 @@ class RotateTest(TestCase):
         result = rotate(parms)
         self.assertIn('status', result)
         self.assertEqual('ok', result['status'])
-        self.assertEqual(encodedCube, result.get('cube'))
+        self.assertEqual(result.get('cube'), "bbbbbbbbbyrryrryrroooooooooggwggwggwyyyyyygggrrrwwwwww")
+        
+        
+        
+        
