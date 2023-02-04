@@ -36,6 +36,7 @@ class RotateTest(TestCase):
 #                test008 = checks if the cube string only contains alphabets and digits
 #                test009 = checks if the directions are valid
 #                test010 = checks if there are only two keys in the received dictionary called 'cube' and 'dir'
+#                test011 = checks if the cube is empty, ""
 #
 #                
                 
@@ -122,3 +123,11 @@ class RotateTest(TestCase):
         parms["thirdKey"] = 'A'
         result = rotate(parms)
         self.assertEqual(result['status'], "error: extraneous key detected")
+
+    def test011_rotate_CheckingIfCubeIsEmpty(self):
+        encodedCube = ""
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'F'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid cube")
