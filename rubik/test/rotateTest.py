@@ -23,12 +23,12 @@ class RotateTest(TestCase):
 #            {'status': 'error: invalid cube and invalid key'} if both key and cube are invalid
 #
 #     Happy path tests:
-#                test100 = Test that the stubbed rotate returns the correct result
+#                test001 = Test that the stubbed rotate returns the correct result
 #     Sad path test:
 #
 #    Abnormal path test: 
                 
-    def test100_rotate_returnStubbedSolution(self):
+    def test001_rotate_returnStubbedSolution(self):
         encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
         parms = {}
         parms['cube'] = encodedCube
@@ -38,6 +38,13 @@ class RotateTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual(result.get('cube'), "bbbbbbbbbyrryrryrroooooooooggwggwggwyyyyyygggrrrwwwwww")
         
-        
+    
+    def test002_rotate_Checking54charactersinCube(self):
+        encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwww'
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'F'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid cube")
         
         
