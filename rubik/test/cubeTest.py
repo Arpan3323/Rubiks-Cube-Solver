@@ -10,8 +10,8 @@ import rubik.model.cube as cube
 
 #Analysis of Cube
 #
-#    Cube: a class, receives a dictionary that contains a cube key with values representing the faces of a cube
-#          and a dir key with values indicating the direction in which the cube should be rotated.
+#    Cube: a class, receives a string that contains a cube key with values representing the faces of a cube
+#          and a dir string with values indicating the direction in which the cube should be rotated.
 #    Methods: __init__        constructs a cube from a serialized string 
 #             get             yields a serialized string of internal representation
 #             rotate            performs rotations on the cube depending on the 'dir' key's value
@@ -41,6 +41,8 @@ import rubik.model.cube as cube
 #
 #
 #    sad path tests:
+#                catching the invalid directions, d and D, in rotateTest
+#                catching invalid cube in rotateTest
 #
 #
 #    evil path test:
