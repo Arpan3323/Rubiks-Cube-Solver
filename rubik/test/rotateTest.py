@@ -16,17 +16,21 @@ class RotateTest(TestCase):
 #            dir        string , len .GE. 0, [FfRrBbLlUu], optional, defaults to "F" if missing, D and d are not allowed, 
 #                       arrives unvalidated
 #        output:
-#            {'cube': 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy', 'status': 'ok'} if everything is okay
-#            {'status': 'error: invalid rotation'} when rotation is invalid (for D and d)
-#            {'status': 'error: invalid cube'} when cube is invalid
-#            {'status': 'error: extraneous key detected'} if there is additional key in the dictionary
-#            {'status': 'error: invalid cube and invalid key'} if both key and cube are invalid
+#            normal output:
+#                {'cube': 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy', 'status': 'ok'} if everything is okay
+#            sad output:
+#                {'status': 'error: invalid rotation'} when rotation is invalid (for D and d)
+#                {'status': 'error: invalid cube'} when cube is invalid
+#                {'status': 'error: extraneous key detected'} if there is additional key in the dictionary
+#                {'status': 'error: invalid cube and invalid key'} if both key and cube are invalid
 #
 #     Happy path tests:
 #                test001 = Test that the stubbed rotate returns the correct result
 #     Sad path test:
+#                test002 = checks if the incoming cube has 54 characters
+#                test003 = checks if an error is returned when the incoming direction is D
 #
-#    Abnormal path test: 
+#                
                 
     def test001_rotate_returnStubbedSolution(self):
         encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
@@ -46,5 +50,13 @@ class RotateTest(TestCase):
         parms['dir'] = 'F'
         result = rotate(parms)
         self.assertEqual(result['status'], "error: invalid cube")
+        
+    def test003_rotate_CheckingIfDirectionToRotateIsD(self):
+        encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+        parms = {}
+        parms['cube'] = encodedCube
+        parms['dir'] = 'D'
+        result = rotate(parms)
+        self.assertEqual(result['status'], "error: invalid rotation")
         
         
