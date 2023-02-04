@@ -8,7 +8,7 @@ def rotate(parms):
     encodedCube = parms.get('cube')
     
     #checking if the cube is none
-    if (encodedCube == None):
+    if (encodedCube == None) or (encodedCube.isalnum() == False):
         result['status'] = "error: invalid cube"
         return result
     
