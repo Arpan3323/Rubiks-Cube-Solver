@@ -140,9 +140,9 @@ class Cube:
         rotatedCubeList = cubeList[:]
         
         #rotating the right face of the cube clockwise
-        rotatedCubeList[FTR] = cubeList[RTL]
-        rotatedCubeList[FMR] = cubeList[RTM]
-        rotatedCubeList[FBR] = cubeList[RTR]
+        rotatedCubeList[RTR] = cubeList[RTL]
+        rotatedCubeList[RMR] = cubeList[RTM]
+        rotatedCubeList[RBR] = cubeList[RTR]
         rotatedCubeList[RTM] = cubeList[RML]
         rotatedCubeList[RMM] = cubeList[RMM]
         rotatedCubeList[RBM] = cubeList[RMR]
