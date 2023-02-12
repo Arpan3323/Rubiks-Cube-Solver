@@ -28,7 +28,7 @@ import rubik.model.cube as cube
 #                test 001: checks cube rotation in F direction
 #                test 002: checks cube rotation in f direction
 #                test 003: checks cube rotation in R direction
-#                test 004: checks cube rotation in R direction (Was modified to check a different string on R rotation)
+#                test 004: checks cube rotation in R direction (was modified to check a different string on R rotation)
 #                test 005: checks cube rotation in B direction
 #                test 006: checks cube rotation in b direction
 #                test 007: checks cube rotation in L direction
@@ -37,7 +37,7 @@ import rubik.model.cube as cube
 #                test 010: checks cube rotation in u direction
 #                test 011: checks for missing direction, dir=None
 #                test 012: checks for empty direction, dir=""
-#                test 013: checks for multi-string rotation
+#                test 013: checks for multi-string rotation (modified to include R rotation)
 #                test 014: checks for rotation when no argument is provided
 #
 #
@@ -130,8 +130,8 @@ class CubeTest(unittest.TestCase):
     def  test_rotate_013_RotatesCubeInMultipleDirection(self):
         cubeToRotate = 'bboggryowwgogrrrggbrryboobbgrrbowyogybywwowyboygwyyrww'
         theCube = cube.Cube(cubeToRotate)
-        rotatedCube = theCube.rotate("FBfUb")
-        self.assertEqual(rotatedCube, 'wgwggryowoywgrwrgorrrrboybbgbobowyogybbywrbogoygwyyrwb')
+        rotatedCube = theCube.rotate("FBfUbR")
+        self.assertEqual(rotatedCube, 'wggggyyobrgogryowwgrrrbobbbgbobowyogybwywrbowoyywyrrwr')
         
     def  test_rotate_014_RotatesCubeInFDirection_IfDirectionIsMissing(self):
         cubeToRotate = 'bboggryowwgogrrrggbrryboobbgrrbowyogybywwowyboygwyyrww'
