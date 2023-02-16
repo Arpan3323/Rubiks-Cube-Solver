@@ -4,10 +4,10 @@ from rubik.model.cube import Cube
 def solveBottomCross(theCube: Cube) -> str:
     '''
         This is the top-level function  for rotating
-        a cube into the down-face cross configuration.
+        a cubeList into the down-face cross configuration.
         
-        input:  an instance of the cube class
-        output: the rotations required to transform the input cube into the down-face cross 
+        input:  an instance of the cubeList class
+        output: the rotations required to transform the input cubeList into the down-face cross 
     '''  
     if _verifyBottomCrossExists(theCube):
         return ''
@@ -17,24 +17,25 @@ def solveBottomCross(theCube: Cube) -> str:
     return 'F'      #TODO:  remove this stubbed value
 
 
-#method to check if the incoming cube already has a bottom cross
+#method to check if the incoming cubeList already has a bottom cross
 def _verifyBottomCrossExists(cube):
-    if cube[48] != cube[49]:
+    cubeList = list(cube)
+    if cubeList[48] != cubeList[49]:
         return False
-    if cube[46] != cube[49]:
+    if cubeList[46] != cubeList[49]:
         return False
-    if cube[52] != cube[49]:
+    if cubeList[52] != cubeList[49]:
         return False
-    if cube[50] != cube[49]:
+    if cubeList[50] != cubeList[49]:
         return False
-    if cube[31] != cube[34]:
+    if cubeList[31] != cubeList[34]:
         return False
-    if cube[4] != cube[7]:
+    if cubeList[4] != cubeList[7]:
         return False
-    if cube[13] != cube[16]:
+    if cubeList[13] != cubeList[16]:
         return False
-    if cube[22] != cube[25]:
+    if cubeList[22] != cubeList[25]:
         return False
-    if cube[49] != cube[48]:
+    if cubeList[49] != cubeList[48]:
         return False
     return True
