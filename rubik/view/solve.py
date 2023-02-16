@@ -15,11 +15,11 @@ def solve(parms):
     
     rotations = ""
     rotations += solveBottomCross(theCube)      #iteration 2
-    rotations += solveBottomLayer(theCube)      #iteration 3
-    rotations += solveMiddleLayer(theCube)      #iteration 4
-    rotations += solveUpCross(theCube)          #iteration 5
-    rotations += solveUpSurface(theCube)        #iteration 5
-    rotations += solveUpperLayer(theCube)       #iteration 6
+    #rotations += solveBottomLayer(theCube)      #iteration 3
+    #rotations += solveMiddleLayer(theCube)      #iteration 4
+    #rotations += solveUpCross(theCube)          #iteration 5
+    #rotations += solveUpSurface(theCube)        #iteration 5
+    #rotations += solveUpperLayer(theCube)       #iteration 6
     
     result['solution'] = rotations
     result['status'] = 'ok'    
