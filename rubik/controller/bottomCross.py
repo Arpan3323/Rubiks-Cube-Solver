@@ -19,6 +19,7 @@ def solveBottomCross(theCube: Cube) -> str:
 
 #method to check if the incoming cubeList already has a bottom cross
 def _verifyBottomCrossExists(cube):
+    cube = cube.get()
     cubeList = list(cube)
     if cubeList[48] != cubeList[49]:
         return False
