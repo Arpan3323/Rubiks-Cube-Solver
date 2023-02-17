@@ -30,7 +30,9 @@ class SolveTest(TestCase):
 #            abnormal: 
 #
 #    happy path tests:
-#                test 001: checks if solution contains no rotations when the bottom cross exists
+#                test 100: checks if solution contains no rotations when the bottom cross exists
+#                test 100: checks the rotations needed when top daisy exists and F,R,B, & L faces
+#                          edges are aligned with their centers
 #
 #
 #    sad path tests:
@@ -41,11 +43,19 @@ class SolveTest(TestCase):
 #    evil path test:
 #                none
 
-    def test001_solve_checkIfBottomCrossAlreadyExists(self):
+    def test100_solve_checkIfBottomCrossAlreadyExists(self):
         parms = {}
         parms['cube'] = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
         result = solve(parms)
         self.assertEqual('', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
+    
+    def test101_solve_rotationsNeededWhenDaisyExistsAndEdgesAligned(self):
+        parms = {}
+        parms['cube'] = 'rbyyborrbbrwgryogyogwbgybygboyrogyowowgwywgwrgbybwroor'
+        result = solve(parms)
+        self.assertEqual('FFRRBBLL', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
 
