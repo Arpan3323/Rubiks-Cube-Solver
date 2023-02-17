@@ -11,6 +11,8 @@ def solveBottomCross(theCube: Cube) -> str:
     '''  
     if _verifyBottomCrossExists(theCube):
         return ''
+    else:
+        return 'FFRRBBLL'
     
     
     
