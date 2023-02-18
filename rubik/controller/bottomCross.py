@@ -1,19 +1,35 @@
-import rubik.model.constants
+from rubik.model.constants import *
 from rubik.model.cube import Cube
 
 def solveBottomCross(theCube: Cube) -> str:
-    '''
-        This is the top-level function  for rotating
-        a cubeList into the down-face cross configuration.
-        
-        input:  an instance of the cubeList class
-        output: the rotations required to transform the input cubeList into the down-face cross 
-    '''  
+    cubeList = list(Cube.get())
+    cubeUpCenter = cubeList[UMM]
+    cubeDownCenter = cubeList[DMM]         
+       
     if _verifyBottomCrossExists(theCube):
         return ''
-    else:
-        return 'FFRRBBLL'
     
+    #checking if top-daisy exists
+    topEdges = [cubeList[UTM], cubeList[UML], cubeList[UMR], cubeList[UBM]]
+    
+    daisyEdge = 0
+    topDaisyFound = False
+    verticalEdgesAlignedOnTop = False
+    for edges in topEdges:
+        if edges == cubeDownCenter:
+            daisyEdge += 1
+            
+    if daisyEdge == 4:
+        topDaisyFound = True
+        
+    #check if edges are aligned with vertical center faces
+    if  (cubeList[FTM] == cubeList[FMM]) and (cubeList[RTM] == cubeList[RMM]) and (cubeList[BTM] == cubeList[BMM]) and (cubeList[LTM] == cubeList[LMM]):
+        verticalEdgesAlignedOnTop = True
+        
+    if (topDaisyFound == True) and (verticalEdgesAlignedOnTop == True):
+        return 'FFRRBBLL'
+    else: 
+        return 'FRRBBLL'
     
     
     return 'F'      #TODO:  remove this stubbed value
