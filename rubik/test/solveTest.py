@@ -85,7 +85,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test104_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromFrontAndRightAndOnceFromBack(self):
+    def test105_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromFrontAndRightAndOnceFromBack(self):
         parms = {}
         parms['cube'] = 'brbobbyboyggyrowroryrygggywgoowogoobygwwyrybrrwgbwwbry'
         result = solve(parms)
@@ -93,6 +93,13 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
     
+    def test106_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromEverySideAndOnceFromBack(self):
+        parms = {}
+        parms['cube'] = 'grbwbbyboygyyrrwrbgygygbwgrygwooobgorooyyrrbrbwgowwywo'
+        result = solve(parms)
+        self.assertEqual('L', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
         
     
 
