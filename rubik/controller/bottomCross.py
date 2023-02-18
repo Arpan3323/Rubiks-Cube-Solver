@@ -42,9 +42,15 @@ def solveBottomCross(theCube: Cube) -> str:
     
     if (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
         rotation += 'F'
+    
+    if (cubeList[BML] == cubeDownCenter) and (cubeList[RMR] == cubeList[RMM]):
+        rotation += 'R'
         
     if (cubeList[LML] == cubeDownCenter) and (cubeList[BMR] == cubeList[BMM]):
         rotation += 'B'
+        
+    if (cubeList[FML] == cubeDownCenter) and (cubeList[LMR] == cubeList[LMM]):
+        rotation += 'L'
     
     for edge in topEdgePairs:
         if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
@@ -87,7 +93,5 @@ def _verifyBottomCrossExists(cube):
     if cubeList[13] != cubeList[16]:
         return False
     if cubeList[22] != cubeList[25]:
-        return False
-    if cubeList[49] != cubeList[48]:
         return False
     return True
