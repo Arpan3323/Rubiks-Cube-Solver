@@ -54,7 +54,7 @@ def solveBottomCross(theCube: Cube) -> str:
                 rotation += 'LL'
         return rotation
     else: 
-        rotation = 'RRBBLL'
+        rotation = 'BBLL'
         return rotation
     
     
