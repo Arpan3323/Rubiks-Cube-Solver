@@ -28,9 +28,7 @@ def solveBottomCross(theCube: Cube) -> str:
         
     if (topDaisyFound == True) and (verticalEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
-    #else: 
-        #return 'FRRBBLL'
-    
+  
     #checking if front face has been rotated once to form bottom cross
     
     topEdgePairs = [(cubeList[UBM], cubeList[FTM], 'F'),
@@ -42,18 +40,27 @@ def solveBottomCross(theCube: Cube) -> str:
     for edge in topEdgePairs:
         if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
             rotation += 'FF'
-        elif (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
+        
+        if (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
             rotation += 'F'
                
         if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[RMM]):
             rotation += 'RR'
-        elif (cubeList[BML] == cubeDownCenter) and (cubeList[RMR] == cubeList[RMM]):
+        
+        if (cubeList[BML] == cubeDownCenter) and (cubeList[RMR] == cubeList[RMM]):
             rotation += 'R'
+            
         if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[BMM]):
             rotation += 'BB'
-                
+        
+        if (cubeList[LML] == cubeDownCenter) and (cubeList[BMR] == cubeList[BMM]):
+            rotation += 'B'
+            
         if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
             rotation += 'LL'
+        
+        if (cubeList[FML] == cubeDownCenter) and (cubeList[LMR] == cubeList[LMM]):
+            rotation += 'L'
     
     return rotation
     
