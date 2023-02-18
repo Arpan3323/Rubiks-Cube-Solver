@@ -28,41 +28,35 @@ def solveBottomCross(theCube: Cube) -> str:
         
     if (topDaisyFound == True) and (verticalEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
-  
+    #else: 
+        #return 'FRRBBLL'
+    
     #checking if front face has been rotated once to form bottom cross
     
     topEdgePairs = [(cubeList[UBM], cubeList[FTM], 'F'),
                     (cubeList[UMR], cubeList[RTM], 'R'),
                     (cubeList[UTM], cubeList[BTM], 'B'),
                     (cubeList[UML], cubeList[LTM], 'L')]
-    rotation = ''
     
-    for edge in topEdgePairs:
-        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
-            rotation += 'FF'
-        
-        if (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
-            rotation += 'F'
-               
-        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[RMM]):
-            rotation += 'RR'
-        
-        if (cubeList[BML] == cubeDownCenter) and (cubeList[RMR] == cubeList[RMM]):
-            rotation += 'R'
+    if (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
+        rotation = 'F'
+        for edge in topEdgePairs:
+            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
+                rotation += 'FF'
+                
+            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[RMM]):
+                rotation += 'RR'
             
-        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[BMM]):
-            rotation += 'BB'
-        
-        if (cubeList[LML] == cubeDownCenter) and (cubeList[BMR] == cubeList[BMM]):
-            rotation += 'B'
-            
-        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
-            rotation += 'LL'
-        
-        if (cubeList[FML] == cubeDownCenter) and (cubeList[LMR] == cubeList[LMM]):
-            rotation += 'L'
+            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[BMM]):
+                rotation += 'BB'
+                
+            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
+                rotation += 'LL'
+        return rotation
+    else: 
+        rotation = 'RRBBLL'
+        return rotation
     
-    return rotation
     
     return 'F'      #TODO:  remove this stubbed value
 
