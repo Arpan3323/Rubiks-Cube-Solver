@@ -38,8 +38,10 @@ def solveBottomCross(theCube: Cube) -> str:
                     (cubeList[UTM], cubeList[BTM], 'B'),
                     (cubeList[UML], cubeList[LTM], 'L')]
     
+    rotation = ''
+    
     if (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
-        rotation = 'F'
+        rotation += 'F'
     for edge in topEdgePairs:
         if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
             rotation += 'FF'
