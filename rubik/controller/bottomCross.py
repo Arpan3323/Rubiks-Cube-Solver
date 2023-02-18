@@ -40,22 +40,23 @@ def solveBottomCross(theCube: Cube) -> str:
     
     if (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
         rotation = 'F'
-        for edge in topEdgePairs:
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
-                rotation += 'FF'
+    for edge in topEdgePairs:
+        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
+            rotation += 'FF'
                 
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[RMM]):
-                rotation += 'RR'
+        elif (edge[0] == cubeDownCenter) and (edge[1] == cubeList[RMM]):
+            rotation += 'RR'
             
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[BMM]):
-                rotation += 'BB'
+        elif (edge[0] == cubeDownCenter) and (edge[1] == cubeList[BMM]):
+            rotation += 'BB'
                 
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
-                rotation += 'LL'
-        return rotation
-    else: 
-        rotation = 'BBLL'
-        return rotation
+        elif (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
+            rotation += 'LL'
+    return rotation
+    
+    #else: 
+     #   rotation = 'RRBBLL'
+      #  return rotation
     
     
     return 'F'      #TODO:  remove this stubbed value
