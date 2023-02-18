@@ -31,8 +31,9 @@ class SolveTest(TestCase):
 #
 #    happy path tests:
 #                test 100: checks if solution contains no rotations when the bottom cross exists
-#                test 100: checks the rotations needed when top daisy exists and F,R,B, & L faces
+#                test 101: checks the rotations needed when top daisy exists and F,R,B, & L faces
 #                          edges are aligned with their centers
+#                test 102: 
 #
 #
 #    sad path tests:
@@ -66,5 +67,16 @@ class SolveTest(TestCase):
         self.assertEqual('FRRBBLL', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
+        
+             
+    def test103_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromFront(self):
+        parms = {}
+        parms['cube'] = 'brrobyybrwrwgryygyogwbgybygboorogyobowgwywybgrwgbwroor'
+        result = solve(parms)
+        self.assertEqual('RRBBLL', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
+        
+    
 
 
