@@ -100,6 +100,14 @@ class SolveTest(TestCase):
         self.assertEqual('L', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
+    
+    def test107_solve_rotationsNeededWhenDaisyAndEdgesAreNotAligned(self):
+        parms = {}
+        parms['cube'] = 'bgbyoyyowyrorbobbwgbwgrbobggoyoggrggwwowywrwroyrrwryyb'
+        result = solve(parms)
+        self.assertEqual('ULLRRUUFFBB', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
         
     
 
