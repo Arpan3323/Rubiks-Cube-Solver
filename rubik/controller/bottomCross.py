@@ -37,26 +37,25 @@ def solveBottomCross(theCube: Cube) -> str:
                     (cubeList[UMR], cubeList[RTM], 'R'),
                     (cubeList[UTM], cubeList[BTM], 'B'),
                     (cubeList[UML], cubeList[LTM], 'L')]
+    rotation = ''
     
-    if (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
-        rotation = 'F'
-        for edge in topEdgePairs:
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
-                rotation += 'FF'
+    for edge in topEdgePairs:
+        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[FMM]):
+            rotation += 'FF'
+        elif (cubeList[RML] == cubeDownCenter) and (cubeList[FMR] == cubeList[FMM]):
+            rotation += 'F'
+               
+        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[RMM]):
+            rotation += 'RR'
+        elif (cubeList[BML] == cubeDownCenter) and (cubeList[RMR] == cubeList[RMM]):
+            rotation += 'R'
+        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[BMM]):
+            rotation += 'BB'
                 
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[RMM]):
-                rotation += 'RR'
-            
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[BMM]):
-                rotation += 'BB'
-                
-            if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
-                rotation += 'LL'
-        return rotation
-    else: 
-        rotation = 'RRBBLL'
-        return rotation
+        if (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
+            rotation += 'LL'
     
+    return rotation
     
     return 'F'      #TODO:  remove this stubbed value
 
