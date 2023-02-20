@@ -41,21 +41,21 @@ def solveBottomCross(theCube: Cube) -> str:
         #right face
         while(cubeList[RTM] != cubeList[RMM]):
             rotation += 'U'
-            theCube._rotateU()
+            cubeList = list(theCube.rotate('U'))
         if (cubeList[RTM] == cubeList[RMM]):
             rotation += 'RR'
         
         #back face
         while(cubeList[BTM] != cubeList[BMM]):
             rotation += 'U'
-            theCube._rotateU()
+            cubeList = list(theCube.rotate('U'))
         if (cubeList[BTM] == cubeList[BMM]):
             rotation += 'BB'
         
         #left face
         while(cubeList[LTM] != cubeList[LMM]):
             rotation += 'U'
-            theCube._rotateU()
+            cubeList = list(theCube.rotate('U'))
         if (cubeList[LTM] == cubeList[LMM]):
             rotation += 'LL'
         return rotation
