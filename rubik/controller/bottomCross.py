@@ -4,17 +4,20 @@ from rubik.model.cube import Cube
 def solveBottomCross(theCube: Cube) -> str:
     cubeList = list(theCube.get())
     cubeUpCenter = cubeList[UMM]
-    cubeDownCenter = cubeList[DMM]         
+    cubeDownCenter = cubeList[DMM]
+    rotation = ''       
        
     if _verifyBottomCrossExists(theCube):
         return ''
     
-    #checking if top-daisy exists
     topEdges = [cubeList[UTM], cubeList[UML], cubeList[UMR], cubeList[UBM]]
+    sideEdges = [cubeList[FTM], cubeList[RTM], cubeList[BTM], cubeList[LTM]]
     
+    #checking if top-daisy exists and side edges are aligned
     daisyEdge = 0
     topDaisyFound = False
-    verticalEdgesAlignedOnTop = False
+    sideEdgesAlignedOnTop = False
+    
     for edges in topEdges:
         if edges == cubeDownCenter:
             daisyEdge += 1
@@ -24,9 +27,40 @@ def solveBottomCross(theCube: Cube) -> str:
         
     #check if edges are aligned with vertical center faces
     if  (cubeList[FTM] == cubeList[FMM]) and (cubeList[RTM] == cubeList[RMM]) and (cubeList[BTM] == cubeList[BMM]) and (cubeList[LTM] == cubeList[LMM]):
-        verticalEdgesAlignedOnTop = True
+        sideEdgesAlignedOnTop = True
         
-    if (topDaisyFound == True) and (verticalEdgesAlignedOnTop == True):
+    #check if top daisy exists but side edges are not aligned
+    if (topDaisyFound == True) and (sideEdgesAlignedOnTop == False):
+        #front face
+        while(cubeList[FTM] != cubeList[FMM]):
+            rotation += 'U'
+            theCube._rotateU()
+        if (cubeList[FTM] == cubeList[FMM]):
+            rotation += 'FF'
+        
+        #right face
+        while(cubeList[RTM] != cubeList[RMM]):
+            rotation += 'U'
+            theCube._rotateU()
+        if (cubeList[RTM] == cubeList[RMM]):
+            rotation += 'RR'
+        
+        #back face
+        while(cubeList[BTM] != cubeList[BMM]):
+            rotation += 'U'
+            theCube._rotateU()
+        if (cubeList[BTM] == cubeList[BMM]):
+            rotation += 'BB'
+        
+        #left face
+        while(cubeList[LTM] != cubeList[LMM]):
+            rotation += 'U'
+            theCube._rotateU()
+        if (cubeList[LTM] == cubeList[LMM]):
+            rotation += 'LL'
+        return rotation
+        
+    if (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
     #else: 
         #return 'FRRBBLL'
