@@ -32,13 +32,41 @@ def solveBottomCross(theCube: Cube) -> str:
     #check if top daisy exists but side edges are not aligned
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == False):
         #front face
-        while(cubeList[FTM] != cubeList[FMM]):
+        while((cubeList[FTM] != cubeList[FMM]) or 
+              (cubeList[RTM] != cubeList[RMM]) or 
+              (cubeList[BTM] != cubeList[BMM]) or 
+              (cubeList[LTM] != cubeList[LMM])):
             rotation += 'U'
             cubeList = list(theCube.rotate('U'))
+        
         if (cubeList[FTM] == cubeList[FMM]):
             rotation += 'FF'
+            while((cubeList[RTM] != cubeList[RMM]) or 
+                  (cubeList[BTM] != cubeList[BMM]) or 
+                  (cubeList[LTM] != cubeList[LMM])):
+                rotation += 'U'
+                cubeList = list(theCube.rotate('U'))
+    
+            
+        if (cubeList[RTM] == cubeList[RMM]):
+            rotation += 'RR'
+            while((cubeList[BTM] != cubeList[BMM]) or 
+                  (cubeList[LTM] != cubeList[LMM])):
+                rotation += 'U'
+                cubeList = list(theCube.rotate('U'))
         
-        #right face
+        if (cubeList[BTM] == cubeList[BMM]):
+            rotation += 'BB'
+            while(cubeList[LTM] != cubeList[LMM]):
+                rotation += 'U'
+                cubeList = list(theCube.rotate('U'))
+            
+        if (cubeList[LTM] == cubeList[LMM]):
+            rotation += 'LL'
+        
+        return rotation
+        
+    ''' #right face
         while(cubeList[RTM] != cubeList[RMM]):
             rotation += 'U'
             cubeList = list(theCube.rotate('U'))
@@ -58,7 +86,7 @@ def solveBottomCross(theCube: Cube) -> str:
             cubeList = list(theCube.rotate('U'))
         if (cubeList[LTM] == cubeList[LMM]):
             rotation += 'LL'
-        return rotation
+        return rotation'''
         
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
