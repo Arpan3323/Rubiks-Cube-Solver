@@ -34,7 +34,7 @@ def solveBottomCross(theCube: Cube) -> str:
         #front face
         while(cubeList[FTM] != cubeList[FMM]):
             rotation += 'U'
-            theCube._rotateU()
+            cubeList = list(theCube._rotateU())
         if (cubeList[FTM] == cubeList[FMM]):
             rotation += 'FF'
         
