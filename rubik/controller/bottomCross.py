@@ -25,7 +25,7 @@ def solveBottomCross(theCube: Cube) -> str:
         
     #check if top daisy exists but side edges are not aligned
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == False):
-        _daisyExistsAndSideEdgesUnaligned(theCube)
+        return _daisyExistsAndSideEdgesUnaligned(theCube)
         
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
