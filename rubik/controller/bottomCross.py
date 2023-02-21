@@ -80,13 +80,9 @@ def _verifyBottomCrossExists(cubeList):
     and cubeList[RMM] == cubeList[RBM] and cubeList[BMM] == cubeList[BBM])
     
 
-def _daisyExistsAndSideEdgesUnaligned(theCube, daisyRotation=''):
-    rotation = '' + daisyRotation
-    
-    if not isinstance(theCube, str): 
-        cubeList = theCube.get()
-    else:
-        cubeList = theCube
+def _daisyExistsAndSideEdgesUnaligned(theCube):
+    rotation = ''
+    cubeList = theCube.get()
     #front face
     while(cubeList[FTM] != cubeList[FMM]):
         rotation += 'U'
@@ -115,11 +111,34 @@ def _daisyExistsAndSideEdgesUnaligned(theCube, daisyRotation=''):
 
 #forms a daisy on top
 def _daisyFormation(daisyEdge, theCube):
-    daisyRotation = ''
+    rotation = ''
     if daisyEdge == 3:
-        daisyRotation += 'Rfr'
-        theCube = theCube.rotate(daisyRotation)
-    return _daisyExistsAndSideEdgesUnaligned(theCube, daisyRotation)
+        rotation += 'Rfr'
+        cubeList = list(theCube.rotate(rotation))
+    while(cubeList[FTM] != cubeList[FMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
+    if (cubeList[FTM] == cubeList[FMM]):
+        rotation += 'FF'
+    #right face
+    while(cubeList[RTM] != cubeList[RMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
+    if (cubeList[RTM] == cubeList[RMM]):
+        rotation += 'RR'
+    #back face
+    while(cubeList[BTM] != cubeList[BMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
+    if (cubeList[BTM] == cubeList[BMM]):
+        rotation += 'BB'
+    #left face
+    while(cubeList[LTM] != cubeList[LMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
+    if (cubeList[LTM] == cubeList[LMM]):
+        rotation += 'LL'
+    return rotation
          
     
     
