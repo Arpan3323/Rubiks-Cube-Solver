@@ -138,7 +138,7 @@ def _daisyFormation(daisyEdge, theCube):
         cubeList = list(theCube.rotate('U'))
     if (cubeList[LTM] == cubeList[LMM]):
         rotation += 'LL'
-    return rotation
+    return str(rotation)
          
     
     
