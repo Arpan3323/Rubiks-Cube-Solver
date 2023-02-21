@@ -15,7 +15,7 @@ def solveBottomCross(theCube: Cube) -> str:
     topEdges = [cubeList[UTM], cubeList[UML], cubeList[UMR], cubeList[UBM]]
     sideEdges = [cubeList[FTM], cubeList[RTM], cubeList[BTM], cubeList[LTM]]
     
-    #checking if top-daisy exists and side edges are aligned
+    #checking if top-daisy exists
     daisyEdge = topEdges.count(cubeDownCenter)
     topDaisyFound = daisyEdge == daisyPetals
     
@@ -26,11 +26,12 @@ def solveBottomCross(theCube: Cube) -> str:
     #check if top daisy exists but side edges are not aligned
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == False):
         return _daisyExistsAndSideEdgesUnaligned(theCube)
-        
-    if (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
+    
+    #rotations needed when daisy exists and edges are aligned on top    
+    elif (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
     
-    #checking if front face has been rotated once to form bottom cross
+    #checking if any face has been rotated once to form bottom cross
     
     topEdgePairs = [(cubeList[UBM], cubeList[FTM], 'F'),
                     (cubeList[UMR], cubeList[RTM], 'R'),
