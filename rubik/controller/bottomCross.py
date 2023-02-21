@@ -92,7 +92,7 @@ def _daisyExistsAndSideEdgesUnaligned(theCube):
     while(cubeList[BTM] != cubeList[BMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
-    if (theCube[BTM] == theCube[BMM]):
+    if (cubeList[BTM] == cubeList[BMM]):
         rotation += 'BB'
     #left face
     while(cubeList[LTM] != cubeList[LMM]):
