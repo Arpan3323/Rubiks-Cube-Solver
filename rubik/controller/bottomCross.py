@@ -33,7 +33,8 @@ def solveBottomCross(theCube: Cube) -> str:
     
     #checks if neither daisy exists nor side edges are aligned 
     if (topDaisyFound == False) and (sideEdgesAlignedOnTop == False):
-        return _daisyExistsAndSideEdgesUnaligned(_daisyFormation(daisyEdge, theCube))
+        #return _daisyExistsAndSideEdgesUnaligned(_daisyFormation(daisyEdge, theCube))
+        return _daisyFormation(daisyEdge, theCube)
         
     
     #checking if front face has been rotated once to form bottom cross
@@ -114,7 +115,7 @@ def _daisyFormation(daisyEdge, theCube):
     if daisyEdge == 3:
         daisyRotation += 'Rfr'
         theCube = theCube.rotate(daisyRotation)
-    return theCube, daisyRotation
+    return _daisyExistsAndSideEdgesUnaligned(theCube, daisyRotation)
          
     
     
