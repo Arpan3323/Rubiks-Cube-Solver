@@ -33,8 +33,19 @@ class SolveTest(TestCase):
 #                test 100: checks if solution contains no rotations when the bottom cross exists
 #                test 101: checks the rotations needed when top daisy exists and F,R,B, & L faces
 #                          edges are aligned with their centers
-#                test 102: 
-#
+#                test 102: checks the rotations needed when top daisy exists and F,R,B, & L faces
+#                          edges are aligned with their centers and the front face has been rotated once
+#                test 103: checks the rotations needed when top daisy exists and F,R,B, & L faces
+#                          edges are aligned with their centers and the front face has been rotated twice
+#                test 104: checks the rotations needed when top daisy exists and F,R,B, & L faces
+#                          edges are aligned with their centers and the front and right face has been rotated twice
+#                test 105: checks the rotations needed when top daisy exists and F,R,B, & L faces
+#                          edges are aligned with their centers and the front and right face has been rotated twice
+#                          and back face has been rotated once
+#                test 106: checks the rotations needed when top daisy exists and F,R,B, & L faces
+#                          edges are aligned with their centers and the front, right, and back face has been rotated twice
+#                          and left face has been rotated once
+#                test 107: rotations needed when daisy exists but side edges are not aligned 
 #
 #    sad path tests:
 #                catching the invalid directions, d and D, in rotateTest
@@ -93,7 +104,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
     
-    def test106_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromEverySideAndOnceFromBack(self):
+    def test106_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromEverySideAndOnceFromLeft(self):
         parms = {}
         parms['cube'] = 'grbwbbyboygyyrrwrbgygygbwgrygwooobgorooyyrrbrbwgowwywo'
         result = solve(parms)
@@ -101,11 +112,11 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
     
-    def test107_solve_rotationsNeededWhenDaisyAndEdgesAreNotAligned(self):
+    def test107_solve_rotationsNeededWhenDaisyExistsAndEdgesAreNotAligned(self):
         parms = {}
         parms['cube'] = 'bgbyoyyowyrorbobbwgbwgrbobggoyoggrggwwowywrwroyrrwryyb'
         result = solve(parms)
-        self.assertEqual('UUUFFUURRUUBBUULL', result['solution'])
+        self.assertEqual('UUUFFUURRUUBBUULL' or 'ULLRRUUFFBB', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         

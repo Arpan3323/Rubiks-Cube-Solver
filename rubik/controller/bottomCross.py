@@ -2,7 +2,7 @@ from rubik.model.constants import *
 from rubik.model.cube import Cube
 
 def solveBottomCross(theCube: Cube) -> str:
-    cubeList = list(theCube.get())
+    cubeList = theCube.get()
     cubeUpCenter = cubeList[UMM]
     cubeDownCenter = cubeList[DMM]
     rotation = ''       
