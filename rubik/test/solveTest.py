@@ -120,6 +120,14 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
+    def test107_solve_rotationsNeededWhenDaisyHasThreePetals(self):
+        parms = {}
+        parms['cube'] = 'wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw'
+        result = solve(parms)
+        self.assertEqual('RfrUUUFFUURRUUBBUULL', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
+        
     
 
 
