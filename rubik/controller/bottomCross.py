@@ -15,7 +15,7 @@ def solveBottomCross(theCube: Cube) -> str:
     topEdges = [cubeList[UTM], cubeList[UML], cubeList[UMR], cubeList[UBM]]
     sideEdges = [cubeList[FTM], cubeList[RTM], cubeList[BTM], cubeList[LTM]]
     
-    #checking if top-daisy exists
+    #checking if top-daisy exists and side edges are aligned
     daisyEdge = topEdges.count(cubeDownCenter)
     topDaisyFound = daisyEdge == daisyPetals
     
@@ -25,14 +25,13 @@ def solveBottomCross(theCube: Cube) -> str:
         
     #check if top daisy exists but side edges are not aligned
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == False):
-        _daisyExistsAndSideEdgesUnaligned(cubeList)
-    
-    #Rotations needed when cube exists and edges are akligned on top    
+        _daisyExistsAndSideEdgesUnaligned(theCube)
+        
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
-
     
     #checking if front face has been rotated once to form bottom cross
+    
     topEdgePairs = [(cubeList[UBM], cubeList[FTM], 'F'),
                     (cubeList[UMR], cubeList[RTM], 'R'),
                     (cubeList[UTM], cubeList[BTM], 'B'),
@@ -74,30 +73,31 @@ def _verifyBottomCrossExists(cubeList):
     and cubeList[RMM] == cubeList[RBM] and cubeList[BMM] == cubeList[BBM])
     
 
-def _daisyExistsAndSideEdgesUnaligned(cubeList):
+def _daisyExistsAndSideEdgesUnaligned(theCube):
     rotation = ''
+    cubeList = theCube.get()
     #front face
     while(cubeList[FTM] != cubeList[FMM]):
         rotation += 'U'
-        cubeList = list(Cube.rotate('U'))
+        cubeList = list(theCube.rotate('U'))
     if (cubeList[FTM] == cubeList[FMM]):
         rotation += 'FF'
     #right face
     while(cubeList[RTM] != cubeList[RMM]):
         rotation += 'U'
-        cubeList = list(Cube.rotate('U'))
+        cubeList = list(theCube.rotate('U'))
     if (cubeList[RTM] == cubeList[RMM]):
         rotation += 'RR'
     #back face
     while(cubeList[BTM] != cubeList[BMM]):
         rotation += 'U'
-        cubeList = list(Cube.rotate('U'))
-    if (cubeList[BTM] == cubeList[BMM]):
+        cubeList = list(theCube.rotate('U'))
+    if (theCube[BTM] == theCube[BMM]):
         rotation += 'BB'
     #left face
     while(cubeList[LTM] != cubeList[LMM]):
         rotation += 'U'
-        cubeList = list(Cube.rotate('U'))
+        cubeList = list(theCube.rotate('U'))
     if (cubeList[LTM] == cubeList[LMM]):
         rotation += 'LL'
     return rotation
