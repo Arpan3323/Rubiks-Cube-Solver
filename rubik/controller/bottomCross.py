@@ -82,7 +82,11 @@ def _verifyBottomCrossExists(cubeList):
 
 def _daisyExistsAndSideEdgesUnaligned(theCube, daisyRotation=''):
     rotation = '' + daisyRotation
-    cubeList = theCube.get()
+    
+    if not isinstance(theCube, str): 
+        cubeList = theCube.get()
+    else:
+        cubeList = theCube
     #front face
     while(cubeList[FTM] != cubeList[FMM]):
         rotation += 'U'
