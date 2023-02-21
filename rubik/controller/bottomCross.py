@@ -2,71 +2,37 @@ from rubik.model.constants import *
 from rubik.model.cube import Cube
 
 def solveBottomCross(theCube: Cube) -> str:
+    
     cubeList = theCube.get()
     cubeUpCenter = cubeList[UMM]
     cubeDownCenter = cubeList[DMM]
+    daisyPetals = 4
     rotation = ''       
        
-    if _verifyBottomCrossExists(theCube):
+    if _verifyBottomCrossExists(cubeList):
         return ''
     
     topEdges = [cubeList[UTM], cubeList[UML], cubeList[UMR], cubeList[UBM]]
     sideEdges = [cubeList[FTM], cubeList[RTM], cubeList[BTM], cubeList[LTM]]
     
-    #checking if top-daisy exists and side edges are aligned
-    daisyEdge = 0
-    topDaisyFound = False
-    sideEdgesAlignedOnTop = False
+    #checking if top-daisy exists
+    daisyEdge = topEdges.count(cubeDownCenter)
+    topDaisyFound = daisyEdge == daisyPetals
     
-    for edges in topEdges:
-        if edges == cubeDownCenter:
-            daisyEdge += 1
-            
-    if daisyEdge == 4:
-        topDaisyFound = True
+    #check if side edges are aligned on top
+    sideEdgesAlignedOnTop = (sideEdges == [cubeList[FMM], cubeList[RMM], cubeList[BMM], cubeList[LMM]])
         
-    #check if edges are aligned with vertical center faces
-    if  (cubeList[FTM] == cubeList[FMM]) and (cubeList[RTM] == cubeList[RMM]) and (cubeList[BTM] == cubeList[BMM]) and (cubeList[LTM] == cubeList[LMM]):
-        sideEdgesAlignedOnTop = True
         
     #check if top daisy exists but side edges are not aligned
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == False):
-        #front face
-        while(cubeList[FTM] != cubeList[FMM]):
-            rotation += 'U'
-            cubeList = list(theCube.rotate('U'))
-        if (cubeList[FTM] == cubeList[FMM]):
-            rotation += 'FF'
-        
-        #right face
-        while(cubeList[RTM] != cubeList[RMM]):
-            rotation += 'U'
-            cubeList = list(theCube.rotate('U'))
-        if (cubeList[RTM] == cubeList[RMM]):
-            rotation += 'RR'
-        
-        #back face
-        while(cubeList[BTM] != cubeList[BMM]):
-            rotation += 'U'
-            cubeList = list(theCube.rotate('U'))
-        if (cubeList[BTM] == cubeList[BMM]):
-            rotation += 'BB'
-        
-        #left face
-        while(cubeList[LTM] != cubeList[LMM]):
-            rotation += 'U'
-            cubeList = list(theCube.rotate('U'))
-        if (cubeList[LTM] == cubeList[LMM]):
-            rotation += 'LL'
-        return rotation
-        
+        _daisyExistsAndSideEdgesUnaligned(cubeList)
+    
+    #Rotations needed when cube exists and edges are akligned on top    
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
         return 'FFRRBBLL'
-    #else: 
-        #return 'FRRBBLL'
+
     
     #checking if front face has been rotated once to form bottom cross
-    
     topEdgePairs = [(cubeList[UBM], cubeList[FTM], 'F'),
                     (cubeList[UMR], cubeList[RTM], 'R'),
                     (cubeList[UTM], cubeList[BTM], 'B'),
@@ -99,33 +65,39 @@ def solveBottomCross(theCube: Cube) -> str:
         elif (edge[0] == cubeDownCenter) and (edge[1] == cubeList[LMM]):
             rotation += 'LL'
     return rotation
-    
-    #else: 
-     #   rotation = 'RRBBLL'
-      #  return rotation
-    
-    
-    return 'F'      #TODO:  remove this stubbed value
 
 
-#method to check if the incoming cubeList already has a bottom cross
-def _verifyBottomCrossExists(cube):
-    cube = cube.get()
-    cubeList = list(cube)
-    if cubeList[48] != cubeList[49]:
-        return False
-    if cubeList[46] != cubeList[49]:
-        return False
-    if cubeList[52] != cubeList[49]:
-        return False
-    if cubeList[50] != cubeList[49]:
-        return False
-    if cubeList[31] != cubeList[34]:
-        return False
-    if cubeList[4] != cubeList[7]:
-        return False
-    if cubeList[13] != cubeList[16]:
-        return False
-    if cubeList[22] != cubeList[25]:
-        return False
-    return True
+#return true if the bottom cross exists otherwise return false
+def _verifyBottomCrossExists(cubeList):
+    return (cubeList[DML] == cubeList[DMM] and cubeList[DTM] == cubeList[DMM] and cubeList[DBM] == cubeList[DMM]
+    and cubeList[DMR] == cubeList[DMM] and cubeList[LMM] == cubeList[LBM] and cubeList[FMM] == cubeList[FBM]
+    and cubeList[RMM] == cubeList[RBM] and cubeList[BMM] == cubeList[BBM])
+    
+
+def _daisyExistsAndSideEdgesUnaligned(cubeList):
+    rotation = ''
+    #front face
+    while(cubeList[FTM] != cubeList[FMM]):
+        rotation += 'U'
+        cubeList = list(Cube.rotate('U'))
+    if (cubeList[FTM] == cubeList[FMM]):
+        rotation += 'FF'
+    #right face
+    while(cubeList[RTM] != cubeList[RMM]):
+        rotation += 'U'
+        cubeList = list(Cube.rotate('U'))
+    if (cubeList[RTM] == cubeList[RMM]):
+        rotation += 'RR'
+    #back face
+    while(cubeList[BTM] != cubeList[BMM]):
+        rotation += 'U'
+        cubeList = list(Cube.rotate('U'))
+    if (cubeList[BTM] == cubeList[BMM]):
+        rotation += 'BB'
+    #left face
+    while(cubeList[LTM] != cubeList[LMM]):
+        rotation += 'U'
+        cubeList = list(Cube.rotate('U'))
+    if (cubeList[LTM] == cubeList[LMM]):
+        rotation += 'LL'
+    return rotation
