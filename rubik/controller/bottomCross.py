@@ -107,7 +107,7 @@ def _daisyExistsAndSideEdgesUnaligned(theCube):
         cubeList = list(theCube.rotate('U'))
     if (cubeList[LTM] == cubeList[LMM]):
         rotation += 'LL'
-    return rotation
+    return str(rotation)
 
 #forms a daisy on top
 def _daisyFormation(daisyEdge, theCube):
