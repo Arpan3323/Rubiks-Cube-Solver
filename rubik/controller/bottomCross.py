@@ -112,9 +112,30 @@ def _daisyExistsAndSideEdgesUnaligned(theCube):
 #forms a daisy on top
 def _daisyFormation(daisyEdge, theCube):
     rotation = ''
+    cubeList = theCube.get()
+    topEdges = [(cubeList[UTM], 'B'), (cubeList[UML], 'L'), 
+                (cubeList[UMR], 'R'), (cubeList[UBM], 'F')]
+    
+    faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
+                (cubeList[RTM], cubeList[RML], cubeList[RMR], cubeList[RBM], 'R')
+                (cubeList[BTM], cubeList[BML], cubeList[BMR], cubeList[BBM], 'B')
+                (cubeList[LTM], cubeList[LML], cubeList[LMR], cubeList[LBM], 'L')]
+
     if daisyEdge == 3:
-        rotation += 'Rfr'
-        cubeList = list(theCube.rotate(rotation))
+        for missingEdge in topEdges:
+            if missingEdge[0] != cubeList[DMM]:
+                edgeNeeded = missingEdge[0]
+                missingEdgeAdjacentFace = missingEdge[1]
+             
+        for edge in faceEdges:
+            if edge == cubeList[DMM]:
+                edgeFace = edge[4]
+                edgeLocation = edge
+        if edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RBM]
+            rotation += 'Rfr'
+            cubeList = list(theCube.rotate(rotation))
+    
+    #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross         
     while(cubeList[FTM] != cubeList[FMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
