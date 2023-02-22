@@ -128,9 +128,21 @@ def _daisyFormation(daisyEdge, theCube):
                 missingEdgeAdjacentFace = missingEdge[1]
              
         for edge in faceEdges:
-            if edge == cubeList[DMM]:
+            if (edge[0] == cubeList[DMM]):
                 edgeFace = edge[4]
-                edgeLocation = edge
+                edgeLocation = edge[0]
+            
+            elif (edge[1] == cubeList[DMM]):
+                edgeFace = edge[4]
+                edgeLocation = edge[1]
+                
+            elif (edge[2] == cubeList[DMM]):
+                edgeFace = edge[4]
+                edgeLocation = edge[2]
+    
+            elif (edge[3] == cubeList[DMM]):
+                edgeFace = edge[4]
+                edgeLocation = edge[3]
     
         if edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RBM]:
             rotation += 'Rfr'
