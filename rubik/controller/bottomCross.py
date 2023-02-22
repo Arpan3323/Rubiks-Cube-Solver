@@ -131,7 +131,7 @@ def _daisyFormation(daisyEdge, theCube):
             if edge == cubeList[DMM]:
                 edgeFace = edge[4]
                 edgeLocation = edge
-        if edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RBM]
+        if edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RBM]:
             rotation += 'Rfr'
             cubeList = list(theCube.rotate(rotation))
     
