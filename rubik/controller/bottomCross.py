@@ -163,6 +163,22 @@ def _daisyFormation(daisyEdge, theCube):
         elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RBM]:
             rotation += 'Rfr'
             cubeList = list(theCube.rotate(rotation))
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RML]:
+            rotation += 'f'
+            cubeList = list(theCube.rotate(rotation))
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RMR]:
+            rotation += 'uuB'
+            cubeList = list(theCube.rotate(rotation))
+        #if needed edge is on the back face
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[BML]:
+            rotation += 'ur'
+            cubeList = list(theCube.rotate(rotation))
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[BMR]:
+            rotation += 'UL'
+            cubeList = list(theCube.rotate(rotation))
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[BBM]:
+            rotation += 'UUbul'
+            cubeList = list(theCube.rotate(rotation))
         
     
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross         
