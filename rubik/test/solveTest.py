@@ -118,6 +118,16 @@ class SolveTest(TestCase):
         self.assertEqual('RfrUUUFFUURRUUBBUULL', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
+        
+    def test109_solve_rotationsNeededWhenDaisyisMissingBottomEdge(self):
+        parms = {}
+        parms['cube'] = 'wbgyowwgryobbbgbogogworyybygrbbgrbgorwwwywrorgyyrwyoro'
+        result = solve(parms)
+        self.assertEqual('uRUUFFUURRUUBBUULL', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
+        
+    
     
 
 
