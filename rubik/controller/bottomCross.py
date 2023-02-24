@@ -143,12 +143,25 @@ def _daisyFormation(daisyEdge, theCube):
             elif (edge[3] == cubeList[DMM]):
                 edgeFace = edge[4]
                 edgeLocation = edge[3]
-    
-        if edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RBM]:
-            rotation += 'Rfr'
-            cubeList = list(theCube.rotate(rotation))
-        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[FMR]:
+
+            
+        #if the needed edge is on front face
+        if edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[FMR]:
             rotation += 'uR'
+            cubeList = list(theCube.rotate(rotation))
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[FML]:
+            rotation += 'FFuR'
+            cubeList = list(theCube.rotate(rotation))
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[FTM]:
+            rotation += 'FuR'
+            cubeList = list(theCube.rotate(rotation))
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[FBM]:
+            rotation += 'fuR'
+            cubeList = list(theCube.rotate(rotation))
+            
+        #if needed edge is on the right face
+        elif edgeNeeded == cubeList[UBM] and edgeLocation == cubeList[RBM]:
+            rotation += 'Rfr'
             cubeList = list(theCube.rotate(rotation))
         
     
