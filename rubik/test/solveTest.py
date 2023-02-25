@@ -151,6 +151,14 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
+    def test112_solve_rotationsNeededWhenDaisyIsMissingOnlyOneEdgeOnAnySide(self):
+        parms = {}
+        parms['cube'] = 'bbyybyrooryrorrwroygyygbybbgrrrobwowowbwygwwggwggwgoob'
+        result = solve(parms)
+        self.assertEqual('FFUUUFFUURRUUBBUULL', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
+        
         
     
         
