@@ -34,7 +34,7 @@ def solveBottomCross(theCube: Cube) -> str:
     #checks if neither daisy exists nor side edges are aligned 
     if (topDaisyFound == False) and (sideEdgesAlignedOnTop == False):
         #return _daisyExistsAndSideEdgesUnaligned(_daisyFormation(daisyEdge, theCube))
-        return _daisyFormation(daisyEdge, daisyPetals, theCube)
+        return _daisyFormation(daisyEdge, theCube)
         
     
     '''#checking if front face has been rotated once to form bottom cross
@@ -110,7 +110,7 @@ def _daisyExistsAndSideEdgesUnaligned(theCube):
     return rotation
 
 #forms a daisy on top
-def _daisyFormation(daisyEdge, daisyPetals, theCube):
+def _daisyFormation(daisyEdge, theCube):
     rotation = ''
     cubeList = theCube.get()
     topEdges = [(cubeList[UTM], 'B'), (cubeList[UML], 'L'), 
@@ -125,7 +125,7 @@ def _daisyFormation(daisyEdge, daisyPetals, theCube):
     missingEdgeList = []
     edgeLocationList = []
 
-    if daisyEdge < daisyPetals:
+    if daisyEdge <= 3:
         
         for missingEdge in topEdges:
             if missingEdge[0] != cubeList[DMM]:
@@ -155,13 +155,12 @@ def _daisyFormation(daisyEdge, daisyPetals, theCube):
                 edgeLocationList.append(edgeLocation)
 
         #rotating the top if only edge is missing so that missing daisy edge is on UBM
-        #if len(missingEdgeList) == 1:
-        while(missingEdgeList[0] == cubeList[UML] 
-              or missingEdgeList[0] == cubeList[UMR] 
-              or missingEdgeList[0] == cubeList[UTM]):
-            rotation += 'U'
-            cubeList = list(theCube.rotate('U'))
-            
+        if len(missingEdgeList) == 1:
+            while(missingEdgeList[0] == cubeList[UML] 
+                  or missingEdgeList[0] == cubeList[UMR] 
+                  or missingEdgeList[0] == cubeList[UTM]):
+                cubeList = list(theCube.rotate('U'))
+                
                 
         
         if edgeNeeded == cubeList[UBM]:
