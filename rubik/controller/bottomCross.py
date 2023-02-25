@@ -224,7 +224,7 @@ def _daisyFormation(daisyEdge, daisyPetals, theCube):
                 rotation += 'UUBB'
                 cubeList = list(theCube.rotate(rotation))
         
-        if len(missingEdgeList) == 2:
+        '''if len(missingEdgeList) == 2:
             while(missingEdgeList[1] == cubeList[UML] 
               or missingEdgeList[1] == cubeList[UMR] 
               or missingEdgeList[1] == cubeList[UTM]):
@@ -291,7 +291,7 @@ def _daisyFormation(daisyEdge, daisyPetals, theCube):
                     cubeList = list(theCube.rotate(rotation))
                 elif edgeLocationList[1] == cubeList[DBM]:
                     rotation += 'UUBB'
-                    cubeList = list(theCube.rotate(rotation))
+                    cubeList = list(theCube.rotate(rotation))'''
                 
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross         
     while(cubeList[FTM] != cubeList[FMM]):
