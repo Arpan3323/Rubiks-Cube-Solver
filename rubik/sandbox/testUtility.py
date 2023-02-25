@@ -21,3 +21,5 @@ def cubeRotator(cube):
 cube = 'wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw'
 result = cubeRotator(cube)
 print (''.join(sum(result, [])))
+
+
