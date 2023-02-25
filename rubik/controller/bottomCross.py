@@ -119,7 +119,7 @@ def _daisyFormation(daisyEdge, theCube):
     faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
                 (cubeList[RTM], cubeList[RML], cubeList[RMR], cubeList[RBM], 'R'),
                 (cubeList[BTM], cubeList[BML], cubeList[BMR], cubeList[BBM], 'B'),
-                (cubeList[LTM], cubeList[LML], cubeList[LMR], cubeList[LBM], 'L')
+                (cubeList[LTM], cubeList[LML], cubeList[LMR], cubeList[LBM], 'L'),
                 (cubeList[DTM], cubeList[DML], cubeList[DMR], cubeList[DBM], 'D')]
 
     if daisyEdge == 3:
