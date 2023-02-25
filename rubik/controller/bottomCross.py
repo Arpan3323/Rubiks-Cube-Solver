@@ -137,29 +137,25 @@ def _daisyFormation(daisyEdge, theCube):
             if (edge[0] == cubeList[DMM]):
                 edgeFace = edge[4]
                 edgeLocation = edge[0]
-                edgeLocationList.append(edgeLocation)
             
-            if (edge[1] == cubeList[DMM]):
+            elif (edge[1] == cubeList[DMM]):
                 edgeFace = edge[4]
                 edgeLocation = edge[1]
-                edgeLocationList.append(edgeLocation)
                 
-            if (edge[2] == cubeList[DMM]):
+            elif (edge[2] == cubeList[DMM]):
                 edgeFace = edge[4]
                 edgeLocation = edge[2]
-                edgeLocationList.append(edgeLocation)
     
-            if (edge[3] == cubeList[DMM]):
+            elif (edge[3] == cubeList[DMM]):
                 edgeFace = edge[4]
                 edgeLocation = edge[3]
-                edgeLocationList.append(edgeLocation)
 
         #rotating the top if only edge is missing so that missing daisy edge is on UBM
         if len(missingEdgeList) == 1:
             while(missingEdgeList[0] == cubeList[UML] 
                   or missingEdgeList[0] == cubeList[UMR] 
                   or missingEdgeList[0] == cubeList[UTM]):
-                cubeList = list(theCube.rotate('U'))
+                cubeList = list(theCube.rotate('u'))
                 
                 
         
