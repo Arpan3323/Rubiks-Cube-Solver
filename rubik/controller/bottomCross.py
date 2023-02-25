@@ -164,135 +164,66 @@ def _daisyFormation(daisyEdge, daisyPetals, theCube):
             
                 
         
-        if missingEdgeList[0] == cubeList[UBM]:
+        if edgeNeeded == cubeList[UBM]:
             
             #if the needed edge is on front face 
-            if edgeLocationList[0] == cubeList[FMR]:
+            if edgeLocation == cubeList[FMR]:
                 rotation += 'uR'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[FML]:
+            elif edgeLocation == cubeList[FML]:
                 rotation += 'FFuR'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[FTM]:
+            elif edgeLocation == cubeList[FTM]:
                 rotation += 'FuR'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[FBM]:
+            elif edgeLocation == cubeList[FBM]:
                 rotation += 'fuR'
                 cubeList = list(theCube.rotate(rotation))
                 
             #if needed edge is on the right face
-            elif edgeLocationList[0] == cubeList[RBM]:
+            elif edgeLocation == cubeList[RBM]:
                 rotation += 'Rfr'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[RML]:
+            elif edgeLocation == cubeList[RML]:
                 rotation += 'f'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[RMR]:
+            elif edgeLocation == cubeList[RMR]:
                 rotation += 'uuB'
                 cubeList = list(theCube.rotate(rotation))
             #if needed edge is on the back face
-            elif edgeLocationList[0] == cubeList[BML]:
+            elif edgeLocation == cubeList[BML]:
                 rotation += 'ur'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[BMR]:
+            elif edgeLocation == cubeList[BMR]:
                 rotation += 'UL'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[BBM]:
+            elif edgeLocation == cubeList[BBM]:
                 rotation += 'UUbul'
                 cubeList = list(theCube.rotate(rotation))
             #if needed edge is on the left face
-            elif edgeLocationList[0] == cubeList[LML]:
+            elif edgeLocation == cubeList[LML]:
                 rotation += 'UUb'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[LBM]:
+            elif edgeLocation == cubeList[LBM]:
                 rotation += 'ULUb'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[LMR]:
+            elif edgeLocation == cubeList[LMR]:
                 rotation += 'F'
                 cubeList = list(theCube.rotate(rotation))
             #if needed edge is on the down face
-            elif edgeLocationList[0] == cubeList[DTM]:
+            elif edgeLocation == cubeList[DTM]:
                 rotation += 'FF'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[DML]:
+            elif edgeLocation == cubeList[DML]:
                 rotation += 'ULL'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[DMR]:
+            elif edgeLocation == cubeList[DMR]:
                 rotation += 'uRR'
                 cubeList = list(theCube.rotate(rotation))
-            elif edgeLocationList[0] == cubeList[DBM]:
+            elif edgeLocation == cubeList[DBM]:
                 rotation += 'UUBB'
                 cubeList = list(theCube.rotate(rotation))
-        
-        '''if len(missingEdgeList) == 2:
-            while(missingEdgeList[1] == cubeList[UML] 
-              or missingEdgeList[1] == cubeList[UMR] 
-              or missingEdgeList[1] == cubeList[UTM]):
-                rotation += 'U'
-                cubeList = list(theCube.rotate('U'))
             
-                
-        
-            if missingEdgeList[1] == cubeList[UBM]:
-            
-                #if the needed edge is on front face 
-                if edgeLocationList[1] == cubeList[FMR]:
-                    rotation += 'uR'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[FML]:
-                    rotation += 'FFuR'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[FTM]:
-                    rotation += 'FuR'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[FBM]:
-                    rotation += 'fuR'
-                    cubeList = list(theCube.rotate(rotation))
-                    
-                #if needed edge is on the right face
-                elif edgeLocationList[1] == cubeList[RBM]:
-                    rotation += 'Rfr'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[RML]:
-                    rotation += 'f'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[RMR]:
-                    rotation += 'uuB'
-                    cubeList = list(theCube.rotate(rotation))
-                #if needed edge is on the back face
-                elif edgeLocationList[1] == cubeList[BML]:
-                    rotation += 'ur'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[BMR]:
-                    rotation += 'UL'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[BBM]:
-                    rotation += 'UUbul'
-                    cubeList = list(theCube.rotate(rotation))
-                #if needed edge is on the left face
-                elif edgeLocationList[1] == cubeList[LML]:
-                    rotation += 'UUb'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[LBM]:
-                    rotation += 'ULUb'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[LMR]:
-                    rotation += 'F'
-                    cubeList = list(theCube.rotate(rotation))
-                #if needed edge is on the down face
-                elif edgeLocationList[1] == cubeList[DTM]:
-                    rotation += 'FF'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[DML]:
-                    rotation += 'ULL'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[DMR]:
-                    rotation += 'uRR'
-                    cubeList = list(theCube.rotate(rotation))
-                elif edgeLocationList[1] == cubeList[DBM]:
-                    rotation += 'UUBB'
-                    cubeList = list(theCube.rotate(rotation))'''
-                
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross         
     while(cubeList[FTM] != cubeList[FMM]):
         rotation += 'U'
