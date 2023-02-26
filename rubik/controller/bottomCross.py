@@ -156,6 +156,7 @@ def _daisyFormation(daisyEdge, theCube):
                   or missingEdgeList[0] == cubeList[UMR] 
                   or missingEdgeList[0] == cubeList[UTM]):
                 cubeList = list(theCube.rotate('u'))
+                rotation += 'u'
                 
                 
         
