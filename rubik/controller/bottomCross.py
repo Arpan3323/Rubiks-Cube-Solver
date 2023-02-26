@@ -113,8 +113,8 @@ def _daisyExistsAndSideEdgesUnaligned(theCube):
 def _daisyFormation(daisyEdge, theCube):
     rotation = ''
     cubeList = theCube.get()
-    topEdges = [(cubeList[UTM], 'B'), (cubeList[UML], 'L'), 
-                (cubeList[UMR], 'R'), (cubeList[UBM], 'F')]
+    topEdges = [(cubeList[UBM], 'F'), (cubeList[UMR], 'R'),
+                (cubeList[UTM], 'B'), (cubeList[UML], 'L')]
     
     faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
                 (cubeList[RTM], cubeList[RML], cubeList[RMR], cubeList[RBM], 'R'),
