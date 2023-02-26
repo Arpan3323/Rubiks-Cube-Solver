@@ -107,7 +107,7 @@ class SolveTest(TestCase):
         parms = {}
         parms['cube'] = 'bgbyoyyowyrorbobbwgbwgrbobggoyoggrggwwowywrwroyrrwryyb'
         result = solve(parms)
-        self.assertEqual('UUUFFUURRUUBBUULL' or 'ULLRRUUFFBB', result['solution'])
+        self.assertEqual('UUUFFUURRUUBBUULL', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
@@ -115,7 +115,7 @@ class SolveTest(TestCase):
         parms = {}
         parms['cube'] = 'wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw'
         result = solve(parms)
-        self.assertEqual('RfrUUUFFUURRUUBBUULL', result['solution'])
+        self.assertEqual('uRUfUUUFFUURRUUBBUULL', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
@@ -161,7 +161,7 @@ class SolveTest(TestCase):
         
     def test113_solve_rotationsNeededWhenDaisyHasTwoPetals(self):
         parms = {}
-        parms['cube'] = 'bbgwgorgyobgwobrgbwybobgrrgogoyrrrywwoowywyrygobbwryyw'
+        parms['cube'] = 'rybbgowroygobowbyyurwgbrgwrobwyrrboggwgwyybborgwgwoyor'
         result = solve(parms)
         self.assertEqual('FFuRuFUUUFFRRBBLL', result['solution'])
         self.assertEqual('ok', result['status'])

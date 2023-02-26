@@ -164,37 +164,37 @@ def _daisyFormation(daisyEdge, theCube):
             
             #if the needed edge is on front face 
             if edgeLocation == cubeList[FMR]:
-                rotation += 'uR'
+                rotation += 'uR'#U
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[FML]:
-                rotation += 'FFuR'
+                rotation += 'FFuR'#u
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[FTM]:
-                rotation += 'FuR'
+                rotation += 'FuR'#U
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[FBM]:
-                rotation += 'fuR'
+                rotation += 'fuR'#U
                 cubeList = list(theCube.rotate(rotation))
                 
             #if needed edge is on the right face
             elif edgeLocation == cubeList[RBM]:
-                rotation += 'Rfr'
+                rotation += 'Rfr'#remove r
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[RML]:
                 rotation += 'f'
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[RMR]:
-                rotation += 'uuB'
+                rotation += 'uuB'#uu
                 cubeList = list(theCube.rotate(rotation))
             #if needed edge is on the back face
             elif edgeLocation == cubeList[BML]:
-                rotation += 'ur'
+                rotation += 'ur'#U
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[BMR]:
-                rotation += 'UL'
+                rotation += 'UL'#u
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[BBM]:
-                rotation += 'UUbul'
+                rotation += 'UUbul'#u
                 cubeList = list(theCube.rotate(rotation))
             #if needed edge is on the left face
             elif edgeLocation == cubeList[LML]:
