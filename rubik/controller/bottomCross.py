@@ -113,12 +113,18 @@ def _daisyExistsAndSideEdgesUnaligned(theCube):
 
 #forms a daisy on top
 def _daisyFormation(theCube):
+    
     rotation = ''
     
     #specific rotations
     rotationOne = ''
-    algorithmRotationOne = ''
     rotationTwo = ''
+    rotationThree = ''
+    rotationFour = ''
+    
+    algorithmRotationOne = ''
+    algorithmRotationTwo = ''
+    algorithmRotationThree = ''
     
     cubeList = theCube.get()
     topEdges = [cubeList[UBM], cubeList[UMR], cubeList[UTM], cubeList[UML]]
@@ -143,7 +149,35 @@ def _daisyFormation(theCube):
         rotationTwo += _alignDaisyBottomEdge(cubeList)
         cubeList = list(theCube.rotate(rotationTwo))
         
-    rotation += rotationOne + algorithmRotationOne + rotationTwo 
+        #updating top edges and the count of daisy petals 
+        topEdges = [cubeList[UBM], cubeList[UMR], cubeList[UTM], cubeList[UML]]
+        daisyPetals = topEdges.count(cubeList[DMM])
+        
+    if daisyPetals <= 3 and topEdges[2] != cubeList[DMM]:
+        
+        #rotating UU to get missing petal from UTM to UBM
+        algorithmRotationTwo += 'UU'
+        cubeList = list(theCube.rotate('UU'))
+        
+        #After placing the missing petal in UBM spot again running it through the algorithm
+        rotationThree += _alignDaisyBottomEdge(cubeList)
+        cubeList = list(theCube.rotate(rotationThree))
+        
+        #updating top edges and the count of daisy petals 
+        topEdges = [cubeList[UBM], cubeList[UMR], cubeList[UTM], cubeList[UML]]
+        daisyPetals = topEdges.count(cubeList[DMM])
+        
+    if daisyPetals <= 3 and topEdges[3] != cubeList[DMM]:
+        
+        #rotating U to get missing petal from UML to UBM
+        algorithmRotationThree += 'u'
+        cubeList = list(theCube.rotate('u'))
+        
+        #After placing the missing petal in UBM spot again running it through the algorithm
+        rotationFour += _alignDaisyBottomEdge(cubeList)
+        cubeList = list(theCube.rotate(rotationFour))
+        
+    rotation += rotationOne + algorithmRotationOne + rotationTwo + algorithmRotationTwo + rotationThree + algorithmRotationThree + rotationFour 
         
     
     
