@@ -10,8 +10,8 @@ def solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
      
-    #encodedCube = parms.get('cube')
-    encodedCube = parms
+    encodedCube = parms.get('cube')
+    #encodedCube = parms
     theCube = Cube(encodedCube)
     
     rotations = []
