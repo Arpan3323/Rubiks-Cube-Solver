@@ -222,14 +222,21 @@ def _daisyFormation(daisyEdge, theCube):
                 cubeList = list(theCube.rotate(rotation))'''
             
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
-    #front face         
+    #front face  
+    while (cubeList[UBM] != cubeList[DMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))       
     while(cubeList[FTM] != cubeList[FMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
     if (cubeList[FTM] == cubeList[FMM]):
         rotation += 'FF'
         cubeList = list(theCube.rotate('FF'))
+    
     #right face
+    while (cubeList[UMR] != cubeList[DMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
     while(cubeList[RTM] != cubeList[RMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
