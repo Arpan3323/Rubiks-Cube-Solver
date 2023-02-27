@@ -119,8 +119,7 @@ def _daisyFormation(daisyEdge, theCube):
     
     if daisyEdge <= 3 and topEdges[0] != cubeList[DMM]:
         rotation += _alignDaisyBottomEdge(theCube)
-        
-    cubeList = list(theCube.rotate(rotation))
+        cubeList = list(theCube.rotate(rotation))
     
     
     '''missingEdgeList = []
@@ -334,7 +333,17 @@ def _alignDaisyBottomEdge(theCube):
     #if an edge is found here it means that a petal is missing on UTM as well
     elif edgeLocation[0] == cubeList[BTM]:
         rotation += 'BULu'
-    
+        
+    #if needed edge is on the left face
+    elif edgeLocation[0] == cubeList[LML]:
+        rotation += 'UUbUU'
+    elif edgeLocation[0] == cubeList[LBM]:
+        rotation += 'ULUbUU'
+    elif edgeLocation[0] == cubeList[LMR]:
+        rotation += 'F'
+    #if an edge is found here it means UML is missing a petal
+    elif edgeLocation[0] == cubeList[LTM]:
+        rotation += 'LF'
 
         
     
