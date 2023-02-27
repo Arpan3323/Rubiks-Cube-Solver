@@ -243,14 +243,22 @@ def _daisyFormation(daisyEdge, theCube):
     if (cubeList[RTM] == cubeList[RMM]):
         rotation += 'RR'
         cubeList = list(theCube.rotate('RR'))
+    
     #back face
+    while (cubeList[UTM] != cubeList[DMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
     while(cubeList[BTM] != cubeList[BMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
     if (cubeList[BTM] == cubeList[BMM]):
         rotation += 'BB'
         cubeList = list(theCube.rotate('BB'))
+    
     #left face
+    while (cubeList[UML] != cubeList[DMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
     while(cubeList[LTM] != cubeList[LMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
