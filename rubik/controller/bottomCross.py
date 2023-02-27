@@ -118,7 +118,7 @@ def _daisyFormation(daisyEdge, theCube):
     topEdges = [cubeList[UBM], cubeList[UMR], cubeList[UTM], cubeList[UML]]
     
     if daisyEdge <= 3 and topEdges[0] != cubeList[DMM]:
-        rotation += _alignDaisyBottomEdge(cubeList)
+        rotation += _alignDaisyBottomEdge(theCube)
         cubeList = list(theCube.rotate(rotation))
     
     
