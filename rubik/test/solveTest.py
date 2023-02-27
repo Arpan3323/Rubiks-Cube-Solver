@@ -62,47 +62,7 @@ class SolveTest(TestCase):
         self.assertEqual('', result['integrity'])'''
     
     
-    #commented these tests because I had a wrong understanding about the product functionality 
-    '''def test102_solve_rotationsNeededWhenDaisyHasBeenRotatedOnceFromFront(self):
-        parms = {}
-        parms['cube'] = 'ryrrbbboygrwwryrgyogwbgybygbogrobyoyowgwywwgyogbbwroor'
-        result = solve(parms)
-        self.assertEqual('FRRBBLL', result['solution'])
-        self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])
-        
-             
-    def test103_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromFront(self):
-        parms = {}
-        parms['cube'] = 'brrobyybrwrwgryygyogwbgybygboorogyobowgwywybgrwgbwroor'
-        result = solve(parms)
-        self.assertEqual('RRBBLL', result['solution'])
-        self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])
-        
-    def test104_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromFrontAndRight(self):
-        parms = {}
-        parms['cube'] = 'brbobbyboygyyrgwrwrgwygyrygboorogyobowgwyrybrrwgbwwoog'
-        result = solve(parms)
-        self.assertEqual('BBLL', result['solution'])
-        self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])
-        
-    def test105_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromFrontAndRightAndOnceFromBack(self):
-        parms = {}
-        parms['cube'] = 'brbobbyboyggyrowroryrygggywgoowogoobygwwyrybrrwgbwwbry'
-        result = solve(parms)
-        self.assertEqual('BLL', result['solution'])
-        self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])
     
-    def test106_solve_rotationsNeededWhenDaisyHasBeenRotatedTwiceFromEverySideAndOnceFromLeft(self):
-        parms = {}
-        parms['cube'] = 'grbwbbyboygyyrrwrbgygygbwgrygwooobgorooyyrrbrbwgowwywo'
-        result = solve(parms)
-        self.assertEqual('L', result['solution'])
-        self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])'''
         
     #will uncomment later
     ''' def test107_solve_rotationsNeededWhenDaisyExistsAndEdgesAreNotAligned(self):
@@ -164,20 +124,22 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    '''def test113_solve_rotationsNeededWhenDaisyIsMissingOnlyOneEdgeOnAnySide(self):
-        parms = {}
-        parms['cube'] = 'bbyybyrooryrorrwroygyygbybbgrrrobwowowbwygwwggwggwgoob'
-        result = solve(parms)
-        self.assertEqual('FFUUUFFUURRUUBBUULL', result['solution'])
-        self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])'''
-        
     def test113_solve_rotationsNeededWhenDaisyHasTwoPetals(self):
         parms = {}
         parms['cube'] = 'rybbgowroygobowbyyurwgbrgwrobwyrrboggwgwyybborgwgwoyor'
         expectedCube = 'oobyggwgurboyoooowbyrgbrrbgbowgrrrrbwbyyyrgbyowgwwwywg'
         result = solve(parms)
         self.assertEqual('uRRUfUUUbuLuUUUFFRRUBBUULL', result['solution'])
+        self.assertEqual(expectedCube, result['rotatedCube'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
+        
+    def test114_solve_rotationsNeededWhenDaisyHasOnePetal(self):
+        parms = {}
+        parms['cube'] = 'bywgrrwrgoywbgywgoborgowgbygborbwrorywoyyoyrgbgrbwobwy'
+        expectedCube = 'orgorborgygwygyogbrobgoryogyygbbywbwobbryoygrbwwwwwrwr'
+        result = solve(parms)
+        self.assertEqual('ULuUULUbUUUUUUbUUUFFRRBBLL', result['solution'])
         self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
