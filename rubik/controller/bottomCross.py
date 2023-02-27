@@ -346,13 +346,13 @@ def _alignDaisyBottomEdge(theCube):
         rotation += 'LF'
         
     #if needed edge is on the down face
-    elif edgeLocation == cubeList[DTM]:
+    elif edgeLocation[0] == cubeList[DTM]:
         rotation += 'FF'
-    elif edgeLocation == cubeList[DML]:
+    elif edgeLocation[0] == cubeList[DML]:
         rotation += 'ULLu'
-    elif edgeLocation == cubeList[DMR]:
+    elif edgeLocation[0] == cubeList[DMR]:
         rotation += 'uRRU'
-    elif edgeLocation == cubeList[DBM]:
+    elif edgeLocation[0] == cubeList[DBM]:
         rotation += 'UUBBUU'
         
     
