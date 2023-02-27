@@ -119,7 +119,7 @@ def _daisyFormation(daisyEdge, theCube):
     
     if daisyEdge <= 3 and topEdges[0] != cubeList[DMM]:
         rotation += _alignDaisyBottomEdge(cubeList)
-        cubeList = cubeList.rotate(rotation)
+        cubeList = list(theCube.rotate(rotation))
     
     
     '''missingEdgeList = []
@@ -246,8 +246,9 @@ def _daisyFormation(daisyEdge, theCube):
         rotation += 'LL'
     return rotation
 
-def _alignDaisyBottomEdge(cubeList):
+def _alignDaisyBottomEdge(theCube):
     rotation = ''
+    cubeList = theCube.get()
     edgeLocation = []
     
     faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
@@ -276,18 +277,18 @@ def _alignDaisyBottomEdge(cubeList):
     #if needed edge is on the right face
     if edgeLocation[0] == cubeList[RBM]:
         rotation += 'uRUf'
-        cubeList = cubeList.rotate(rotation)
+        cubeList = list(theCube.rotate(rotation))
     elif edgeLocation[0] == cubeList[RML]:
         rotation += 'f'
-        cubeList = cubeList.rotate(rotation)
+        cubeList = list(theCube.rotate(rotation))
     elif edgeLocation[0] == cubeList[RMR]:
         rotation += 'uRRUf'
-        cubeList = cubeList.rotate(rotation)
+        cubeList = list(theCube.rotate(rotation))
         
     #if the edge is found here that means, the petal does not exist on UMR as well
     elif edgeLocation[0] == cubeList[RTM]:
         rotation += 'rf'
-        cubeList = cubeList.rotate(rotation)
+        cubeList = list(theCube.rotate(rotation))
     
 
         
