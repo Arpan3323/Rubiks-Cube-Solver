@@ -10,10 +10,11 @@ def solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
      
-    encodedCube = parms.get('cube')
+    #encodedCube = parms.get('cube')
+    encodedCube = parms
     theCube = Cube(encodedCube)
     
-    rotations = ""
+    rotations = []
     rotations += solveBottomCross(theCube)      #iteration 2
     #rotations += solveBottomLayer(theCube)      #iteration 3
     #rotations += solveMiddleLayer(theCube)      #iteration 4
@@ -21,9 +22,12 @@ def solve(parms):
     #rotations += solveUpSurface(theCube)        #iteration 5
     #rotations += solveUpperLayer(theCube)       #iteration 6
     
-    result['solution'] = rotations
-    result['rotatedCube'] = theCube.rotate(result['solution'])
+    result['solution'] = rotations[0]
+    result['rotatedCube'] = rotations[1]
     result['status'] = 'ok'    
     result['integrity'] = ''                    #iteration 3
                      
     return result
+
+#testing = solve('wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw')
+#print(testing)

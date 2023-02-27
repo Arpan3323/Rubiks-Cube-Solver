@@ -250,8 +250,8 @@ def _daisyFormation(daisyEdge, theCube):
     if (cubeList[LTM] == cubeList[LMM]):
         rotation += 'LL'
         cubeList = list(theCube.rotate('LL'))
-    #bottomCrossCube = 
-    return rotation
+    bottomCrossCube = ''.join(cubeList)
+    return rotation, bottomCrossCube
 
 def _alignDaisyBottomEdge(theCube):
     rotation = ''
