@@ -344,9 +344,17 @@ def _alignDaisyBottomEdge(theCube):
     #if an edge is found here it means UML is missing a petal
     elif edgeLocation[0] == cubeList[LTM]:
         rotation += 'LF'
-
         
-    
+    #if needed edge is on the down face
+    elif edgeLocation == cubeList[DTM]:
+        rotation += 'FF'
+    elif edgeLocation == cubeList[DML]:
+        rotation += 'ULLu'
+    elif edgeLocation == cubeList[DMR]:
+        rotation += 'uRRU'
+    elif edgeLocation == cubeList[DBM]:
+        rotation += 'UUBBUU'
+        
     
     return rotation
          
