@@ -24,7 +24,7 @@ class Cube:
             
             cubeValid = False
             
-        return cubeValid         
+            return cubeValid         
     
     def rotate(self, directions="F"):
         
