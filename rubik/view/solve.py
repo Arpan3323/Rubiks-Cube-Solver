@@ -14,6 +14,12 @@ def solve(parms):
     #encodedCube = parms
     theCube = Cube(encodedCube)
     
+    validateCubeString =  theCube.validateCube(encodedCube)
+    
+    if validateCubeString == False:
+        result['status'] = 'error: invalid cube'
+        return result
+    
     rotations = []
     rotations += solveBottomCross(theCube)      #iteration 2
     #rotations += solveBottomLayer(theCube)      #iteration 3

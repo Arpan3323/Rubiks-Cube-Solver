@@ -11,6 +11,21 @@ class Cube:
     def get(self):
         return self.cube
     
+    #checking if the cube cube is empty, None, consists of characters outside [A-Z][a-z][0-9], or 
+    #contains exactly 54 characters
+    def validateCube(self, encodedCube):
+        result = {}
+       
+        mandatoryCharsInCube = 54 
+        
+        if ((encodedCube == None) or 
+            (encodedCube.isalnum() == False) or 
+            (len(encodedCube) != mandatoryCharsInCube)):
+            
+            cubeValid = False
+            
+        return cubeValid         
+    
     def rotate(self, directions="F"):
         
         #defaulting direction to F if direction is missing or empty
