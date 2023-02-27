@@ -144,6 +144,16 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
+    def test115_solve_rotationsNeededWhenDaisyHasZeroPetal(self):
+        parms = {}
+        parms['cube'] = 'wororowwggobwgryrgrywborwwbbgbwbgoroobyyyyrbyggoywgybr'
+        expectedCube = 'groorgwrbyboygyygygobboygooyrwobbbbrogwyyrrggbwrwwwwwr'
+        result = solve(parms)
+        self.assertEqual('fuRUUurUUUUUbuLuuUluFFURRBBULL', result['solution'])
+        self.assertEqual(expectedCube, result['rotatedCube'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
+        
 
         
         
