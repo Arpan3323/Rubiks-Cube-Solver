@@ -282,16 +282,16 @@ def _alignDaisyBottomEdge(theCube):
             edgeLocation.append(edge[3])
             
     #if the needed edge is on front face 
-    if edgeLocation == cubeList[FMR]:
+    if edgeLocation[0] == cubeList[FMR]:
         rotation += 'uRU'
         #cubeList = list(theCube.rotate(rotation))
-    elif edgeLocation == cubeList[FML]:
+    elif edgeLocation[0] == cubeList[FML]:
         rotation += 'Ulu'
         #cubeList = list(theCube.rotate(rotation))
-    elif edgeLocation == cubeList[FTM]:
+    elif edgeLocation[0] == cubeList[FTM]:
         rotation += 'FuRU'
         #cubeList = list(theCube.rotate(rotation))
-    elif edgeLocation == cubeList[FBM]:
+    elif edgeLocation[0] == cubeList[FBM]:
         rotation += 'fuRU'
         #cubeList = list(theCube.rotate(rotation))
     
