@@ -29,10 +29,12 @@ def solveBottomCross(theCube: Cube) -> str:
         
     #checks if daisy exists and side edges are aligned
     if (topDaisyFound == True) and (sideEdgesAlignedOnTop == True):
-        return 'FFRRBBLL'
+        rotation = 'FFRRBBLL'
+        theCube.rotate(rotation)
+        return rotation
     
-    #checks if neither daisy exists nor side edges are aligned 
-    if (topDaisyFound == False) and (sideEdgesAlignedOnTop == False):
+    #checks if daisy exists nor side edges are aligned 
+    if (topDaisyFound == False):
         #return _daisyExistsAndSideEdgesUnaligned(_daisyFormation(daisyEdge, theCube))
         return _daisyFormation(daisyEdge, theCube)
         
@@ -113,16 +115,14 @@ def _daisyExistsAndSideEdgesUnaligned(theCube):
 def _daisyFormation(daisyEdge, theCube):
     rotation = ''
     cubeList = theCube.get()
-    topEdges = [(cubeList[UBM], 'F'), (cubeList[UMR], 'R'),
-                (cubeList[UTM], 'B'), (cubeList[UML], 'L')]
+    topEdges = [cubeList[UBM], cubeList[UMR], cubeList[UTM], cubeList[UML]]
     
-    faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
-                (cubeList[RTM], cubeList[RML], cubeList[RMR], cubeList[RBM], 'R'),
-                (cubeList[BTM], cubeList[BML], cubeList[BMR], cubeList[BBM], 'B'),
-                (cubeList[LTM], cubeList[LML], cubeList[LMR], cubeList[LBM], 'L'),
-                (cubeList[DTM], cubeList[DML], cubeList[DMR], cubeList[DBM], 'D')]
+    if daisyEdge <= 3 and topEdges[0] != cubeList[DMM]:
+        rotation += _alignDaisyBottomEdge(cubeList)
+        cubeList = cubeList.rotate(rotation)
     
-    missingEdgeList = []
+    
+    '''missingEdgeList = []
     edgeLocationList = []
 
     if daisyEdge <= 3:
@@ -218,7 +218,7 @@ def _daisyFormation(daisyEdge, theCube):
                 cubeList = list(theCube.rotate(rotation))
             elif edgeLocation == cubeList[DBM]:
                 rotation += 'UUBB'
-                cubeList = list(theCube.rotate(rotation))
+                cubeList = list(theCube.rotate(rotation))'''
             
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross         
     while(cubeList[FTM] != cubeList[FMM]):
@@ -244,6 +244,55 @@ def _daisyFormation(daisyEdge, theCube):
         cubeList = list(theCube.rotate('U'))
     if (cubeList[LTM] == cubeList[LMM]):
         rotation += 'LL'
+    return rotation
+
+def _alignDaisyBottomEdge(cubeList):
+    rotation = ''
+    edgeLocation = []
+    
+    faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
+                (cubeList[RTM], cubeList[RML], cubeList[RMR], cubeList[RBM], 'R'),
+                (cubeList[BTM], cubeList[BML], cubeList[BMR], cubeList[BBM], 'B'),
+                (cubeList[LTM], cubeList[LML], cubeList[LMR], cubeList[LBM], 'L'),
+                (cubeList[DTM], cubeList[DML], cubeList[DMR], cubeList[DBM], 'D')]
+    
+    for edge in faceEdges:
+        if (edge[0] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[0])
+            
+        elif (edge[1] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[1]) 
+            
+        elif (edge[2] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[2]) 
+
+        elif (edge[3] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[3])
+            
+    #if needed edge is on the right face
+    if edgeLocation[0] == cubeList[RBM]:
+        rotation += 'uRUf'
+        cubeList = cubeList.rotate(rotation)
+    elif edgeLocation[0] == cubeList[RML]:
+        rotation += 'f'
+        cubeList = cubeList.rotate(rotation)
+    elif edgeLocation[0] == cubeList[RMR]:
+        rotation += 'uRRUf'
+        cubeList = cubeList.rotate(rotation)
+        
+    #if the edge is found here that means, the petal does not exist on UMR as well
+    elif edgeLocation[0] == cubeList[RTM]:
+        rotation += 'rf'
+        cubeList = cubeList.rotate(rotation)
+    
+
+        
+    
+    
     return rotation
          
     
