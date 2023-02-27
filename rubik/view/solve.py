@@ -22,6 +22,7 @@ def solve(parms):
     #rotations += solveUpperLayer(theCube)       #iteration 6
     
     result['solution'] = rotations
+    result['rotatedCube'] = theCube.rotate(rotations)
     result['status'] = 'ok'    
     result['integrity'] = ''                    #iteration 3
                      
