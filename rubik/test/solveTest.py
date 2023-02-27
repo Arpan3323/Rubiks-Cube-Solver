@@ -134,15 +134,17 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    '''def test110_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnBackFace(self):
+    def test110_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnBackFace(self):
         parms = {}
         parms['cube'] = 'rygygrrrgrryboborybgowbgoobwoyorgoobbwrwywgbwwywbwgyyg'
+        expectedCube = 'brwyggrggoboroowogboogbbybgwoyyrgrrbbyybyrrygwwrwwwywo'
         result = solve(parms)
         self.assertEqual('urUUUFFRRBBLL', result['solution'])
+        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test111_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnLeftFace(self):
+    '''def test111_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnLeftFace(self):
         parms = {}
         parms['cube'] = 'yygybyryrobwbroyrooorbgrbbrwgbwoowoygwgwyworybgggwgbrw'
         result = solve(parms)
