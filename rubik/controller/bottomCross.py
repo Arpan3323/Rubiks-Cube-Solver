@@ -223,28 +223,28 @@ def _daisyFormation(daisyEdge, theCube):
             
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
     #front face         
-    while(cubeList[FTM] != cubeList[FMM] and cubeList[UBM] == cubeList[DMM]):
+    while(cubeList[FTM] != cubeList[FMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
     if (cubeList[FTM] == cubeList[FMM]):
         rotation += 'FF'
         cubeList = list(theCube.rotate('FF'))
     #right face
-    while(cubeList[RTM] != cubeList[RMM] and cubeList[UMR] == cubeList[DMM]):
+    while(cubeList[RTM] != cubeList[RMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
     if (cubeList[RTM] == cubeList[RMM]):
         rotation += 'RR'
         cubeList = list(theCube.rotate('RR'))
     #back face
-    while(cubeList[BTM] != cubeList[BMM] and cubeList[UTM] == cubeList[DMM]):
+    while(cubeList[BTM] != cubeList[BMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
     if (cubeList[BTM] == cubeList[BMM]):
         rotation += 'BB'
         cubeList = list(theCube.rotate('BB'))
     #left face
-    while(cubeList[LTM] != cubeList[LMM] and cubeList[UML] == cubeList[DMM]):
+    while(cubeList[LTM] != cubeList[LMM]):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
     if (cubeList[LTM] == cubeList[LMM]):
