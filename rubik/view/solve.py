@@ -9,9 +9,15 @@ from rubik.model.cube import Cube
 def solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
+    
+    #checking the dictionary for extra keys
+    numberOfAllowedKeys = 1
+    keyList = parms.keys()
+    if (len(keyList)) > numberOfAllowedKeys:
+        result['status'] = "error: extraneous key detected"
+        return result
      
     encodedCube = parms.get('cube')
-    #encodedCube = parms
     theCube = Cube(encodedCube)
     
     validateCubeString =  theCube.validateCube(encodedCube)
