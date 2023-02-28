@@ -45,7 +45,7 @@ class SolveTest(TestCase):
 #                none
     
     #uncomment later and remove expected cube
-    '''def test100_solve_checkIfBottomCrossAlreadyExists(self):
+    def test100_solve_checkIfBottomCrossAlreadyExists(self):
         parms = {}
         parms['cube'] = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
         result = solve(parms)
@@ -59,21 +59,19 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertEqual('FFRRBBLL', result['solution'])
         self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])'''
+        self.assertEqual('', result['integrity'])
     
     
     
         
-    #will uncomment later
-    ''' def test107_solve_rotationsNeededWhenDaisyExistsAndEdgesAreNotAligned(self):
+    def test107_solve_rotationsNeededWhenDaisyExistsAndEdgesAreNotAligned(self):
         parms = {}
         parms['cube'] = 'bgbyoyyowyrorbobbwgbwgrbobggoyoggrggwwowywrwroyrrwryyb'
         result = solve(parms)
         self.assertEqual('UUUFFUURRUUBBUULL', result['solution'])
         self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])'''
-        
-    #getting the expected cube as well to make sure the cube is bieng rotated correctly    
+        self.assertEqual('', result['integrity'])
+            
     def test108_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnRightFace(self):
         parms = {}
         parms['cube'] = 'wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw'
