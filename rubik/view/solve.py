@@ -20,6 +20,9 @@ def solve(parms):
     encodedCube = parms.get('cube')
     theCube = Cube(encodedCube)
     
+    #Validating the cube by returning error if it is none, contains less than 54 chars, 
+    #is not an alphabet or digit, does not have unique centers, or does not have 9 chars of each type
+    
     validateCubeString =  theCube.validateCube(encodedCube)
     validateNineUniqueCubeChar = theCube.validateNineOfEachCubeCharacters(encodedCube)
     
@@ -36,11 +39,7 @@ def solve(parms):
     #rotations += solveUpperLayer(theCube)       #iteration 6
     
     result['solution'] = rotations
-    #result['rotatedCube'] = rotations[1]
     result['status'] = 'ok'    
     result['integrity'] = ''                    #iteration 3
                      
     return result
-
-#testing = solve('wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw')
-#print(testing)

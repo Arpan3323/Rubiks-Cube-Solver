@@ -13,23 +13,23 @@ class Cube:
     def get(self):
         return self.cube
     
-    #checking if the cube cube is empty, None, consists of characters outside [A-Z][a-z][0-9], or 
-    #contains exactly 54 characters
     def validateCube(self, encodedCube):
-        result = {}
-       
+        cubeCharacterList = [encodedCube[FMM], encodedCube[RMM], encodedCube[BMM], encodedCube[LMM], encodedCube[UMM], encodedCube[DMM]]
         mandatoryCharsInCube = 54 
+    
+        cubeSetLength = len(set(cubeCharacterList))
+        cubeListLength = len(cubeCharacterList)
         
         if ((encodedCube == None) or 
             (encodedCube.isalnum() == False) or 
-            (len(encodedCube) != mandatoryCharsInCube)):
+            (len(encodedCube) != mandatoryCharsInCube) or
+            (cubeSetLength != cubeListLength)):
             
             cubeValid = False
             
             return cubeValid
         
-    def validateNineOfEachCubeCharacters(self, encodedCube): 
-        result ={}
+    def validateNineOfEachCubeCharacters(self, encodedCube):
         for value in Counter(encodedCube).values():
             if value != 9:
                 cubeValid = False
