@@ -1,4 +1,6 @@
 from rubik.model.constants import *
+from collections import Counter
+
 
 class Cube:
     '''
@@ -24,7 +26,17 @@ class Cube:
             
             cubeValid = False
             
-            return cubeValid         
+            return cubeValid
+        
+    def validateNineOfEachCubeCharacters(self, encodedCube): 
+        result ={}
+        for value in Counter(encodedCube).values():
+            if value != 9:
+                cubeValid = False
+                return cubeValid
+                
+                
+                        
     
     def rotate(self, directions="F"):
         
