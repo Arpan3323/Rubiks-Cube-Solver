@@ -55,7 +55,7 @@ class SolveTest(TestCase):
     
     def test101_solve_rotationsNeededWhenDaisyExistsAndEdgesAligned(self):
         parms = {}
-        parms['cube'] = 'rbyyborrbbrwgryogyogwbgybygboyrogyowowgwywgwrgbybwroor'
+        parms['cube'] = 'rgrogyobbgoyoogrrybborbybrwwrgbrggyybwrwywwwygowgwboyo'
         result = solve(parms)
         self.assertEqual('FFRRBBLL', result['solution'])
         self.assertEqual('ok', result['status'])
