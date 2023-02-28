@@ -167,6 +167,14 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertEqual('error: extraneous key detected', result['status'])
         
+    def test903_solve_checkingIfCubeHasNineOfEachCharacter(self):
+        parms = {}
+        parms['cube'] = 'rbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+        result = solve(parms)
+        self.assertEqual('error: invalid cube', result['status'])
+        
+    
+        
         
     
         
