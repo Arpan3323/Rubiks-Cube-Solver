@@ -157,6 +157,11 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertEqual('error: invalid cube', result['status'])
         
+    def test904_solve_checkingIfCubeHasSixUniqueCenters(self):
+        parms = {}
+        parms['cube'] = 'bbbbwbbbbrrrrwrrrroooowooooggggwggggyyyyyyyyybrogwwwww'
+        result = solve(parms)
+        self.assertEqual('error: invalid cube', result['status'])
     
         
         
