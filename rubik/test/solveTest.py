@@ -154,11 +154,18 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test116_solve_invalidCube(self):
+    def test901_solve_invalidCube(self):
         parms = {}
         parms['cube'] = 'wororowwgg'
         result = solve(parms)
         self.assertEqual('error: invalid cube', result['status'])
+        
+    def test902_solve_ExtraneousKeyForSolveServer(self):
+        parms = {}
+        parms['cube'] = 'wororowwggobwgryrgrywborwwbbgbwbgoroobyyyyrbyggoywgybr'
+        parms['extraKey'] = 'FfRfUu'
+        result = solve(parms)
+        self.assertEqual('error: extraneous key detected', result['status'])
         
         
     
