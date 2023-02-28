@@ -14,16 +14,11 @@ class Cube:
         return self.cube
     
     def validateCube(self, encodedCube):
-        cubeCharacterList = [encodedCube[FMM], encodedCube[RMM], encodedCube[BMM], encodedCube[LMM], encodedCube[UMM], encodedCube[DMM]]
         mandatoryCharsInCube = 54 
-    
-        cubeSetLength = len(set(cubeCharacterList))
-        cubeListLength = len(cubeCharacterList)
         
         if ((encodedCube == None) or 
             (encodedCube.isalnum() == False) or 
-            (len(encodedCube) != mandatoryCharsInCube) or
-            (cubeSetLength != cubeListLength)):
+            (len(encodedCube) != mandatoryCharsInCube)):
             
             cubeValid = False
             
@@ -34,7 +29,15 @@ class Cube:
             if value != 9:
                 cubeValid = False
                 return cubeValid
-                
+            
+    def validateUniqueCenters(self, encodedCube):
+        cubeCharacterList = [encodedCube[FMM], encodedCube[RMM], encodedCube[BMM], encodedCube[LMM], encodedCube[UMM], encodedCube[DMM]]
+        cubeSetLength = len(set(cubeCharacterList))
+        cubeListLength = len(cubeCharacterList)
+         
+        if (cubeSetLength != cubeListLength):
+            cubeValid = False
+            return cubeValid
                 
                         
     
