@@ -27,7 +27,7 @@ def solve(parms):
         result['status'] = 'error: invalid cube'
         return result
     
-    rotations = []
+    rotations = ''
     rotations += solveBottomCross(theCube)      #iteration 2
     #rotations += solveBottomLayer(theCube)      #iteration 3
     #rotations += solveMiddleLayer(theCube)      #iteration 4
@@ -35,8 +35,8 @@ def solve(parms):
     #rotations += solveUpSurface(theCube)        #iteration 5
     #rotations += solveUpperLayer(theCube)       #iteration 6
     
-    result['solution'] = rotations[0]
-    result['rotatedCube'] = rotations[1]
+    result['solution'] = rotations
+    #result['rotatedCube'] = rotations[1]
     result['status'] = 'ok'    
     result['integrity'] = ''                    #iteration 3
                      

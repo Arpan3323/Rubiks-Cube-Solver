@@ -324,8 +324,8 @@ def _daisyFormation(theCube):
         rotation += 'LL'
         cubeList = list(theCube.rotate('LL'))
 
-    bottomCrossCube = ''.join(cubeList)
-    return rotation, bottomCrossCube
+    #bottomCrossCube = ''.join(cubeList)
+    return rotation
 
 def _alignDaisyBottomEdge(cubeList):
     rotation = ''

@@ -77,80 +77,64 @@ class SolveTest(TestCase):
     def test108_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnRightFace(self):
         parms = {}
         parms['cube'] = 'wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw'
-        expectedCube = 'rrwgoygorbrwbbbbbyoororybrywrwogyggogggbyybgoywywwwrwo'
         result = solve(parms)
         self.assertEqual('uRUfUUUFFUURRUUBBUULL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
     def test109_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnFrontFace(self):
         parms = {}
         parms['cube'] = 'wbgyowwgryobbbgbogogworyybygrbbgrbgorwwwywrorgyyrwyoro'
-        expectedCube = 'gbyyoowoobgwbbbgbgrgbyryrryogwogrbgowybryorrrgwywwwowy'
         result = solve(parms)
         self.assertEqual('uRUUFFUURRUUBBUULL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
     def test110_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnBackFace(self):
         parms = {}
         parms['cube'] = 'rygygrrrgrryboborybgowbgoobwoyorgoobbwrwywgbwwywbwgyyg'
-        expectedCube = 'brwyggrggoboroowogboogbbybgwoyyrgrrbbyybyrrygwwrwwwywo'
         result = solve(parms)
         self.assertEqual('urUUUFFRRBBLL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
     def test111_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnLeftFace(self):
         parms = {}
         parms['cube'] = 'yygybyryrobwbroyrooorbgrbbrwgbwoowoygwgwyworybgggwgbrw'
-        expectedCube = 'wbyybyrbrgrrrrryrobywbgyygboorboowoyggwgyggoobwgwwwowb'
         result = solve(parms)
         self.assertEqual('UUbUUUFFUURRUUBBUULL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
     
     def test112_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnDownFace(self):
         parms = {}
         parms['cube'] = 'ryrybyrooygyorrwrogrrygbybbbbyrobwowwwowywggbgwggwgoob'
-        expectedCube = 'wbyybyrbrgrrrrryrobywbgyygboorboowoyggwgyggoobwgwwwowb'
         result = solve(parms)
         self.assertEqual('FFUUUFFUURRUUBBUULL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
     def test113_solve_rotationsNeededWhenDaisyHasTwoPetals(self):
         parms = {}
         parms['cube'] = 'rybbgowroygobowbyyurwgbrgwrobwyrrboggwgwyybborgwgwoyor'
-        expectedCube = 'oobyggwgurboyoooowbyrgbrrbgbowgrrrrbwbyyyrgbyowgwwwywg'
         result = solve(parms)
         self.assertEqual('uRRUfUUUbuLuUUUFFRRUBBUULL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
     def test114_solve_rotationsNeededWhenDaisyHasOnePetal(self):
         parms = {}
         parms['cube'] = 'bywgrrwrgoywbgywgoborgowgbygborbwrorywoyyoyrgbgrbwobwy'
-        expectedCube = 'orgorborgygwygyogbrobgoryogyygbbywbwobbryoygrbwwwwwrwr'
         result = solve(parms)
         self.assertEqual('ULuUULUbUUUUUUbUUUFFRRBBLL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
     def test115_solve_rotationsNeededWhenDaisyHasZeroPetal(self):
         parms = {}
         parms['cube'] = 'wororowwggobwgryrgrywborwwbbgbwbgoroobyyyyrbyggoywgybr'
-        expectedCube = 'groorgwrbyboygyygygobboygooyrwobbbbrogwyyrrggbwrwwwwwr'
         result = solve(parms)
         self.assertEqual('fuRUUurUUUUUbuLuuUluFFURRBBULL', result['solution'])
-        self.assertEqual(expectedCube, result['rotatedCube'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
