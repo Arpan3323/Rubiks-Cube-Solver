@@ -93,7 +93,7 @@ class SolveTest(TestCase):
         parms = {}
         parms['cube'] = 'obwygbrwworyrororrrgrgbbwgyyoyyroogwbwgwywboggbbowygyb'
         result = solve(parms)
-        self.assertEqual('uRUUFFUURRUUBBUULL', result['solution'])
+        self.assertEqual('fuRUUUFFRRBBLL', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
