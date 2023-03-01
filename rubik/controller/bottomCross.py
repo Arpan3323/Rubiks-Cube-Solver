@@ -108,13 +108,15 @@ def _daisyFormation(theCube):
         daisyPetals = topEdges.count(cubeList[DMM])
         
     #Checking if UML is missing, if not, check if UMR is missing
-    if daisyPetals <= 3: #and topEdges[3] != cubeList[DMM]:
-        if topEdges[3] != cubeList[DMM]:
+    if daisyPetals <= 3:
+        
         #rotating u to get missing petal from UML to UBM
+        if topEdges[3] != cubeList[DMM]:
             algorithmRotationThree += 'u'
             cubeList = list(theCube.rotate('u'))
-        elif topEdges[1] != cubeList[DMM]:
+        
         #rotating U to get missing petal from UMR to UBM
+        elif topEdges[1] != cubeList[DMM]:
             algorithmRotationThree += 'U'
             cubeList = list(theCube.rotate('U'))
         
