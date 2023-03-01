@@ -40,9 +40,10 @@ def solveBottomCross(theCube: Cube) -> str:
 
 #return true if the bottom cross exists otherwise return false
 def _verifyBottomCrossExists(cubeList):
-    return (cubeList[DML] == cubeList[DMM] and cubeList[DTM] == cubeList[DMM] and cubeList[DBM] == cubeList[DMM]
-    and cubeList[DMR] == cubeList[DMM] and cubeList[LMM] == cubeList[LBM] and cubeList[FMM] == cubeList[FBM]
-    and cubeList[RMM] == cubeList[RBM] and cubeList[BMM] == cubeList[BBM])
+    return (cubeList[DML] == cubeList[DMM] and cubeList[DTM] == cubeList[DMM] 
+            and cubeList[DBM] == cubeList[DMM] and cubeList[DMR] == cubeList[DMM] 
+            and cubeList[LMM] == cubeList[LBM] and cubeList[FMM] == cubeList[FBM]
+            and cubeList[RMM] == cubeList[RBM] and cubeList[BMM] == cubeList[BBM])
     
 
 #forms a daisy on top and aligns the side face edges with the daisy and rotates it
@@ -126,7 +127,10 @@ def _daisyFormation(theCube):
         leftPetalRotation += _alignDaisyBottomEdge(cubeList)
         cubeList = list(theCube.rotate(leftPetalRotation))
     
-    rotation += bottomPetalRotation + algorithmRotationOne + rightPetalRotation + algorithmRotationTwo + topPetalRotation + algorithmRotationThree + leftPetalRotation 
+    rotation += bottomPetalRotation + algorithmRotationOne 
+    + rightPetalRotation + algorithmRotationTwo 
+    + topPetalRotation + algorithmRotationThree 
+    + leftPetalRotation 
                 
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
     #front face  
