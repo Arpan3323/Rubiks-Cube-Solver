@@ -27,19 +27,28 @@ class SolveTest(TestCase):
 #        output: 
 #            side-effects: no external effects, internal changes only
 #            nominal:  returns the rotations performed to achieve bottom face cross orientation
-#            abnormal: 
+#            abnormal: returns a dictionary with a key of status and a value describing the error
 #
 #    happy path tests:
 #                test 100: checks if solution contains no rotations when the bottom cross exists
 #                test 101: checks the rotations needed when top daisy exists and F,R,B, & L faces
 #                          edges are aligned with their centers
-#                test 107: rotations needed when daisy exists but side edges are not aligned
-#                test 108: rotations needed when the top daisy has three petals
+#                test 102: rotations needed when daisy exists but side edges are not aligned
+#                test 103: rotations needed when the top daisy has three petals and required edge is on Right face
+#                test 104: rotations needed when the top daisy has three petals and required edge is on Front face
+#                test 105: rotations needed when the top daisy has three petals and required edge is on back face
+#                test 106: rotations needed when the top daisy has three petals and required edge is on left face
+#                test 107: rotations needed when the top daisy has three petals and required edge is on down face
+#                test 108: rotations needed when the top daisy has two petals 
+#                test 109: rotations needed when the top daisy has one petal
+#                test 110: rotations needed when the top daisy has zero petals, full bottom cross
+#                
 #
 #    sad path tests:
-#                catching the invalid directions, d and D, in rotateTest
-#                catching invalid cube in rotateTest
-#
+#                test 901: checking if the cube has 54 characters
+#                test 902: checking if the incoming dictionary has extraneous keys
+#                test 903: checking if the cube has 9 unique characters
+#                test 904: checking if the cube has unique centers
 #
 #    evil path test:
 #                none
@@ -64,7 +73,7 @@ class SolveTest(TestCase):
     
     
         
-    def test107_solve_rotationsNeededWhenDaisyExistsAndEdgesAreNotAligned(self):
+    def test102_solve_rotationsNeededWhenDaisyExistsAndEdgesAreNotAligned(self):
         parms = {}
         parms['cube'] = 'bgbyoyyowyrorbobbwgbwgrbobggoyoggrggwwowywrwroyrrwryyb'
         result = solve(parms)
@@ -72,7 +81,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
             
-    def test108_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnRightFace(self):
+    def test103_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnRightFace(self):
         parms = {}
         parms['cube'] = 'wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw'
         result = solve(parms)
@@ -80,7 +89,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test109_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnFrontFace(self):
+    def test104_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnFrontFace(self):
         parms = {}
         parms['cube'] = 'wbgyowwgryobbbgbogogworyybygrbbgrbgorwwwywrorgyyrwyoro'
         result = solve(parms)
@@ -88,7 +97,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test110_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnBackFace(self):
+    def test105_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnBackFace(self):
         parms = {}
         parms['cube'] = 'rygygrrrgrryboborybgowbgoobwoyorgoobbwrwywgbwwywbwgyyg'
         result = solve(parms)
@@ -96,7 +105,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test111_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnLeftFace(self):
+    def test106_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnLeftFace(self):
         parms = {}
         parms['cube'] = 'yygybyryrobwbroyrooorbgrbbrwgbwoowoygwgwyworybgggwgbrw'
         result = solve(parms)
@@ -104,7 +113,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
     
-    def test112_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnDownFace(self):
+    def test107_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnDownFace(self):
         parms = {}
         parms['cube'] = 'ryrybyrooygyorrwrogrrygbybbbbyrobwowwwowywggbgwggwgoob'
         result = solve(parms)
@@ -112,7 +121,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test113_solve_rotationsNeededWhenDaisyHasTwoPetals(self):
+    def test108_solve_rotationsNeededWhenDaisyHasTwoPetals(self):
         parms = {}
         parms['cube'] = 'orobbggyowyrorwgrywryggrbywbowgoobwyrwgwyogybrbybwbrgo'
         result = solve(parms)
@@ -120,7 +129,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test114_solve_rotationsNeededWhenDaisyHasOnePetal(self):
+    def test109_solve_rotationsNeededWhenDaisyHasOnePetal(self):
         parms = {}
         parms['cube'] = 'bywgrrwrgoywbgywgoborgowgbygborbwrorywoyyoyrgbgrbwobwy'
         result = solve(parms)
@@ -128,7 +137,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
         
-    def test115_solve_rotationsNeededWhenDaisyHasZeroPetal(self):
+    def test110_solve_rotationsNeededWhenDaisyHasZeroPetal(self):
         parms = {}
         parms['cube'] = 'wororowwggobwgryrgrywborwwbbgbwbgoroobyyyyrbyggoywgybr'
         result = solve(parms)
