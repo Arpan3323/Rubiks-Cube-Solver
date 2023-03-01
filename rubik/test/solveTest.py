@@ -91,7 +91,7 @@ class SolveTest(TestCase):
         
     def test104_solve_rotationsNeededWhenDaisyHasThreePetalsAndRequiredEdgeisOnFrontFace(self):
         parms = {}
-        parms['cube'] = 'wbgyowwgryobbbgbogogworyybygrbbgrbgorwwwywrorgyyrwyoro'
+        parms['cube'] = 'obwygbrwworyrororrrgrgbbwgyyoyyroogwbwgwywboggbbowygyb'
         result = solve(parms)
         self.assertEqual('uRUUFFUURRUUBBUULL', result['solution'])
         self.assertEqual('ok', result['status'])
