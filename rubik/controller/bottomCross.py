@@ -127,10 +127,10 @@ def _daisyFormation(theCube):
         leftPetalRotation += _alignDaisyBottomEdge(cubeList)
         cubeList = list(theCube.rotate(leftPetalRotation))
     
-    rotation += bottomPetalRotation + algorithmRotationOne 
-    + rightPetalRotation + algorithmRotationTwo 
-    + topPetalRotation + algorithmRotationThree 
-    + leftPetalRotation 
+    rotation += bottomPetalRotation + algorithmRotationOne + \
+    rightPetalRotation + algorithmRotationTwo + \
+    topPetalRotation + algorithmRotationThree + \
+    leftPetalRotation 
                 
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
     #front face  
