@@ -1,6 +1,5 @@
 from rubik.model.constants import *
 from rubik.model.cube import Cube
-import time
 
 def solveBottomCross(theCube: Cube) -> str:
     
