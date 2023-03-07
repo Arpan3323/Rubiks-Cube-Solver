@@ -160,12 +160,13 @@ def _daisyFormation(theCube):
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
     while(cubeList[BTM] != cubeList[BMM]):
-        #this addition will allow the failing customer acceptance test to pass
-        if (cubeList[UTM] != cubeList[DMM]):
-            rotation += 'U'
-            cubeList = list(theCube.rotate('U'))
         rotation += 'U'
         cubeList = list(theCube.rotate('U'))
+    #this addition will allow the failing customer acceptance test to pass
+    if (cubeList[UTM] != cubeList[DMM]):
+        rotation += 'U'
+        cubeList = list(theCube.rotate('U'))
+        
     if (cubeList[BTM] == cubeList[BMM]):
         rotation += 'BB'
         cubeList = list(theCube.rotate('BB'))
