@@ -21,8 +21,8 @@ def cubeRotator(cube):
         
     return (rotationList)
 
-cube = 'wbyooyryoorwgbrgwbbbwyrorryoorbgggrygwowywgybboybwgrgw'
-result = cubeRotator(cube)
-print (''.join(sum(result, [])))
+cube = 'ybrrgbwrwoggrbbgwgobrwrwowyworroybgrogwyyybyybobowggoy'
+result = Cube(cube).rotate('uRUfUULuUUUUbuLuuuRRUUUFFURRUUBBULL')
+print(result)
 
 

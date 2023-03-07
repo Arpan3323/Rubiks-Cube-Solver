@@ -18,5 +18,5 @@ class bottomCrossTest(unittest.TestCase):
         theCube = Cube(encodedCube)
         expectedCube = 'bgrggrrgwoygobybbgorworrorobbgboowoygywgybyyybwrwwwrwy'
         rotations = bc.solveBottomCross(theCube)
-        rotatedCube = theCube.rotate(rotations)
+        rotatedCube = Cube(encodedCube).rotate(rotations)
         self.assertEqual(rotatedCube, expectedCube)
