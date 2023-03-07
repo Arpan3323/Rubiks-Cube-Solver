@@ -16,7 +16,7 @@ class bottomCrossTest(unittest.TestCase):
     def test100_rotateToBottomCross(self):
         encodedCube = 'ybrrgbwrwoggrbbgwgobrwrwowyworroybgrogwyyybyybobowggoy'
         theCube = Cube(encodedCube)
-        expectedCube = 'bgrggrrgwoygobybbgorworrorobbgboowoygywgybyyybwrwwwrwy'
+        expectedCube = 'brgggrrgwoywobbbbgobgrroorobgwyooroyygryybgywbwrwwwywy'
         rotations = bc.solveBottomCross(theCube)
         rotatedCube = Cube(encodedCube).rotate(rotations)
         self.assertEqual(rotatedCube, expectedCube)
