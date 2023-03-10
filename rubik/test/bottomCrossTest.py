@@ -10,10 +10,10 @@ from rubik.model.cube import Cube
 #testing for the failed customer acceptance test case
 
 
-class bottomCrossTest(unittest.TestCase):
+class BottomCrossTest(unittest.TestCase):
 
 
-    def test100_rotateToBottomCross(self):
+    def test100_bottomCross_rotateToBottomCross(self):
         encodedCube = 'ybrrgbwrwoggrbbgwgobrwrwowyworroybgrogwyyybyybobowggoy'
         theCube = Cube(encodedCube)
         expectedCube = 'brgggrrgwoywobbbbgobgrroorobgwyooroyygryybgywbwrwwwywy'

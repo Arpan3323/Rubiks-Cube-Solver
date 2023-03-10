@@ -3,6 +3,7 @@ from rubik.model.constants import *
 from rubik.model.cube import Cube
 import random
 import itertools
+import rubik.controller.bottomCross as bc
 
 
 
@@ -22,7 +23,9 @@ def cubeRotator(cube):
     return (rotationList)
 
 cube = 'ybrrgbwrwoggrbbgwgobrwrwowyworroybgrogwyyybyybobowggoy'
-result = Cube(cube).rotate('uRUfUULuUUUUbuLuuuRRUUUFFURRUUBBULL')
+theCube = Cube('5h999hh9IFUIF55559F59hhFFhF59IUFFhFUU9hUU59UI5IhIIIUIU')
+result = bc.solveBottomCross(theCube)
+#result = Cube(cube2).rotate('uRUfUULuUUUUbuLuuuRRUUUFFURRUUBBULL')
 print(result)
 
 
