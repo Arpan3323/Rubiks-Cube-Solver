@@ -29,7 +29,7 @@ def _verifyBottomLayerExists(cubeList):
 
 def alignToBottomCross(theCube):
     bottomCrossRotations = bc.solveBottomCross(theCube)
-    bottomCrossCubeList = list(theCube.rotate(bottomCrossRotations))
+    bottomCrossCubeList = list(theCube.get())
     return bottomCrossCubeList
         
     
