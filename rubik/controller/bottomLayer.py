@@ -15,6 +15,9 @@ def solveBottomLayer(theCube: Cube) -> str:
     if _verifyBottomLayerExists(cubeList):
         return ''
     
+    if bc._verifyBottomCrossExists(cubeList) == False:
+        cubeList = alignToBottomCross(theCube)
+    
     return 'R'      #TODO:  remove this stubbed value
 
 def _verifyBottomLayerExists(cubeList):
@@ -23,5 +26,10 @@ def _verifyBottomLayerExists(cubeList):
                         (cubeList[DMM] in cubeList[DTL:DTR+1]) and (cubeList[DMM] in cubeList[DBL:DBR+1]) and
                         (cubeList[DMM] in cubeList[DML]) and (cubeList[DMM] in cubeList[DMR]))
     return bottomLayerExists 
+
+def alignToBottomCross(theCube):
+    bottomCrossRotations = bc.solveBottomCross(theCube)
+    bottomCrossCubeList = list(theCube.rotate(bottomCrossRotations))
+    return bottomCrossCubeList
         
     
