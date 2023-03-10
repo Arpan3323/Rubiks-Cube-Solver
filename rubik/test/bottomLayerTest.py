@@ -24,5 +24,12 @@ class BottomLayerTest(unittest.TestCase):
         actualRotatedCube = ''.join(bl.alignToBottomCross(theCube))
         self.assertEquals(actualRotatedCube, expectedCube)
         
+    def test102_bottomLayer_alignTopLayerPieceWithCenter(self):
+        encodedCube = 'gybygggggwryooboooggoybbbbrbbrrrrbrryyooygyorwwwwwwyww'
+        expectedCube = 'ggoygggggbbroobooogybybbbbrwryrrrbrrroygyooyywwwwwwyww'
+        theCube = cube.Cube(encodedCube)
+        actualRotatedCube = ''.join(bl.alignTopLayerPieceWithCenter(list(encodedCube))[0])
+        self.assertEquals(actualRotatedCube, expectedCube)
+        
         
         
