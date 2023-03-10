@@ -17,3 +17,13 @@ class BottomLayerTest(unittest.TestCase):
         actualRotation = bl.solveBottomLayer(theCube)
         self.assertEquals(actualRotation, '')
         
+    def test101_bottomLayer_createABottomCrossIfItDoesNotExist(self):
+        encodedCube = 'orobbggyowyrorwgrywryggrbywbowgoobwyrwgwyogybrbybwbrgo'
+        expectedCube = 'gggobgwbbrbbrrgyrgwrbygyrgwybyboygoboyrryooowowrwwwowy'
+        theCube = cube.Cube(encodedCube)
+        actualRotation = bl.alignToBottomCross(list(encodedCube))
+        actualRotatedCube = theCube.rotate(actualRotation)
+        self.assertEquals(actualRotatedCube, expectedCube)
+        
+        
+        
