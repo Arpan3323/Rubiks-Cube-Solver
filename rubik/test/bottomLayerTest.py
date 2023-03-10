@@ -15,6 +15,5 @@ class BottomLayerTest(unittest.TestCase):
         encodedCube = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         actualRotation = bl.solveBottomLayer(theCube)
-        actualCube = theCube.rotate(actualRotation)
-        self.assertEquals(actualCube, encodedCube)
+        self.assertEquals(actualRotation, '')
         
