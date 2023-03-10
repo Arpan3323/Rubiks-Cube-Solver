@@ -18,10 +18,10 @@ def solveBottomLayer(theCube: Cube) -> str:
     return 'R'      #TODO:  remove this stubbed value
 
 def _verifyBottomLayerExists(cubeList):
-    bottomLayerExists = (cubeList[range(FBL, FBR+1)] == cubeList[FMM] and cubeList[range(RBL, RBR+1)] == cubeList[RMM] and 
-                         cubeList[range(BBL, BBR+1)] == cubeList[BMM] and cubeList[range(LBL, LBR+1)] == cubeList[LMM] and
-                         cubeList[range(DTL, DTR+1)] == cubeList[DMM] and cubeList[range(DBL, DBR+1)] == cubeList[DMM] and
-                         cubeList[DMR, DML] == cubeList[DMM])
+    bottomLayerExists = (cubeList[FBL:FBR+1] == cubeList[FMM] and cubeList[RBL:RBR+1] == cubeList[RMM] and 
+                         cubeList[BBL:BBR+1] == cubeList[BMM] and cubeList[LBL:LBR+1] == cubeList[LMM] and
+                         cubeList[DTL:DTR+1] == cubeList[DMM] and cubeList[DBL:DBR+1] == cubeList[DMM] and
+                         cubeList[DMR,DML] == cubeList[DMM])
     return bottomLayerExists 
         
     
