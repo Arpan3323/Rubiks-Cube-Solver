@@ -12,7 +12,7 @@ class BottomLayerTest(unittest.TestCase):
 
 
     def test100_bottomLayer_checkIfBottomLayerIsSolved(self):
-        encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+        encodedCube = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         actualRotation = bl.solveBottomLayer(theCube)
         actualCube = theCube.rotate(actualRotation)
