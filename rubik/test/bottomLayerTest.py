@@ -37,7 +37,7 @@ class BottomLayerTest(unittest.TestCase):
         expectedCube = 'ogyogyggggryroyoooborbbrbbbggygryrrrybroybbyowwwwwwwww'
         theCube = cube.Cube(encodedCube)
         pieceAlignedWithCenterLocation = FTL
-        actualRotatedCube = ''.join(theCube.leftTrigger(list(encodedCube), pieceAlignedWithCenterLocation)[0])
+        actualRotatedCube = ''.join(theCube.leftTrigger(pieceAlignedWithCenterLocation)[0])
         self.assertEquals(actualRotatedCube, expectedCube)
         
         
