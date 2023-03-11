@@ -55,6 +55,16 @@ class BottomLayerTest(unittest.TestCase):
         actualRotatedCube = ''.join(theCube.rightTrigger(pieceAlignedWithCenterLocation)[0])
         self.assertEquals(actualRotatedCube, expectedCube)
         
+    def test106_bottomLayer_rotateTwoTopLayerPieceToBottom(self):
+        #encodedCube = 'wygrgbygbwyooogoorwgwybobbggybgrbyrrrrbryorbogwywwwowy'
+        encodedCube = 'wgboggbgyrbwrobgoogyorbbbbbyygyrgrrygrroyooyyowrwwwwww'
+        expectedCube = 'ogbygogggryrbobooogrorbbbbbbogyrrrrrygygyoyyywwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        actualRotatedCube = ''.join(bl.rotateTopLayerPieceToBottom(list(encodedCube))[0])
+        self.assertEquals(actualRotatedCube, expectedCube)
+        
+    
+        
         
         
         
