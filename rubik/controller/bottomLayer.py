@@ -18,7 +18,12 @@ def solveBottomLayer(theCube: Cube) -> str:
     if bc._verifyBottomCrossExists(cubeList) == False:
         cubeList = alignToBottomCross(theCube)
     
-    return 'R'      #TODO:  remove this stubbed value
+    rotations = ''    
+    if _verifyBottomLayerExists(cubeList) == False:
+       cubeList, rotations = rotateTopLayerPieceToBottom(cubeList)
+       
+    
+    return rotations
 
 def _verifyBottomLayerExists(cubeList):
     bottomLayerExists = ((cubeList[FMM] in cubeList[FBL:FBR+1])and (cubeList[RMM] in cubeList[RBL:RBR+1]) and 
@@ -32,13 +37,26 @@ def alignToBottomCross(theCube):
     bottomCrossCubeList = list(theCube.get())
     return bottomCrossCubeList
 
+def rotateTopLayerPieceToBottom(cubeList):
+    TopLayerPieceToBottomRotations = ''
+    
+    if (cubeList[DMM] in cubeList[FTL:FTR+1]) or (cubeList[DMM] in cubeList[RTL:RTR+1]) or (cubeList[DMM] in cubeList[BTL:BTR+1]) or (cubeList[DMM] in cubeList[LTL:LTR+1]):
+        cubeList, TopLayerPieceToBottomRotations, triggerPieceLocation = alignTopLayerPieceWithCenter(cubeList)
+        
+    if (triggerPieceLocation == FTL) or (triggerPieceLocation == RTL) or (triggerPieceLocation == BTL) or (triggerPieceLocation == LTL):
+        cubeList = Cube(''.join(cubeList)).leftTrigger(triggerPieceLocation)[0]
+        TopLayerPieceToBottomRotations += Cube(''.join(cubeList)).leftTrigger(triggerPieceLocation)[1]
+        
+    return cubeList, TopLayerPieceToBottomRotations
+
+
 def alignTopLayerPieceWithCenter(cubeList):
-    topCornerEdgePairs = [(FTL, LTR), (FTR, RTL), (RTR, BTL), (BTR, LTL)]
+    topCornerPairs = [(FTL, LTR), (FTR, RTL), (RTR, BTL), (BTR, LTL)]
     requiredTopLayerPiece = ''
     topLayerPieceToAlignWithCenter = ''
-    rotations = ''
+    alignTopLayerRotations = ''
     
-    for pair in topCornerEdgePairs:
+    for pair in topCornerPairs:
         if cubeList[pair[0]] == cubeList[DMM]: 
             requiredTopLayerPiece = pair[0]
             topLayerPieceToAlignWithCenter = pair[1]
@@ -50,27 +68,27 @@ def alignTopLayerPieceWithCenter(cubeList):
         while(cubeList[topLayerPieceToAlignWithCenter] != cubeList[FTR] and cubeList[topLayerPieceToAlignWithCenter] != cubeList[FTL]):
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
             cubeList =  list(Cube(''.join(cubeList)).rotate('u'))
-            rotations += 'u'
+            alignTopLayerRotations += 'u'
         
     elif cubeList[topLayerPieceToAlignWithCenter] == cubeList[RMM]:
         while(cubeList[topLayerPieceToAlignWithCenter] != cubeList[RTR] and cubeList[topLayerPieceToAlignWithCenter] != cubeList[RTL]):
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
             cubeList =  list(Cube(''.join(cubeList)).rotate('u'))
-            rotations += 'u'
+            alignTopLayerRotations += 'u'
    
     elif cubeList[topLayerPieceToAlignWithCenter] == cubeList[BMM]:
         while(cubeList[topLayerPieceToAlignWithCenter] != cubeList[BTR] and cubeList[topLayerPieceToAlignWithCenter] != cubeList[BTL]):
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
             cubeList =  list(Cube(''.join(cubeList)).rotate('u'))
-            rotations += 'u'
+            alignTopLayerRotations += 'u'
    
     elif cubeList[topLayerPieceToAlignWithCenter] == cubeList[LMM]:
         while(cubeList[topLayerPieceToAlignWithCenter] != cubeList[LTR] and cubeList[topLayerPieceToAlignWithCenter] != cubeList[LTL]):
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
             cubeList =  list(Cube(''.join(cubeList)).rotate('u'))
-            rotations += 'u'
+            alignTopLayerRotations += 'u'
 
-    return cubeList, rotations
+    return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
 
 def pieceLocationAfterRotation(topLayerPieceToAlignWithCenter):
     if topLayerPieceToAlignWithCenter == LTL:
