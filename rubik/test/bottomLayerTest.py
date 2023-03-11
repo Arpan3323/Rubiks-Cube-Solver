@@ -47,6 +47,14 @@ class BottomLayerTest(unittest.TestCase):
         actualRotatedCube = ''.join(bl.rotateTopLayerPieceToBottom(list(encodedCube))[0])
         self.assertEquals(actualRotatedCube, expectedCube)
         
+    def test105_cube_rightTriggerWhenPieceAlignedWithCenterIsLocatedOnFTR(self):
+        encodedCube = 'gggygbgggwobyoryooyryybobbbbbryrgrrrrbooygyrowwowwwwww'
+        expectedCube = 'yyrygbgggyobroroooybrybobbbggoyrgrrryooryggbbwwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        pieceAlignedWithCenterLocation = FTR
+        actualRotatedCube = ''.join(theCube.rightTrigger(pieceAlignedWithCenterLocation)[0])
+        self.assertEquals(actualRotatedCube, expectedCube)
+        
         
         
         
