@@ -83,6 +83,25 @@ class Cube:
         return self.cube
     
     
+    def leftTrigger(self, pieceAlignedWithCenterLocation):
+        cubeList = list(self.cube)
+        leftTriggerRotations = ''
+        if pieceAlignedWithCenterLocation == FTL:
+            leftTriggerRotations += 'luL'
+            cubeList = list(self.rotate(leftTriggerRotations))
+        elif pieceAlignedWithCenterLocation == RTL:
+            leftTriggerRotations += 'fuF'
+            cubeList = list(self.rotate(leftTriggerRotations))
+        elif pieceAlignedWithCenterLocation == BTL:
+            leftTriggerRotations += 'ruR'
+            cubeList = list(self.rotate(leftTriggerRotations))
+        elif pieceAlignedWithCenterLocation == LTL:
+            leftTriggerRotations += 'buB'
+            cubeList = list(self.rotate(leftTriggerRotations))
+            
+        return cubeList, leftTriggerRotations
+    
+    
     
     #rotates the cubes front face clockwise
     def _rotateF(self):
