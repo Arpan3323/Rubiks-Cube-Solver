@@ -113,7 +113,7 @@ class Cube:
         elif pieceAlignedWithCenterLocation == BTR:
             rightTriggerRotations += 'LUl'
             cubeList = list(self.rotate(rightTriggerRotations))
-        elif pieceAlignedWithCenterLocation == RTR:
+        elif pieceAlignedWithCenterLocation == LTR:
             rightTriggerRotations += 'FUf'
             cubeList = list(self.rotate(rightTriggerRotations))
             

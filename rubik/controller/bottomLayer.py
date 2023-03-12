@@ -39,20 +39,21 @@ def alignToBottomCross(theCube):
 
 def rotateTopLayerPieceToBottom(cubeList):
     TopLayerPieceToBottomRotations = ''
-    CheckTopLayerForRequiredPiece = ((cubeList[DMM] in cubeList[FTL:FTR+1]) or (cubeList[DMM] in cubeList[RTL:RTR+1]) or (cubeList[DMM] in cubeList[BTL:BTR+1]) or (cubeList[DMM] in cubeList[LTL:LTR+1]))
+    #CheckTopLayerForRequiredPiece = ((cubeList[DMM] in cubeList[FTL:FTR+1]) or (cubeList[DMM] in cubeList[RTL:RTR+1]) or (cubeList[DMM] in cubeList[BTL:BTR+1]) or (cubeList[DMM] in cubeList[LTL:LTR+1]))
     
     #if (cubeList[DMM] in cubeList[FTL:FTR+1]) or (cubeList[DMM] in cubeList[RTL:RTR+1]) or (cubeList[DMM] in cubeList[BTL:BTR+1]) or (cubeList[DMM] in cubeList[LTL:LTR+1]):
 
-    while CheckTopLayerForRequiredPiece:
-        cubeList, TopLayerPieceToBottomRotations, triggerPieceLocation = alignTopLayerPieceWithCenter(cubeList)
+    while ((cubeList[DMM] in cubeList[FTL:FTR+1]) or (cubeList[DMM] in cubeList[RTL:RTR+1]) or (cubeList[DMM] in cubeList[BTL:BTR+1]) or (cubeList[DMM] in cubeList[LTL:LTR+1])):
+        cubeList, returnedRotations, triggerPieceLocation = alignTopLayerPieceWithCenter(cubeList)
+        TopLayerPieceToBottomRotations += returnedRotations
         
         if (triggerPieceLocation == FTL) or (triggerPieceLocation == RTL) or (triggerPieceLocation == BTL) or (triggerPieceLocation == LTL):
-            cubeList = Cube(''.join(cubeList)).leftTrigger(triggerPieceLocation)[0]
-            TopLayerPieceToBottomRotations += Cube(''.join(cubeList)).leftTrigger(triggerPieceLocation)[1]
+            cubeList, returnedRotations = Cube(''.join(cubeList)).leftTrigger(triggerPieceLocation)
+            TopLayerPieceToBottomRotations += returnedRotations
         
         elif (triggerPieceLocation == FTR) or (triggerPieceLocation == RTR) or (triggerPieceLocation == BTR) or (triggerPieceLocation == LTR):
-            cubeList = Cube(''.join(cubeList)).rightTrigger(triggerPieceLocation)[0]
-            TopLayerPieceToBottomRotations += Cube(''.join(cubeList)).rightTrigger(triggerPieceLocation)[1]
+            cubeList, returnedRotations = Cube(''.join(cubeList)).rightTrigger(triggerPieceLocation)
+            TopLayerPieceToBottomRotations += returnedRotations
         
     return cubeList, TopLayerPieceToBottomRotations
 
