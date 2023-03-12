@@ -37,6 +37,56 @@ def alignToBottomCross(theCube):
     bottomCrossCubeList = list(theCube.get())
     return bottomCrossCubeList
 
+def rotatePieceFromTopFaceToSideFace(cubeList):
+    DownFaceCorners = [DBL, DBR, DTL, DTR]
+    topAndDownStackedCorners = [(UTL, DBL), (UTR, DBR), (UBL, DTL), (UBR, DTR)]
+    rotationsBeforeTrigger = ''
+    rotationsAfterTrigger = ''
+    topToSideRotations = ''
+    
+    for corners in topAndDownStackedCorners:
+        if cubeList[corners[0]] == cubeList[DMM]:
+            if(cubeList[corners[1]] != cubeList[DMM]):
+                cubeList, returnedRotations = Cube(''.join(cubeList)).rightTrigger(corners[0])
+            elif cubeList[corners[1]] == cubeList[DMM]:
+                DownFaceCorner = 0
+                cornerToRotate = corners[0]
+                while cubeList[cornerToRotate] == DownFaceCorners[DownFaceCorner]:
+                    if cornerToRotate == UTL:
+                        cornerToRotate = UTR
+                    elif cornerToRotate == UTR:
+                        cornerToRotate = UBR
+                    elif cornerToRotate == UBR:
+                        cornerToRotate = UBL
+                    elif cornerToRotate == UBL:
+                        cornerToRotate = UTL
+                    
+                    DownFaceCorner += 1
+                    rotationsBeforeTrigger += 'U'
+                    cubeList = Cube(''.join(cubeList)).rotate('U')
+                cubeList, returnedRotations = Cube(''.join(cubeList)).rightTrigger(cornerToRotate)
+                rotationsAfterTrigger += returnedRotations
+                topToSideRotations += rotationsBeforeTrigger + rotationsAfterTrigger
+
+    return cubeList, topToSideRotations
+
+                
+
+            
+            #if corners == UTL and cubeList[DBL] != cubeList[DMM]:
+            #    cubeList, rotations = Cube(''.join(cubeList)).rightTrigger(UTL)
+            #elif corners == UTR:
+            #    cubeList, rotations = Cube(''.join(cubeList)).leftTrigger(UTR)
+            #elif corners == UBL:
+            #    cubeList, rotations = Cube(''.join(cubeList)).rightTrigger(UBL)
+            #elif corners == UBR:
+            #    cubeList, rotations = Cube(''.join(cubeList)).leftTrigger(UBR)
+            #return cubeList, rotations
+
+    #for corners in topAndDownStackedCorners:
+    #    if (cubeList[corners[0]] == cubeList[corners[1]]):
+    #        return cubeList, ''
+
 def rotateTopLayerPieceToBottom(cubeList):
     TopLayerPieceToBottomRotations = ''
     #CheckTopLayerForRequiredPiece = ((cubeList[DMM] in cubeList[FTL:FTR+1]) or (cubeList[DMM] in cubeList[RTL:RTR+1]) or (cubeList[DMM] in cubeList[BTL:BTR+1]) or (cubeList[DMM] in cubeList[LTL:LTR+1]))

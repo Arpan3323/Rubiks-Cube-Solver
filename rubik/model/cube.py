@@ -116,6 +116,20 @@ class Cube:
         elif pieceAlignedWithCenterLocation == LTR:
             rightTriggerRotations += 'FUf'
             cubeList = list(self.rotate(rightTriggerRotations))
+        
+        #top face to side face
+        elif pieceAlignedWithCenterLocation == UTL:
+            rightTriggerRotations += 'LUlLUl'
+            cubeList = list(self.rotate(rightTriggerRotations))
+        elif pieceAlignedWithCenterLocation == UTR:
+            rightTriggerRotations += 'BUbBUb'
+            cubeList = list(self.rotate(rightTriggerRotations))
+        elif pieceAlignedWithCenterLocation == UBL:
+            rightTriggerRotations += 'FUfFUf'
+            cubeList = list(self.rotate(rightTriggerRotations))
+        elif pieceAlignedWithCenterLocation == UBR:
+            rightTriggerRotations += 'RUrRUr'
+            cubeList = list(self.rotate(rightTriggerRotations))
             
         return cubeList, rightTriggerRotations
     
