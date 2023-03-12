@@ -38,20 +38,21 @@ def alignToBottomCross(theCube):
     return bottomCrossCubeList
 
 def rotatePieceFromTopFaceToSideFace(cubeList):
-    DownFaceCorners = [DBL, DBR, DTL, DTR]
+   # DownFaceCorners = [DBL, DBR, DTL, DTR]
     topAndDownStackedCorners = [(UTL, DBL), (UTR, DBR), (UBL, DTL), (UBR, DTR)]
     rotationsBeforeTrigger = ''
     rotationsAfterTrigger = ''
     topToSideRotations = ''
-    
+
     for corners in topAndDownStackedCorners:
         if cubeList[corners[0]] == cubeList[DMM]:
             if(cubeList[corners[1]] != cubeList[DMM]):
                 cubeList, returnedRotations = Cube(''.join(cubeList)).rightTrigger(corners[0])
             elif cubeList[corners[1]] == cubeList[DMM]:
-                DownFaceCorner = 0
+                downFaceCorner = corners[1]
                 cornerToRotate = corners[0]
-                while cubeList[cornerToRotate] == DownFaceCorners[DownFaceCorner]:
+                while cubeList[cornerToRotate] == cubeList[downFaceCorner]:
+                    #updating the cornerToRotate location after each rotation
                     if cornerToRotate == UTL:
                         cornerToRotate = UTR
                     elif cornerToRotate == UTR:
@@ -61,7 +62,16 @@ def rotatePieceFromTopFaceToSideFace(cubeList):
                     elif cornerToRotate == UBL:
                         cornerToRotate = UTL
                     
-                    DownFaceCorner += 1
+                    #updating the DownFaceCorner location after each rotation
+                    if downFaceCorner == DBL:
+                        downFaceCorner = DBR
+                    elif downFaceCorner == DBR:
+                        downFaceCorner = DTR
+                    elif downFaceCorner == DTR:
+                        downFaceCorner = DTL
+                    elif downFaceCorner == DTL:
+                        downFaceCorner = DBL
+        
                     rotationsBeforeTrigger += 'U'
                     cubeList = Cube(''.join(cubeList)).rotate('U')
                 cubeList, returnedRotations = Cube(''.join(cubeList)).rightTrigger(cornerToRotate)
