@@ -103,9 +103,10 @@ class BottomLayerTest(unittest.TestCase):
     def test110_bottomLayer_rotatingCubeWithAllPiecesInTopLayerWhereRotationsSendAPieceTopFace(self):
         #encodedCube = 'bogogyogrwrogobyorbybybobbgobrbrywrywryrygwgogwgwwwrwy'
         encodedCube = 'wygrgbygbwyooogoorwgwybobbggybgrbyrrrrbryorbogwywwwowy'
-        expectedCube = 'ogbygrgggryggogoooyryybbbbboogyrrrrrbbrbyoyoywwwwwwwww'
+        expectedCube = 'byobgrgggbbyyoboooggyybobbbrgyyrorrrgrooyrrgywwwwwwwww'
         theCube = cube.Cube(encodedCube)
-        actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
+        rotationsReturned = bl.solveBottomLayer(theCube)[1]
+        actualRotatedCube = theCube.rotate(rotationsReturned)
         self.assertEquals(actualRotatedCube, expectedCube)
     
         
