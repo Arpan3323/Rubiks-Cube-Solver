@@ -18,7 +18,9 @@ def solveBottomLayer(theCube: Cube) -> str:
     if bc._verifyBottomCrossExists(cubeList) == False:
         cubeList = alignToBottomCross(theCube)
     
-    rotations = ''    
+    rotations = ''
+    rotationsIfAPieceIsLeftOnTop = ''
+     
     if _verifyBottomLayerExists(cubeList) == False:
         cubeList, TopLayerToBottomrotations = rotateTopLayerPieceToBottom(cubeList)
         cubeList, topFaceToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
