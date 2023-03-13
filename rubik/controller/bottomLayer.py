@@ -42,7 +42,7 @@ def alignToBottomCross(theCube):
     return bottomCrossCubeList
 
 def rotatePieceFromTopFaceToSideFace(cubeList):
-   # DownFaceCorners = [DBL, DBR, DTL, DTR]
+    # DownFaceCorners = [DBL, DBR, DTL, DTR]
     topAndDownStackedCorners = [(UTL, DBL), (UTR, DBR), (UBL, DTL), (UBR, DTR)]
     rotationsBeforeTrigger = ''
     rotationsAfterTrigger = ''
