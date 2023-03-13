@@ -89,7 +89,7 @@ class BottomLayerTest(unittest.TestCase):
         encodedCube = 'rgwogywgrbogboywobwoyrbyybgobygrgyrgbyorybgrorwbwwwowr'
         expectedCube = 'gggygroggrybgobooorogrbybbbybyorgrrbrbyyyroowywwwwwwww'
         theCube = cube.Cube(encodedCube)
-        actualRotatedCube = ''.join(bl.solveBottomLayer(list(encodedCube))[0])
+        actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
         self.assertEquals(actualRotatedCube, expectedCube)
     
         
