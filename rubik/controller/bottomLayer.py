@@ -21,15 +21,17 @@ def solveBottomLayer(theCube: Cube) -> str:
     rotations = ''    
     if _verifyBottomLayerExists(cubeList) == False:
         cubeList, rotations = rotateTopLayerPieceToBottom(cubeList)
+        cubeList, rotations = rotatePieceFromTopFaceToSideFace(cubeList)
        
     
-    return rotations
+    return cubeList, rotations
 
 def _verifyBottomLayerExists(cubeList):
-    bottomLayerExists = ((cubeList[FMM] in cubeList[FBL:FBR+1])and (cubeList[RMM] in cubeList[RBL:RBR+1]) and 
-                        (cubeList[BMM] in cubeList[BBL:BBR+1]) and (cubeList[LMM] in cubeList[LBL:LBR+1]) and
-                        (cubeList[DMM] in cubeList[DTL:DTR+1]) and (cubeList[DMM] in cubeList[DBL:DBR+1]) and
-                        (cubeList[DMM] in cubeList[DML]) and (cubeList[DMM] in cubeList[DMR]))
+    allPiecesFound = 3
+    bottomLayerExists = ((cubeList[FBL:FBR+1].count(cubeList[FMM]) == allPiecesFound)and (cubeList[RBL:RBR+1].count(cubeList[RMM]) == allPiecesFound) and 
+                        (cubeList[BBL:BBR+1].count(cubeList[BMM]) == allPiecesFound) and (cubeList[LBL:LBR+1].count(cubeList[LMM]) == allPiecesFound) and
+                        (cubeList[DTL:DTR+1].count(cubeList[DMM]) == allPiecesFound) and (cubeList[DBL:DBR+1].count(cubeList[DMM] ) == allPiecesFound) and
+                        (cubeList[DMM] == cubeList[DML]) and (cubeList[DMM] == cubeList[DMR]))
     return bottomLayerExists 
 
 def alignToBottomCross(theCube):
@@ -77,6 +79,8 @@ def rotatePieceFromTopFaceToSideFace(cubeList):
                 cubeList, returnedRotations = Cube(''.join(cubeList)).rightTrigger(cornerToRotate)
                 rotationsAfterTrigger += returnedRotations
                 topToSideRotations += rotationsBeforeTrigger + rotationsAfterTrigger
+    cubeList, Returnedrotations = rotateTopLayerPieceToBottom(cubeList)
+    topToSideRotations += Returnedrotations
 
     return cubeList, topToSideRotations
 
