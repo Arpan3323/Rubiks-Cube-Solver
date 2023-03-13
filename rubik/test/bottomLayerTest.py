@@ -133,7 +133,7 @@ class BottomLayerTest(unittest.TestCase):
     def test113_bottomLayer_CheckingSolveReturnsBottomLayerRotaions(self):
         parms = {}
         parms['cube'] = 'ryrgggggrwyboogboyoboybbobybywrrrgrwyowryobbgowywwwrwg'
--       result = solve(parms)
+        result = solve(parms)
         encodedCube = 'ryrgggggrwyboogboyoboybbobybywrrrgrwyowryobbgowywwwrwg'
         theCube = cube.Cube(encodedCube)
         bottomCrossRotations = bc.solveBottomCross(theCube)
