@@ -5,8 +5,10 @@ Created on Mar 9, 2023
 '''
 import unittest
 import rubik.controller.bottomLayer as bl
+import rubik.controller.bottomCross as bc
 import rubik.model.cube as cube
 from rubik.model.constants import *
+from rubik.view.solve import solve
 
 
 class BottomLayerTest(unittest.TestCase):
@@ -117,6 +119,19 @@ class BottomLayerTest(unittest.TestCase):
         rotationsReturned = bl.solveBottomLayer(theCube)[1]
         actualRotatedCube = theCube.rotate(rotationsReturned)
         self.assertEquals(actualRotatedCube, expectedCube)
+        
+    def test112_solve_CheckingSolveReturnsBottomLayerRotaions(self):
+        parms = {}
+        encodedCube = 'roorgywgryrygoogowryyybrbbwogbgrbgrbbbgoyyybgowwwwwowr'
+        parms['cube'] = 'roorgywgryrygoogowryyybrbbwogbgrbgrbbbgoyyybgowwwwwowr'
+        result = solve(parms)
+        theCube = cube.Cube(encodedCube)
+        bottomCrossRotations = bc.solveBottomCross(theCube)
+        cubeRotatedByBottomCross = theCube.rotate(bottomCrossRotations)
+        cubeRotationsByBottomLayer = bl.solveBottomLayer(cube.Cube(cubeRotatedByBottomCross)) 
+        self.assertEqual(bottomCrossRotations + cubeRotationsByBottomLayer, result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertEqual('', result['integrity'])
         
         
         
