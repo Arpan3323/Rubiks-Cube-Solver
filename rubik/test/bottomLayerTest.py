@@ -120,18 +120,14 @@ class BottomLayerTest(unittest.TestCase):
         actualRotatedCube = theCube.rotate(rotationsReturned)
         self.assertEquals(actualRotatedCube, expectedCube)
         
-    def test112_solve_CheckingSolveReturnsBottomLayerRotaions(self):
+    def test112_bottomLayer_CheckingSolveReturnsBottomLayerRotaions(self):
         parms = {}
-        encodedCube = 'wbwogybbrowroogbyrworrbyyrgbrobrgywywwgyyrbwgooygwgobg'
-        parms['cube'] = 'wbwogybbrowroogbyrworrbyyrgbrobrgywywwgyyrbwgooygwgobg'
-        result = solve(parms)
+        encodedCube = 'ryrgggggrwyboogboyoboybbobybywrrrgrwyowryobbgowywwwrwg'
+        expectedCube = 'yyyygrgggboogoyoooyrygbbbbboygorrrrrbbgoygrbrwwwwwwwww'
         theCube = cube.Cube(encodedCube)
-        bottomCrossRotations = bc.solveBottomCross(theCube)
-        cubeRotatedByBottomCross = theCube.rotate(bottomCrossRotations)
-        cubeRotationsByBottomLayer = bl.solveBottomLayer(cube.Cube(cubeRotatedByBottomCross))[1] 
-        self.assertEqual(bottomCrossRotations + cubeRotationsByBottomLayer, result['solution'])
-        self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])
+        rotationsReturned = bl.solveBottomLayer(theCube)[1]
+        actualRotatedCube = theCube.rotate(rotationsReturned)
+        self.assertEquals(actualRotatedCube, expectedCube)
         
         
         
