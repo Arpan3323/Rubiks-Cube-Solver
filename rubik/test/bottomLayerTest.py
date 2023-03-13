@@ -120,7 +120,7 @@ class BottomLayerTest(unittest.TestCase):
         actualRotatedCube = theCube.rotate(rotationsReturned)
         self.assertEquals(actualRotatedCube, expectedCube)
         
-    def test112_bottomLayer_CheckingSolveReturnsBottomLayerRotaions(self):
+    def test112_bottomLayer_aCubeWithOnlyBottomCross(self):
         parms = {}
         encodedCube = 'ryrgggggrwyboogboyoboybbobybywrrrgrwyowryobbgowywwwrwg'
         expectedCube = 'yyyygrgggboogoyoooyrygbbbbboygorrrrrbbgoygrbrwwwwwwwww'
@@ -130,7 +130,7 @@ class BottomLayerTest(unittest.TestCase):
         self.assertEquals(actualRotatedCube, expectedCube)
         
         
-    def test113_bottomLayer_CheckingSolveReturnsBottomLayerRotaions(self):
+    def test113_solve_checkingSolveReturnsBottomLayerRotaions(self):
         parms = {}
         parms['cube'] = 'ryrgggggrwyboogboyoboybbobybywrrrgrwyowryobbgowywwwrwg'
         result = solve(parms)
@@ -142,6 +142,16 @@ class BottomLayerTest(unittest.TestCase):
         self.assertEqual(bottomCrossRotations + cubeRotationsByBottomLayer, result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
+        
+    def test114_bottomLayer_rotatingCubeThatWillLeaveTopFaceWithOneCornerAfterEveryhtingElseIsAligned(self):
+        parms = {}
+        encodedCube = 'yyyrggbggroooobwoogbrybrbbybobgryorrwrwbyyoggywrwwwgww'
+        expectedCube = 'ggybgogggrgyyobooobroybbbbbbyyorrrrryyrgyoorgwwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotationsReturned = bl.solveBottomLayer(theCube)[1]
+        actualRotatedCube = theCube.rotate(rotationsReturned)
+        self.assertEquals(actualRotatedCube, expectedCube)
+        #encodedCube = 'grbbgwwborrorogyywyyrwborwoborgrobbowggyygybygwbywrwog'
         
         
         
