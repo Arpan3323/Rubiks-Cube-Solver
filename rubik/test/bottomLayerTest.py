@@ -85,16 +85,25 @@ class BottomLayerTest(unittest.TestCase):
         actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
         self.assertEquals(actualRotatedCube, expectedCube)
         
+    '''This test does not work anymore as the method it was testing has advanced to its next stage
     def test108_bottomLayer_rotateOneBottomLayerPieceToTopFace(self):
         encodedCube = 'rgwogywgrbogboywobwoyrbyybgobygrgyrgbyorybgrorwbwwwowr'
         expectedCube = 'gggygroggrybgobooorogrbybbbybyorgrrbrbyyyroowywwwwwwww'
         theCube = cube.Cube(encodedCube)
         actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
-        self.assertEquals(actualRotatedCube, expectedCube)
+        self.assertEquals(actualRotatedCube, expectedCube)'''
         
-    def test108_bottomLayer_rotateOneBottomLayerPieceToTopFaceAndThenToBottom(self):
+    def test109_bottomLayer_rotateOneBottomLayerPieceToTopFaceAndThenToBottom(self):
         encodedCube = 'bogogywgrwoyboywobobyrbyybgrgwgrgyrggrbryyoborwbwwwowr'
         expectedCube = 'booygrgggygygobooooygrbybbbybyorrrrrrgbyyorbgwwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
+        self.assertEquals(actualRotatedCube, expectedCube)
+        
+    def test110_bottomLayer_rotatingCubeWithAllPiecesInTopLayerWhereRotationsSendAPieceTopFace(self):
+        #encodedCube = 'bogogyogrwrogobyorbybybobbgobrbrywrywryrygwgogwgwwwrwy'
+        encodedCube = 'wygrgbygbwyooogoorwgwybobbggybgrbyrrrrbryorbogwywwwowy'
+        expectedCube = 'ogbygrgggryggogoooyryybbbbboogyrrrrrbbrbyoyoywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
         self.assertEquals(actualRotatedCube, expectedCube)
