@@ -153,7 +153,14 @@ class BottomLayerTest(unittest.TestCase):
         self.assertEquals(actualRotatedCube, expectedCube)
         #encodedCube = 'grbbgwwborrorogyywyyrwborwoborgrobbowggyygybygwbywrwog'
         
-        
+    def test115_bottomLayer_rotatingCubeThatWillLeaveBottomLayerWithOneCornerAfterEveryhtingElseIsAligned(self):
+        parms = {}
+        encodedCube = 'oowggyygorgrgoygobwbrrbowbrgbwbrrbroyrgyyogybbwywwwywo'
+        expectedCube = 'yyyogbgggbbbroyoooyyyobgbbbryorrgrrrggoryogbrwwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotationsReturned = bl.solveBottomLayer(theCube)[1]
+        actualRotatedCube = theCube.rotate(rotationsReturned)
+        self.assertEquals(actualRotatedCube, expectedCube)
         
         
         
