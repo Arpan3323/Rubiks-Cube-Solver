@@ -20,8 +20,9 @@ def solveBottomLayer(theCube: Cube) -> str:
     
     rotations = ''    
     if _verifyBottomLayerExists(cubeList) == False:
-        cubeList, rotations = rotateTopLayerPieceToBottom(cubeList)
-        cubeList, rotations = rotatePieceFromTopFaceToSideFace(cubeList)
+        cubeList, TopLayerToBottomrotations = rotateTopLayerPieceToBottom(cubeList)
+        cubeList, topFaceToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
+        rotations += TopLayerToBottomrotations + topFaceToSideRotations
        
     
     return cubeList, rotations
