@@ -91,6 +91,13 @@ class BottomLayerTest(unittest.TestCase):
         theCube = cube.Cube(encodedCube)
         actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
         self.assertEquals(actualRotatedCube, expectedCube)
+        
+    def test108_bottomLayer_rotateOneBottomLayerPieceToTopFaceAndThenToBottom(self):
+        encodedCube = 'bogogywgrwoyboywobobyrbyybgrgwgrgyrggrbryyoborwbwwwowr'
+        expectedCube = 'booygrgggygygobooooygrbybbbybyorrrrrrgbyyorbgwwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        actualRotatedCube = ''.join(bl.solveBottomLayer(theCube)[0])
+        self.assertEquals(actualRotatedCube, expectedCube)
     
         
         
