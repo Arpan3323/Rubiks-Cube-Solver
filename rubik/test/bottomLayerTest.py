@@ -128,7 +128,7 @@ class BottomLayerTest(unittest.TestCase):
         theCube = cube.Cube(encodedCube)
         bottomCrossRotations = bc.solveBottomCross(theCube)
         cubeRotatedByBottomCross = theCube.rotate(bottomCrossRotations)
-        cubeRotationsByBottomLayer = bl.solveBottomLayer(cube.Cube(cubeRotatedByBottomCross)) 
+        cubeRotationsByBottomLayer = bl.solveBottomLayer(cube.Cube(cubeRotatedByBottomCross))[1] 
         self.assertEqual(bottomCrossRotations + cubeRotationsByBottomLayer, result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
