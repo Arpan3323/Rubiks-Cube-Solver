@@ -186,30 +186,7 @@ def _daisyFormation(theCube):
 #this method does not perform any rotations on the cube but returns the rotation 
 def _alignDaisyBottomEdge(cubeList):
     rotation = ''
-    edgeLocation = []
-    
-    faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
-                (cubeList[RTM], cubeList[RML], cubeList[RMR], cubeList[RBM], 'R'),
-                (cubeList[BTM], cubeList[BML], cubeList[BMR], cubeList[BBM], 'B'),
-                (cubeList[LTM], cubeList[LML], cubeList[LMR], cubeList[LBM], 'L'),
-                (cubeList[DTM], cubeList[DML], cubeList[DMR], cubeList[DBM], 'D')]
-    
-    for edge in faceEdges:
-        if (edge[0] == cubeList[DMM]) and len(edgeLocation) == 0:
-            edgeFace = edge[4]
-            edgeLocation.append(edge[0])
-            
-        elif (edge[1] == cubeList[DMM]) and len(edgeLocation) == 0:
-            edgeFace = edge[4]
-            edgeLocation.append(edge[1]) 
-            
-        elif (edge[2] == cubeList[DMM]) and len(edgeLocation) == 0:
-            edgeFace = edge[4]
-            edgeLocation.append(edge[2]) 
-
-        elif (edge[3] == cubeList[DMM]) and len(edgeLocation) == 0:
-            edgeFace = edge[4]
-            edgeLocation.append(edge[3])
+    edgeLocation = locateNeededEdge(cubeList)
             
     #if the needed edge is on front face
     if edgeLocation[0] == cubeList[FTM]:
@@ -281,6 +258,33 @@ def _alignDaisyBottomEdge(cubeList):
         rotation += 'UUBBUU'
         
     return rotation
+
+def locateNeededEdge(cubeList):
+    edgeLocation = []
+    
+    faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
+                (cubeList[RTM], cubeList[RML], cubeList[RMR], cubeList[RBM], 'R'),
+                (cubeList[BTM], cubeList[BML], cubeList[BMR], cubeList[BBM], 'B'),
+                (cubeList[LTM], cubeList[LML], cubeList[LMR], cubeList[LBM], 'L'),
+                (cubeList[DTM], cubeList[DML], cubeList[DMR], cubeList[DBM], 'D')]
+    
+    for edge in faceEdges:
+        if (edge[0] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[0])
+            
+        elif (edge[1] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[1]) 
+            
+        elif (edge[2] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[2]) 
+
+        elif (edge[3] == cubeList[DMM]) and len(edgeLocation) == 0:
+            edgeFace = edge[4]
+            edgeLocation.append(edge[3])
+    return edgeLocation
          
     
     
