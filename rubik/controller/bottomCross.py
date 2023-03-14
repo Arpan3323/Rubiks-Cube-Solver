@@ -69,66 +69,8 @@ def _daisyFormation(theCube):
     daisyPetals = topEdges.count(cubeList[DMM])
     
     #Checking if UBM petal is missing
-    cubeList = alignPetalToTopBottomMiddle(theCube, bottomPetalRotation, rightPetalRotation, topPetalRotation, leftPetalRotation, algorithmRotationOne, algorithmRotationTwo, algorithmRotationThree, cubeList, topEdges, daisyPetals)
-    
-    rotation += bottomPetalRotation + algorithmRotationOne + \
-    rightPetalRotation + algorithmRotationTwo + \
-    topPetalRotation + algorithmRotationThree + \
-    leftPetalRotation 
-                
-    #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
-    #front face  
-    while (cubeList[UBM] != cubeList[DMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    while(cubeList[FTM] != cubeList[FMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    if (cubeList[FTM] == cubeList[FMM]):
-        rotation += 'FF'
-        cubeList = list(theCube.rotate('FF'))
-    
-    #right face
-    while (cubeList[UMR] != cubeList[DMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    while(cubeList[RTM] != cubeList[RMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    if (cubeList[RTM] == cubeList[RMM]):
-        rotation += 'RR'
-        cubeList = list(theCube.rotate('RR'))
-    
-    #back face
-    while (cubeList[UTM] != cubeList[DMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    while(cubeList[BTM] != cubeList[BMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    #this addition will allow the failing customer acceptance test to pass
-    if (cubeList[UTM] != cubeList[DMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-        
-    if (cubeList[BTM] == cubeList[BMM]):
-        rotation += 'BB'
-        cubeList = list(theCube.rotate('BB'))
-    
-    #left face
-    while (cubeList[UML] != cubeList[DMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    while(cubeList[LTM] != cubeList[LMM]):
-        rotation += 'U'
-        cubeList = list(theCube.rotate('U'))
-    if (cubeList[LTM] == cubeList[LMM]):
-        rotation += 'LL'
-        cubeList = list(theCube.rotate('LL'))
-    return rotation
-
-def alignPetalToTopBottomMiddle(theCube, bottomPetalRotation, rightPetalRotation, topPetalRotation, leftPetalRotation, algorithmRotationOne, algorithmRotationTwo, algorithmRotationThree, cubeList, topEdges, daisyPetals):
     if daisyPetals <= 3 and topEdges[0] != cubeList[DMM]:
+        
         bottomPetalRotation += _alignDaisyBottomEdge(cubeList)
         cubeList = list(theCube.rotate(bottomPetalRotation))
         
@@ -138,6 +80,7 @@ def alignPetalToTopBottomMiddle(theCube, bottomPetalRotation, rightPetalRotation
     
     #Checking if UMR petal is missing
     if daisyPetals <= 3 and topEdges[1] != cubeList[DMM]:
+        
         #rotating U to get missing petal from UMR to UBM
         algorithmRotationOne += 'U'
         cubeList = list(theCube.rotate('U'))
@@ -152,6 +95,7 @@ def alignPetalToTopBottomMiddle(theCube, bottomPetalRotation, rightPetalRotation
     
     #Checking if UTM petal is missing    
     if daisyPetals <= 3 and topEdges[2] != cubeList[DMM]:
+        
         #rotating UU to get missing petal from UTM to UBM
         algorithmRotationTwo += 'UU'
         cubeList = list(theCube.rotate('UU'))
@@ -166,6 +110,7 @@ def alignPetalToTopBottomMiddle(theCube, bottomPetalRotation, rightPetalRotation
         
     #Checking if UML is missing, if not, check if UMR is missing
     if daisyPetals <= 3:
+        
         #rotating u to get missing petal from UML to UBM
         if topEdges[3] != cubeList[DMM]:
             algorithmRotationThree += 'u'
@@ -181,7 +126,73 @@ def alignPetalToTopBottomMiddle(theCube, bottomPetalRotation, rightPetalRotation
         #After placing the missing petal in UBM spot again running it through the method that aligns bottom petal
         leftPetalRotation += _alignDaisyBottomEdge(cubeList)
         cubeList = list(theCube.rotate(leftPetalRotation))
-    return cubeList
+    
+    rotation += bottomPetalRotation + algorithmRotationOne + \
+    rightPetalRotation + algorithmRotationTwo + \
+    topPetalRotation + algorithmRotationThree + \
+    leftPetalRotation 
+                
+    #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
+    rotation += alignSideEdgesToBottomCross(theCube, cubeList)
+
+    #rotation += alignSideEdgesToBottomCross(cubeList)
+
+
+    return rotation
+
+def alignSideEdgesToBottomCross(theCube, cubeList):
+    rotationsToAlignSideEdges = ''
+    
+    #front face  
+    while (cubeList[UBM] != cubeList[DMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    while(cubeList[FTM] != cubeList[FMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    if (cubeList[FTM] == cubeList[FMM]):
+        rotationsToAlignSideEdges += 'FF'
+        cubeList = list(theCube.rotate('FF'))
+    
+    #right face
+    while (cubeList[UMR] != cubeList[DMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    while(cubeList[RTM] != cubeList[RMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    if (cubeList[RTM] == cubeList[RMM]):
+        rotationsToAlignSideEdges += 'RR'
+        cubeList = list(theCube.rotate('RR'))
+    
+    #back face
+    while (cubeList[UTM] != cubeList[DMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    while(cubeList[BTM] != cubeList[BMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    #this addition will allow the failing customer acceptance test to pass
+    if (cubeList[UTM] != cubeList[DMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+        
+    if (cubeList[BTM] == cubeList[BMM]):
+        rotationsToAlignSideEdges += 'BB'
+        cubeList = list(theCube.rotate('BB'))
+    
+    #left face
+    while (cubeList[UML] != cubeList[DMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    while(cubeList[LTM] != cubeList[LMM]):
+        rotationsToAlignSideEdges += 'U'
+        cubeList = list(theCube.rotate('U'))
+    if (cubeList[LTM] == cubeList[LMM]):
+        rotationsToAlignSideEdges += 'LL'
+        cubeList = list(theCube.rotate('LL'))
+    
+    return rotationsToAlignSideEdges
 
 #this method does not perform any rotations on the cube but returns the rotation 
 def _alignDaisyBottomEdge(cubeList):
