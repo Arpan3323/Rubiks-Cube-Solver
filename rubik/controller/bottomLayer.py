@@ -131,6 +131,11 @@ def alignTopLayerPieceWithCenter(cubeList):
             requiredTopLayerPiece.append(pair[1])
             topLayerPieceToAlignWithCenter = pair[0]
 
+    cubeList, topLayerPieceToAlignWithCenter = rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations)
+
+    return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
+
+def rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations):
     if cubeList[topLayerPieceToAlignWithCenter] == cubeList[FMM]:
         while topLayerPieceToAlignWithCenter not in [FTR, FTL]:
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
@@ -154,13 +159,12 @@ def alignTopLayerPieceWithCenter(cubeList):
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
             cubeList =  list(Cube(''.join(cubeList)).rotate('u'))
             alignTopLayerRotations += 'u'
-
-    return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
+    return cubeList,topLayerPieceToAlignWithCenter
 
 def pieceLocationAfterRotation(topLayerPieceToAlignWithCenter):
     if topLayerPieceToAlignWithCenter == LTL:
         topLayerPieceToAlignWithCenter = FTL  
-        
+
     elif topLayerPieceToAlignWithCenter == LTR:
         topLayerPieceToAlignWithCenter = FTR
         
@@ -171,39 +175,46 @@ def pieceLocationAfterRotation(topLayerPieceToAlignWithCenter):
 
 
 def rotateBottomLayerPieceToTopFace(cubeList):
-
+    bottomLayerRotations = ''
     while(cubeList[DMM] in cubeList[FBL:FBR+1] or cubeList[DMM] in cubeList[RBL:RBR+1] or 
           cubeList[DMM] in cubeList[BBL:BBR+1] or cubeList[DMM] in cubeList[LBL:LBR+1]):
         
         if cubeList[DMM] == cubeList[FBL]:
-            cubeList = triggerBottomLayerPiece(cubeList, FBL)[0]
-
+            cubeList, returnedRotations  = triggerBottomLayerPiece(cubeList, FBL)
+            bottomLayerRotations += returnedRotations
+        
         elif cubeList[DMM] == cubeList[FBR]:
-            cubeList = triggerBottomLayerPiece(cubeList, FBR)[0]
+            cubeList, returnedRotations = triggerBottomLayerPiece(cubeList, FBR)
+            bottomLayerRotations += returnedRotations
 
         elif cubeList[DMM] == cubeList[RBL]:
-            cubeList = triggerBottomLayerPiece(cubeList, RBL)[0]
+            cubeList, returnedRotations = triggerBottomLayerPiece(cubeList, RBL)
+            bottomLayerRotations += returnedRotations
 
         elif cubeList[DMM] == cubeList[RBR]:
-            cubeList = triggerBottomLayerPiece(cubeList, RBR)[0]
+            cubeList, returnedRotations = triggerBottomLayerPiece(cubeList, RBR)
+            bottomLayerRotations += returnedRotations
 
         elif cubeList[DMM] == cubeList[BBL]:
-            cubeList = triggerBottomLayerPiece(cubeList, BBL)[0]
+            cubeList, returnedRotations = triggerBottomLayerPiece(cubeList, BBL)
+            bottomLayerRotations += returnedRotations
 
         elif cubeList[DMM] == cubeList[BBR]:
-            cubeList = triggerBottomLayerPiece(cubeList, BBR)[0]
+            cubeList, returnedRotations = triggerBottomLayerPiece(cubeList, BBR)
+            bottomLayerRotations += returnedRotations
 
         elif cubeList[DMM] == cubeList[LBL]:
-            cubeList = triggerBottomLayerPiece(cubeList, LBL)[0]
+            cubeList, returnedRotations = triggerBottomLayerPiece(cubeList, LBL)
+            bottomLayerRotations += returnedRotations
 
         elif cubeList[DMM] == cubeList[LBR]:
-            cubeList = triggerBottomLayerPiece(cubeList, LBR)[0]
+            cubeList,returnedRotations = triggerBottomLayerPiece(cubeList, LBR)
+            bottomLayerRotations += returnedRotations
 
-        bottomLayerRotations = rotatePieceFromTopFaceToSideFace(cubeList)[1]
     return cubeList, bottomLayerRotations
 
 def triggerBottomLayerPiece(cubeList, pieceLocation):
-    #bottomLayerToTopFaceRotations = ''
+    bottomLayerToTopFaceRotations = ''
     if pieceLocation in [FBL, RBL, BBL, LBL]:
         cubeList, triggerRotations = Cube(''.join(cubeList)).leftTrigger(pieceLocation)
 
