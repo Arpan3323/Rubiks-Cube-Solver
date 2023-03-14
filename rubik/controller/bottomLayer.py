@@ -34,16 +34,20 @@ def solveBottomLayer(theCube: Cube) -> str:
 
 def _verifyBottomLayerExists(cubeList):
     allPiecesFound = 3
-    bottomLayerExists = ((cubeList[FBL:FBR+1].count(cubeList[FMM]) == allPiecesFound)and (cubeList[RBL:RBR+1].count(cubeList[RMM]) == allPiecesFound) and 
-                        (cubeList[BBL:BBR+1].count(cubeList[BMM]) == allPiecesFound) and (cubeList[LBL:LBR+1].count(cubeList[LMM]) == allPiecesFound) and
-                        (cubeList[DTL:DTR+1].count(cubeList[DMM]) == allPiecesFound) and (cubeList[DBL:DBR+1].count(cubeList[DMM] ) == allPiecesFound) and
-                        (cubeList[DMM] == cubeList[DML]) and (cubeList[DMM] == cubeList[DMR]))
-    return bottomLayerExists 
+    return (
+        (cubeList[FBL : FBR + 1].count(cubeList[FMM]) == allPiecesFound)
+        and (cubeList[RBL : RBR + 1].count(cubeList[RMM]) == allPiecesFound)
+        and (cubeList[BBL : BBR + 1].count(cubeList[BMM]) == allPiecesFound)
+        and (cubeList[LBL : LBR + 1].count(cubeList[LMM]) == allPiecesFound)
+        and (cubeList[DTL : DTR + 1].count(cubeList[DMM]) == allPiecesFound)
+        and (cubeList[DBL : DBR + 1].count(cubeList[DMM]) == allPiecesFound)
+        and (cubeList[DMM] == cubeList[DML])
+        and (cubeList[DMM] == cubeList[DMR])
+    ) 
 
 def alignToBottomCross(theCube):
     bottomCrossRotations = bc.solveBottomCross(theCube)
-    bottomCrossCubeList = list(theCube.get())
-    return bottomCrossCubeList
+    return list(theCube.get())
 
 def rotatePieceFromTopFaceToSideFace(cubeList):
     # DownFaceCorners = [DBL, DBR, DTL, DTR]
@@ -169,35 +173,45 @@ def pieceLocationAfterRotation(topLayerPieceToAlignWithCenter):
 
 def rotateBottomLayerPieceToTopFace(cubeList):
     bottomLayerToTopFaceRotations = ''
-    while(cubeList[DMM] in cubeList[FBL:FBR+1] or cubeList[DMM] in cubeList[RBL:RBR+1] or cubeList[DMM] in cubeList[BBL:BBR+1] or cubeList[DMM] in cubeList[LBL:LBR+1]):
+
+    while(cubeList[DMM] in cubeList[FBL:FBR+1] or cubeList[DMM] in cubeList[RBL:RBR+1] or 
+          cubeList[DMM] in cubeList[BBL:BBR+1] or cubeList[DMM] in cubeList[LBL:LBR+1]):
+        
         if cubeList[DMM] == cubeList[FBL]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).leftTrigger(FBL)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
             bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
+
         elif cubeList[DMM] == cubeList[FBR]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).rightTrigger(FBR)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
             bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
+
         elif cubeList[DMM] == cubeList[RBL]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).leftTrigger(RBL)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
             bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
+
         elif cubeList[DMM] == cubeList[RBR]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).rightTrigger(RBR)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
             bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
+
         elif cubeList[DMM] == cubeList[BBL]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).leftTrigger(BBL)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
             bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
+
         elif cubeList[DMM] == cubeList[BBR]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).rightTrigger(BBR)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
             bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
+
         elif cubeList[DMM] == cubeList[LBL]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).leftTrigger(LBL)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
             bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
+            
         elif cubeList[DMM] == cubeList[LBR]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).rightTrigger(LBR)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
