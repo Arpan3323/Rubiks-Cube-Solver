@@ -184,7 +184,7 @@ def pieceLocationAfterRotation(topLayerPieceToAlignWithCenter):
 
 def rotateBottomLayerPieceToTopFace(cubeList):
     bottomLayerToTopFaceRotations = ''
-    while(cubeList[DMM] in cubeList[FBL:FBR+1] or cubeList[DMM] in cubeList[RBL:RBR+1] or cubeList[DMM] in cubeList[BBR:BBR+1] or cubeList[DMM] in cubeList[LBL:LBR+1]):
+    while(cubeList[DMM] in cubeList[FBL:FBR+1] or cubeList[DMM] in cubeList[RBL:RBR+1] or cubeList[DMM] in cubeList[BBL:BBR+1] or cubeList[DMM] in cubeList[LBL:LBR+1]):
         if cubeList[DMM] == cubeList[FBL]:
             cubeList, triggerRotations = Cube(''.join(cubeList)).leftTrigger(FBL)
             cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
