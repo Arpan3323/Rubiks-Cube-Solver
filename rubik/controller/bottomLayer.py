@@ -177,11 +177,11 @@ def rotateBottomLayerPieceToTopFace(cubeList):
     while(cubeList[DMM] in cubeList[FBL:FBR+1] or cubeList[DMM] in cubeList[RBL:RBR+1] or 
           cubeList[DMM] in cubeList[BBL:BBR+1] or cubeList[DMM] in cubeList[LBL:LBR+1]):
         for piece in cornerPieces:
-            if piece in [FBL, RBL, BBL, LBL]:
+            if piece in [FBL, RBL, BBL, LBL] and cubeList[piece] == cubeList[DMM]:
                 cubeList, triggerRotations = Cube(''.join(cubeList)).leftTrigger(piece)
                 cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
                 bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
-            elif piece in [FBR, RBR, BBR, LBR]:
+            elif piece in [FBR, RBR, BBR, LBR] and cubeList[piece] == cubeList[DMM]:
                 cubeList, triggerRotations = Cube(''.join(cubeList)).rightTrigger(piece)
                 cubeList, topToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
                 bottomLayerToTopFaceRotations += triggerRotations + topToSideRotations
