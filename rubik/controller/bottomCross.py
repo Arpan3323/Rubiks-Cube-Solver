@@ -135,9 +135,6 @@ def _daisyFormation(theCube):
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
     rotation += alignSideEdgesToBottomCross(theCube, cubeList)
 
-    #rotation += alignSideEdgesToBottomCross(cubeList)
-
-
     return rotation
 
 def alignSideEdgesToBottomCross(theCube, cubeList):
@@ -172,7 +169,7 @@ def alignSideEdgesToBottomCross(theCube, cubeList):
     while(cubeList[BTM] != cubeList[BMM]):
         rotationsToAlignSideEdges += 'U'
         cubeList = list(theCube.rotate('U'))
-    #this addition will allow the failing customer acceptance test to pass
+
     if (cubeList[UTM] != cubeList[DMM]):
         rotationsToAlignSideEdges += 'U'
         cubeList = list(theCube.rotate('U'))
