@@ -132,6 +132,11 @@ def alignTopLayerPieceWithCenter(cubeList):
             requiredTopLayerPiece.append(pair[1])
             topLayerPieceToAlignWithCenter = pair[0]
 
+    cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations = rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations)
+
+    return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
+
+def rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations):
     if cubeList[topLayerPieceToAlignWithCenter] == cubeList[FMM]:
         while topLayerPieceToAlignWithCenter not in [FTR, FTL]:
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
@@ -155,8 +160,7 @@ def alignTopLayerPieceWithCenter(cubeList):
             topLayerPieceToAlignWithCenter = pieceLocationAfterRotation(topLayerPieceToAlignWithCenter)
             cubeList =  list(Cube(''.join(cubeList)).rotate('u'))
             alignTopLayerRotations += 'u'
-
-    return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
+    return cubeList,topLayerPieceToAlignWithCenter, alignTopLayerRotations
 
 def pieceLocationAfterRotation(topLayerPieceToAlignWithCenter):
     if topLayerPieceToAlignWithCenter == LTL:
