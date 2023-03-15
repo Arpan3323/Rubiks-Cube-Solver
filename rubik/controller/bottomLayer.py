@@ -140,11 +140,7 @@ def alignTopLayerPieceWithCenter(cubeList):
             topLayerPieceToAlignWithCenter = pair[0]
     
     #this is a single line of code exceeding 100 chars thus line breaks
-    cubeList, 
-    topLayerPieceToAlignWithCenter, 
-    alignTopLayerRotations = rotateTopLayerPieceToCenter(cubeList, 
-                                                         topLayerPieceToAlignWithCenter,
-                                                         alignTopLayerRotations)
+    cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations = rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations)
 
     return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
 
