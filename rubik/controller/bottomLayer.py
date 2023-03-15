@@ -33,10 +33,7 @@ def solveBottomLayer(theCube: Cube) -> str:
         while cubeList[DMM] in cubeList[UTL:UTR+1] or cubeList[DMM] in cubeList[UBL:UBR+1]:
             cubeList, rotationsIfAPieceIsLeftOnTop = rotatePieceFromTopFaceToSideFace(cubeList)
             
-        rotations += TopLayerToBottomrotations 
-        + topFaceToSideRotations 
-        + bottomLayerRotations 
-        + rotationsIfAPieceIsLeftOnTop
+        rotations += TopLayerToBottomrotations + topFaceToSideRotations + bottomLayerRotations + rotationsIfAPieceIsLeftOnTop
        
     
     return cubeList, rotations
