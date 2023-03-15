@@ -23,12 +23,20 @@ def solveBottomLayer(theCube: Cube) -> str:
     rotationsIfAPieceIsLeftOnTop = ''
      
     if _verifyBottomLayerExists(cubeList) == False:
+        
         cubeList, TopLayerToBottomrotations = rotateTopLayerPieceToBottom(cubeList)
         cubeList, topFaceToSideRotations = rotatePieceFromTopFaceToSideFace(cubeList)
         cubeList, bottomLayerRotations = rotateBottomLayerPieceToTopFace(cubeList)
+        
+        #in some cases, a corner piece is left on top even after above code is executed
+        #the while loop below handles that
         while cubeList[DMM] in cubeList[UTL:UTR+1] or cubeList[DMM] in cubeList[UBL:UBR+1]:
             cubeList, rotationsIfAPieceIsLeftOnTop = rotatePieceFromTopFaceToSideFace(cubeList)
-        rotations += TopLayerToBottomrotations + topFaceToSideRotations + bottomLayerRotations + rotationsIfAPieceIsLeftOnTop
+            
+        rotations += TopLayerToBottomrotations 
+        + topFaceToSideRotations 
+        + bottomLayerRotations 
+        + rotationsIfAPieceIsLeftOnTop
        
     
     return cubeList, rotations
@@ -51,7 +59,6 @@ def alignToBottomCross(theCube):
     return list(theCube.get())
 
 def rotatePieceFromTopFaceToSideFace(cubeList):
-    # DownFaceCorners = [DBL, DBR, DTL, DTR]
     topAndDownStackedCorners = [(UTL, DBL), (UTR, DBR), (UBL, DTL), (UBR, DTR)]
     rotationsBeforeTrigger = ''
     rotationsAfterTrigger = ''
@@ -131,8 +138,13 @@ def alignTopLayerPieceWithCenter(cubeList):
         elif cubeList[pair[1]] == cubeList[DMM] and not requiredTopLayerPiece: 
             requiredTopLayerPiece.append(pair[1])
             topLayerPieceToAlignWithCenter = pair[0]
-
-    cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations = rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations)
+    
+    #this is a single line of code exceeding 100 chars thus line breaks
+    cubeList, 
+    topLayerPieceToAlignWithCenter, 
+    alignTopLayerRotations = rotateTopLayerPieceToCenter(cubeList, 
+                                                         topLayerPieceToAlignWithCenter,
+                                                         alignTopLayerRotations)
 
     return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
 

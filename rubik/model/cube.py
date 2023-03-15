@@ -86,38 +86,37 @@ class Cube:
     def leftTrigger(self, leftTriggerPieceLocation):
         cubeList = list(self.cube)
         leftTriggerRotations = ''
-        if leftTriggerPieceLocation == FTL or leftTriggerPieceLocation == FBL:
+        if leftTriggerPieceLocation in [FTL, FBL]:
             leftTriggerRotations += 'luL'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation == RTL or leftTriggerPieceLocation == RBL:
+        elif leftTriggerPieceLocation in [RTL, RBL]:
             leftTriggerRotations += 'fuF'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation == BTL or leftTriggerPieceLocation == BBL:
+        elif leftTriggerPieceLocation in [BTL, BBL]:
             leftTriggerRotations += 'ruR'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation == LTL or leftTriggerPieceLocation == LBL:
+        elif leftTriggerPieceLocation in [LTL, LBL]:
             leftTriggerRotations += 'buB'
             cubeList = list(self.rotate(leftTriggerRotations))
-            
+
         return cubeList, leftTriggerRotations
     
     def rightTrigger(self, rightTriggerPieceLocation):
         cubeList = list(self.cube)
         rightTriggerRotations = ''
-        if rightTriggerPieceLocation == FTR or rightTriggerPieceLocation == FBR:
+        if rightTriggerPieceLocation in [FTR, FBR]:
             rightTriggerRotations += 'RUr'
             cubeList = list(self.rotate(rightTriggerRotations))
-        elif rightTriggerPieceLocation == RTR or rightTriggerPieceLocation == RBR:
+        elif rightTriggerPieceLocation in [RTR, RBR]:
             rightTriggerRotations += 'BUb'
             cubeList = list(self.rotate(rightTriggerRotations))
-        elif rightTriggerPieceLocation == BTR or rightTriggerPieceLocation == BBR:
+        elif rightTriggerPieceLocation in [BTR, BBR]:
             rightTriggerRotations += 'LUl'
             cubeList = list(self.rotate(rightTriggerRotations))
-        elif rightTriggerPieceLocation == LTR or rightTriggerPieceLocation == LBR:
+        elif rightTriggerPieceLocation in [LTR, LBR]:
             rightTriggerRotations += 'FUf'
             cubeList = list(self.rotate(rightTriggerRotations))
-        
-        #top face to side face
+
         elif rightTriggerPieceLocation == UTL:
             rightTriggerRotations += 'LUlLUl'
             cubeList = list(self.rotate(rightTriggerRotations))
@@ -130,7 +129,7 @@ class Cube:
         elif rightTriggerPieceLocation == UBR:
             rightTriggerRotations += 'RUrRUr'
             cubeList = list(self.rotate(rightTriggerRotations))
-            
+
         return cubeList, rightTriggerRotations
     
     
