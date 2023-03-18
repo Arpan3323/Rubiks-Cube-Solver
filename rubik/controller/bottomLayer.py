@@ -131,7 +131,9 @@ def _alignTopLayerPieceWithCenter(cubeList):
             requiredTopLayerPiece.append(pair[1])
             topLayerPieceToAlignWithCenter = pair[0]
     
-    cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations = _rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations)
+    cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations = _rotateTopLayerPieceToCenter(cubeList, 
+                                                                                                    topLayerPieceToAlignWithCenter, 
+                                                                                                    alignTopLayerRotations)
 
     return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
 
