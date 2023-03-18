@@ -73,6 +73,8 @@ def _rotatePieceFromTopFaceToSideFace(cubeList):
 
     return cubeList, topToSideRotations
 
+#After the top face is rotated 'U' this finction returns the new location of the corner piece as well as the new location
+#of the down face corner piece that is right below the top face corner piece
 def _stackedCornerLocation(downFaceCorner, cornerToRotate):
     if cornerToRotate == UTL:
         cornerToRotate = UTR
@@ -128,11 +130,11 @@ def _alignTopLayerPieceWithCenter(cubeList):
             requiredTopLayerPiece.append(pair[1])
             topLayerPieceToAlignWithCenter = pair[0]
     
-    #this is a single line of code exceeding 100 chars thus line breaks
     cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations = _rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations)
 
     return cubeList, alignTopLayerRotations, topLayerPieceToAlignWithCenter
 
+#rotates the adjacent top layer corner piece to the face with appropriate center so a trigger can be performed 
 def _rotateTopLayerPieceToCenter(cubeList, topLayerPieceToAlignWithCenter, alignTopLayerRotations):
     if cubeList[topLayerPieceToAlignWithCenter] == cubeList[FMM]:
         while topLayerPieceToAlignWithCenter not in [FTR, FTL]:
