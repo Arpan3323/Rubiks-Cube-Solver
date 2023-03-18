@@ -8,7 +8,7 @@ def solveBottomCross(theCube: Cube) -> str:
     rotation = ''       
        
     #If bottom cross exists return no rotations   
-    if _verifyBottomCrossExists(cubeList):
+    if verifyBottomCrossExists(cubeList):
         rotation += ''
         return rotation
     
@@ -39,7 +39,7 @@ def solveBottomCross(theCube: Cube) -> str:
         
 
 #return true if the bottom cross exists otherwise return false
-def _verifyBottomCrossExists(cubeList):
+def verifyBottomCrossExists(cubeList):
     return (cubeList[DML] == cubeList[DMM] and cubeList[DTM] == cubeList[DMM] 
             and cubeList[DBM] == cubeList[DMM] and cubeList[DMR] == cubeList[DMM] 
             and cubeList[LMM] == cubeList[LBM] and cubeList[FMM] == cubeList[FBM]
@@ -133,11 +133,11 @@ def _daisyFormation(theCube):
     leftPetalRotation 
                 
     #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
-    rotation += alignSideEdgesToBottomCross(theCube, cubeList)
+    rotation += _alignSideEdgesToBottomCross(theCube, cubeList)
 
     return rotation
 
-def alignSideEdgesToBottomCross(theCube, cubeList):
+def _alignSideEdgesToBottomCross(theCube, cubeList):
     rotationsToAlignSideEdges = ''
     
     #front face  
@@ -194,7 +194,7 @@ def alignSideEdgesToBottomCross(theCube, cubeList):
 #this method does not perform any rotations on the cube but returns the rotation 
 def _alignDaisyBottomEdge(cubeList):
     rotation = ''
-    edgeLocation = locateNeededEdge(cubeList)
+    edgeLocation = _locateNeededEdge(cubeList)
             
     #if the needed edge is on front face
     if edgeLocation[0] == cubeList[FTM]:
@@ -267,7 +267,7 @@ def _alignDaisyBottomEdge(cubeList):
         
     return rotation
 
-def locateNeededEdge(cubeList):
+def _locateNeededEdge(cubeList):
     edgeLocation = []
     
     faceEdges = [(cubeList[FTM], cubeList[FML], cubeList[FMR], cubeList[FBM], 'F'), 
