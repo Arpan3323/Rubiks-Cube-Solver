@@ -206,32 +206,75 @@ def _alignDaisyBottomEdge(cubeList):
     rotation = ''
     edgeLocation = _locateNeededEdge(cubeList)
             
-    rotationForEdge = {
-        cubeList[FTM]: 'FuRU',
-        cubeList[FML]: 'Ulu',
-        cubeList[FMR]: 'uRU',
-        cubeList[FBM]: 'fuRU',
-        cubeList[RTM]: 'rf',
-        cubeList[RML]: 'f',
-        cubeList[RMR]: 'uRRUf',
-        cubeList[RBM]: 'uRUf',
-        cubeList[BTM]: 'BULu',
-        cubeList[BML]: 'urU',
-        cubeList[BMR]: 'ULu',
-        cubeList[BBM]: 'UUbuLu',
-        cubeList[LTM]: 'LF',
-        cubeList[LML]: 'UUbUU',
-        cubeList[LMR]: 'F',
-        cubeList[LBM]: 'ULUbUU',
-        cubeList[DTM]: 'FF',
-        cubeList[DML]: 'ULLu',
-        cubeList[DMR]: 'uRRU',
-        cubeList[DBM]: 'UUBBUU',
-    }
+    #if the needed edge is on front face
+    if edgeLocation[0] == cubeList[FTM]:
+        rotation += 'FuRU'
+         
+    elif edgeLocation[0] == cubeList[FML]:
+        rotation += 'Ulu'
 
-    if edgeLocation[0] in rotationForEdge:
-        rotation += rotationForEdge[edgeLocation[0]]
-
+    elif edgeLocation[0] == cubeList[FMR]:
+        rotation += 'uRU'
+        
+    elif edgeLocation[0] == cubeList[FBM]:
+        rotation += 'fuRU'
+    
+    #if needed edge is on the right face
+    #if the edge is found here that means, the petal does not exist on UMR as well
+    elif edgeLocation[0] == cubeList[RTM]:
+        rotation += 'rf'
+        
+    elif edgeLocation[0] == cubeList[RML]:
+        rotation += 'f'
+ 
+    elif edgeLocation[0] == cubeList[RMR]:
+        rotation += 'uRRUf'
+ 
+    elif edgeLocation[0] == cubeList[RBM]:
+        rotation += 'uRUf'       
+ 
+    #if needed edge is on the back face
+    #if an edge is found here it means that a petal is missing on UTM as well
+    elif edgeLocation[0] == cubeList[BTM]:
+        rotation += 'BULu'
+    
+    elif edgeLocation[0] == cubeList[BML]:
+        rotation += 'urU'
+    
+    elif edgeLocation[0] == cubeList[BMR]:
+        rotation += 'ULu'
+    
+    elif edgeLocation[0] == cubeList[BBM]:
+        rotation += 'UUbuLu'
+    
+    #if needed edge is on the left face
+    #if an edge is found here it means UML is missing a petal
+    elif edgeLocation[0] == cubeList[LTM]:
+        rotation += 'LF'
+    
+    elif edgeLocation[0] == cubeList[LML]:
+        rotation += 'UUbUU'
+    
+    elif edgeLocation[0] == cubeList[LMR]:
+        rotation += 'F'    
+        
+    elif edgeLocation[0] == cubeList[LBM]:
+        rotation += 'ULUbUU'
+    
+        
+    #if needed edge is on the down face
+    elif edgeLocation[0] == cubeList[DTM]:
+        rotation += 'FF'
+        
+    elif edgeLocation[0] == cubeList[DML]:
+        rotation += 'ULLu'
+        
+    elif edgeLocation[0] == cubeList[DMR]:
+        rotation += 'uRRU'
+        
+    elif edgeLocation[0] == cubeList[DBM]:
+        rotation += 'UUBBUU'
+        
     return rotation
 
 def _locateNeededEdge(cubeList):
