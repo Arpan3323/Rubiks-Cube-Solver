@@ -69,8 +69,28 @@ def _daisyFormation(theCube):
     daisyPetals = topEdges.count(cubeList[DMM])
     
     #Checking if UBM petal is missing
+    cubeList, bottomPetalRotation, algorithmRotationOne, rightPetalRotation, algorithmRotationTwo, topPetalRotation, algorithmRotationThree, leftPetalRotation = _algorithmToFormDaisy(theCube, bottomPetalRotation, 
+                                     rightPetalRotation, topPetalRotation, 
+                                     leftPetalRotation, algorithmRotationOne, 
+                                     algorithmRotationTwo, algorithmRotationThree, 
+                                     cubeList, topEdges, daisyPetals)
+    
+    rotation += bottomPetalRotation + algorithmRotationOne + \
+    rightPetalRotation + algorithmRotationTwo + \
+    topPetalRotation + algorithmRotationThree + \
+    leftPetalRotation 
+                
+    #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
+    rotation += _alignSideEdgesToBottomCross(theCube, cubeList)
+
+    return rotation
+
+def _algorithmToFormDaisy(theCube, bottomPetalRotation, 
+                          rightPetalRotation, topPetalRotation, 
+                          leftPetalRotation, algorithmRotationOne, 
+                          algorithmRotationTwo, algorithmRotationThree, 
+                          cubeList, topEdges, daisyPetals):
     if daisyPetals <= 3 and topEdges[0] != cubeList[DMM]:
-        
         bottomPetalRotation += _alignDaisyBottomEdge(cubeList)
         cubeList = list(theCube.rotate(bottomPetalRotation))
         
@@ -80,7 +100,6 @@ def _daisyFormation(theCube):
     
     #Checking if UMR petal is missing
     if daisyPetals <= 3 and topEdges[1] != cubeList[DMM]:
-        
         #rotating U to get missing petal from UMR to UBM
         algorithmRotationOne += 'U'
         cubeList = list(theCube.rotate('U'))
@@ -95,7 +114,6 @@ def _daisyFormation(theCube):
     
     #Checking if UTM petal is missing    
     if daisyPetals <= 3 and topEdges[2] != cubeList[DMM]:
-        
         #rotating UU to get missing petal from UTM to UBM
         algorithmRotationTwo += 'UU'
         cubeList = list(theCube.rotate('UU'))
@@ -110,7 +128,6 @@ def _daisyFormation(theCube):
         
     #Checking if UML is missing, if not, check if UMR is missing
     if daisyPetals <= 3:
-        
         #rotating u to get missing petal from UML to UBM
         if topEdges[3] != cubeList[DMM]:
             algorithmRotationThree += 'u'
@@ -126,16 +143,7 @@ def _daisyFormation(theCube):
         #After placing the missing petal in UBM spot again running it through the method that aligns bottom petal
         leftPetalRotation += _alignDaisyBottomEdge(cubeList)
         cubeList = list(theCube.rotate(leftPetalRotation))
-    
-    rotation += bottomPetalRotation + algorithmRotationOne + \
-    rightPetalRotation + algorithmRotationTwo + \
-    topPetalRotation + algorithmRotationThree + \
-    leftPetalRotation 
-                
-    #after daisy is formed on top, side edges will be aligned and rotated to form bottom cross
-    rotation += _alignSideEdgesToBottomCross(theCube, cubeList)
-
-    return rotation
+    return cubeList, bottomPetalRotation, algorithmRotationOne, rightPetalRotation, algorithmRotationTwo, topPetalRotation, algorithmRotationThree, leftPetalRotation
 
 def _alignSideEdgesToBottomCross(theCube, cubeList):
     rotationsToAlignSideEdges = ''
