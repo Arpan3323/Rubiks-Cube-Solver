@@ -28,13 +28,11 @@ from rubik.model.cube import Cube
 #                test 108: rotations needed when the top daisy has two petals 
 #                test 109: rotations needed when the top daisy has one petal
 #                test 110: rotations needed when the top daisy has zero petals, full bottom cross
+#                test 111: testing the failed customer acceptance test
 #                
 #
 #    sad path tests:
-#                test 901: checking if the cube has 54 characters
-#                test 902: checking if the incoming dictionary has extraneous keys
-#                test 903: checking if the cube has 9 unique characters
-#                test 904: checking if the cube has unique centers
+#                captured in solve.py
 #
 #    evil path test:
 #                none
@@ -141,12 +139,10 @@ class BottomCrossTest(unittest.TestCase):
         self.assertTrue(verifyBottomCross)
 
 
-    '''Does not work after refactoring bottomCross but I checked in my testUtility
-    that bottom cross is indeed formed 
-    def test100_bottomCross_rotateToBottomCross(self):
+    def test111_bottomCross_rotateToBottomCross(self):
         encodedCube = 'ybrrgbwrwoggrbbgwgobrwrwowyworroybgrogwyyybyybobowggoy'
         theCube = Cube(encodedCube)
-        expectedCube = 'brgggrrgwoywobbbbgobgrroorobgwyooroyygryybgywbwrwwwywy'
         rotations = bc.solveBottomCross(theCube)
         rotatedCube = Cube(encodedCube).rotate(rotations)
-        self.assertEqual(rotatedCube, expectedCube)'''
+        verifyBottomCross = bc.verifyBottomCrossExists(list(rotatedCube))
+        self.assertTrue(verifyBottomCross)
