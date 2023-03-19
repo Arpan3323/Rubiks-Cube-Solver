@@ -6,7 +6,9 @@ def solveBottomLayer(theCube: Cube) -> str:
     cubeList = list(theCube.get())
     
     if verifyBottomLayerExists(cubeList):
-        return ''
+        rotation = ''
+        listReturned = [cubeList, rotation]
+        return listReturned
     
     if bc.verifyBottomCrossExists(cubeList) == False:
         cubeList = _alignToBottomCross(theCube)
