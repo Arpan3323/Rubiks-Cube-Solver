@@ -26,15 +26,9 @@ def solve(parms):
     validateCubeString =  theCube.validateCube(encodedCube)
     validateNineUniqueCubeChar = theCube.validateNineOfEachCubeCharacters(encodedCube) 
     
-    if validateCubeString == False:
-        result['status'] = 'error: invalid cube'
-        return result
-    
-    elif validateNineUniqueCubeChar == False:
-        result['status'] = 'error: invalid cube'
-        return result
-    
-    elif theCube.validateUniqueCenters(encodedCube) == False:
+    if((validateCubeString == False) or 
+      (validateNineUniqueCubeChar == False) or 
+      (theCube.validateUniqueCenters(encodedCube) == False)):
         result['status'] = 'error: invalid cube'
         return result
     
