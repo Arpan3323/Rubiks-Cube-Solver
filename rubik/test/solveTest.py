@@ -54,9 +54,9 @@ class SolveTest(TestCase):
 #                none
     
     #uncomment later and remove expected cube
-    def test100_solve_checkIfBottomCrossAlreadyExists(self):
+    def test100_solve_checkIfAlreadySolved(self):
         parms = {}
-        parms['cube'] = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+        parms['cube'] = 'gggggggggbbbbbbbbbrrrrrrrrroooooooooyyyyyyyyywwwwwwwww'
         result = solve(parms)
         self.assertEqual('', result['solution'])
         self.assertEqual('ok', result['status'])
