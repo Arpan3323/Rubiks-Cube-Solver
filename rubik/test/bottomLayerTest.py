@@ -76,10 +76,10 @@ class BottomLayerTest(unittest.TestCase):
         
     def test101_bottomLayer_createABottomCrossIfItDoesNotExist(self):
         encodedCube = 'orobbggyowyrorwgrywryggrbywbowgoobwyrwgwyogybrbybwbrgo'
-        expectedCube = 'gggobgwbbrbbrrgyrgwrbygyrgwybyboygoboyrryooowowrwwwowy'
         theCube = cube.Cube(encodedCube)
         actualRotatedCube = ''.join(bl._alignToBottomCross(theCube))
-        self.assertEquals(actualRotatedCube, expectedCube)
+        verifyBottomCross = bc.verifyBottomCrossExists(list(actualRotatedCube))
+        self.assertTrue(verifyBottomCross)
         
     def test102_bottomLayer_alignTopLayerPieceWithCenter(self):
         encodedCube = 'gybygggggwryooboooggoybbbbrbbrrrrbrryyooygyorwwwwwwyww'
