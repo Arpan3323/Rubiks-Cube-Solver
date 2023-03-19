@@ -206,7 +206,7 @@ def _alignDaisyBottomEdge(cubeList):
     rotation = ''
     edgeLocation = _locateNeededEdge(cubeList)
             
-    face_edge_mapping = {
+    edgeRotations = {
         cubeList[FTM]: 'FuRU',
         cubeList[FML]: 'Ulu',
         cubeList[FMR]: 'uRU',
@@ -229,8 +229,8 @@ def _alignDaisyBottomEdge(cubeList):
         cubeList[DBM]: 'UUBBUU',
     }
 
-    if edgeLocation[0] in face_edge_mapping:
-        rotation += face_edge_mapping[edgeLocation[0]]
+    if edgeLocation[0] in edgeRotations:
+        rotation += edgeRotations[edgeLocation[0]]
 
     return rotation
 

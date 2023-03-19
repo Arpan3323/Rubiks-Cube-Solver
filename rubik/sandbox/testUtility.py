@@ -26,6 +26,16 @@ cube = 'ybrrgbwrwoggrbbgwgobrwrwowyworroybgrogwyyybyybobowggoy'
 theCube = Cube('5h999hh9IFUIF55559F59hhFFhF59IUFFhFUU9hUU59UI5IhIIIUIU')
 result = bc.solveBottomCross(theCube)
 #result = Cube(cube2).rotate('uRUfUULuUUUUbuLuuuRRUUUFFURRUUBBULL')
-print(result)
+#print(result)
 
+
+encodedCube = 'ybrrgbwrwoggrbbgwgobrwrwowyworroybgrogwyyybyybobowggoy'
+theCube = Cube(encodedCube)
+#expectedCube = 'brgggrrgwoywobbbbgobgrroorobgwyooroyygryybgywbwrwwwywy'
+rotations = bc.solveBottomCross(theCube)
+rotatedCube = Cube(encodedCube).rotate(rotations)
+verifyBottomCross = bc.verifyBottomCrossExists(list(rotatedCube))
+print(verifyBottomCross)
+#self.assertTrue()
+#self.assertEqual(rotatedCube, expectedCube)
 
