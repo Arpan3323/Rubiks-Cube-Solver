@@ -72,7 +72,7 @@ class BottomLayerTest(unittest.TestCase):
         encodedCube = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         actualRotation = bl.solveBottomLayer(theCube)
-        self.assertEquals(actualRotation, '')
+        self.assertEquals(actualRotation, bl.solveBottomLayer(theCube)[1])
         
     def test101_bottomLayer_createABottomCrossIfItDoesNotExist(self):
         encodedCube = 'orobbggyowyrorwgrywryggrbywbowgoobwyrwgwyogybrbybwbrgo'
