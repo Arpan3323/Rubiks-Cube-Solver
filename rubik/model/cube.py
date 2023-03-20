@@ -116,7 +116,8 @@ class Cube:
         elif rightTriggerPieceLocation in [LTR, LBR]:
             rightTriggerRotations += 'FUf'
             cubeList = list(self.rotate(rightTriggerRotations))
-
+        
+        #right trigger for getting top face corner to top layer    
         elif rightTriggerPieceLocation == UTL:
             rightTriggerRotations += 'LUlLUl'
             cubeList = list(self.rotate(rightTriggerRotations))
