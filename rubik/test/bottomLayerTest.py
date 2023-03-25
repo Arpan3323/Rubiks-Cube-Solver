@@ -58,6 +58,8 @@ from rubik.view.solve import solve
 #    test 114: rotated a cube that leaves a corner piece on top face that was supposed to go to bottom 
 #    
 #    test 115: rotated a cube that leaves a corner piece in bottom layer that was supposed to go to bottom
+#
+#    test 116: rotated a cube that leaves two corner pieces in top layer. This is an acceptance test that failed
 #    
 #Sad path:
 #    all sad path scenarios (ways in which the customer can break solve bottom layer and recieve an error)
@@ -211,5 +213,13 @@ class BottomLayerTest(unittest.TestCase):
         actualRotatedCube = theCube.rotate(rotationsReturned)
         self.assertEquals(actualRotatedCube, expectedCube)
         
+    def test116_bottomLayer_rotatingCubeThatWillLeaveTopLayerWithTwoCornersAfterEveryhtingElseIsAligned(self):
+        encodedCube = 'j8388vv9v8jj993j3v7j79v7338888873j733vv9379j99j9vjv777'
+        #expectedCube = 'yyyogbgggbbbroyoooyyyobgbbbryorrgrrrggoryogbrwwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotationsReturned = bl.solveBottomLayer(theCube)[1]
+        actualRotatedCube = theCube.rotate(rotationsReturned)
+        verifyBottomLayer = bl.verifyBottomLayerExists(list(actualRotatedCube))
+        self.assertTrue(verifyBottomLayer)
         
         
