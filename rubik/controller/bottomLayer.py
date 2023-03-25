@@ -52,7 +52,6 @@ def _alignToBottomCross(theCube):
 
 def _rotatePieceFromTopFaceToSideFace(cubeList):
     topAndDownStackedCorners = [(UTL, DBL), (UTR, DBR), (UBL, DTL), (UBR, DTR)]
-    rotationsBeforeTrigger = ''
     rotationsAfterTrigger = ''
     topToSideRotations = ''
 
@@ -66,11 +65,14 @@ def _rotatePieceFromTopFaceToSideFace(cubeList):
                 cornerToRotate = corners[0]
                 while cubeList[cornerToRotate] == cubeList[downFaceCorner]:
                     cornerToRotate, downFaceCorner = _stackedCornerLocation(downFaceCorner, cornerToRotate)
-                    rotationsBeforeTrigger += 'U'
+                    #Rotations before trigger
+                    topToSideRotations  += 'U'
                     cubeList = Cube(''.join(cubeList)).rotate('U')
-                cubeList, returnedRotations = Cube(''.join(cubeList)).rightTrigger(cornerToRotate)
-                rotationsAfterTrigger += returnedRotations
-                topToSideRotations += rotationsBeforeTrigger + rotationsAfterTrigger
+                #topToSideRotations += rotationsBeforeTrigger
+                cubeList, rotationsAfterTrigger = Cube(''.join(cubeList)).rightTrigger(cornerToRotate)
+                topToSideRotations += rotationsAfterTrigger
+                #rotationsAfterTrigger += returnedRotations
+                #topToSideRotations += rotationsBeforeTrigger + rotationsAfterTrigger
     cubeList, topLayerRotations = _rotateTopLayerPieceToBottom(cubeList)
     topToSideRotations += topLayerRotations
 
