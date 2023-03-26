@@ -52,7 +52,7 @@ class middleLayerTest(unittest.TestCase):
     def test102_middleLayer_checkTopLayerForEdgePair_ifAnEdgePairIsFoundAlignSideFaceEdgeWithCenter(self):
         encodedCube = 'rrobgrgggbyggoyooooorobrbbbggbyrorrrygyyybybywwwwwwwww'
         expectedCube = 'bygbgrgggoorgoyoooggbobrbbbrroyrorrryyybygybywwwwwwwww'
-        rotations = ml._checkTopLayerForEdgePair(list(encodedCube))[1]
+        rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
         
