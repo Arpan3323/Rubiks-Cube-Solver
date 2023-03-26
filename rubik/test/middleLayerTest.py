@@ -27,7 +27,7 @@ class middleLayerTest(unittest.TestCase):
         expectedRotations = ''
         self.assertEquals(actualRotation, expectedRotations)
         
-    def test100_middleLayer_alignToBottomLayerIfItDoesNotExists(self):
+    def test101_middleLayer_alignToBottomLayerIfItDoesNotExists(self):
         encodedCube = 'ywgggrwygrrwbowrrbrbobbgwybboorrwyooyybgywgowggybwyroo'
         expectedCube = 'grbbgggggrryyoyoooggbobobbbybrbrrrrroooyygyyywwwwwwwww'
         theCube = cube.Cube(encodedCube)
