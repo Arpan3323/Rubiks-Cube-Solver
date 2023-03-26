@@ -26,8 +26,8 @@ def verifyMiddleLayerExists(cubeList):
            and cubeList[LMM] == cubeList[LMR])
 
 def _alignToBottomLayer(theCube):
-    bottomLayerCube = bl.solveBottomLayer(theCube)[0]
-    return bottomLayerCube
+    bottomLayerRotations = bl.solveBottomLayer(theCube)[1]
+    return theCube.rotate(bottomLayerRotations)
 
 def _checkTopLayerForEdgePair(cubeList):
     sideAndTopEdgePairs = [(FTM, UBM), (RTM, UMR), (BTM, UTM), (LTM, UML)]
