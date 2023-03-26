@@ -38,7 +38,7 @@ class middleLayerTest(unittest.TestCase):
     def test100_middleLayer_checkIfMiddleLayerIsSolved(self):
         encodedCube = 'rgyggggggoogooooooorybbbbbbbbyrrrrrrryyyyygybwwwwwwwww'
         theCube = cube.Cube(encodedCube)
-        actualRotation = ml.solveMiddleLayer(theCube)
+        actualRotation = ml.solveMiddleLayer(theCube)[1]
         expectedRotations = ''
         self.assertEquals(actualRotation, expectedRotations)
         
