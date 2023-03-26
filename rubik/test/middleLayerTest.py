@@ -19,7 +19,7 @@ from rubik.view.solve import solve
 #    test 102: checks top layer and top face edges, if found, performs U to align edge on side
 #              face with appropriate center.
 #
-#    potential test: checks top layer and top face edges, if found, performs U's to align edge on side
+#    test 103: checks top layer and top face edges, if found, performs U's to align edge on side
 #              face with appropriate center and then performs U or u rotation depending on where 
 #              the matching center for top face edge is.
 #
@@ -55,4 +55,13 @@ class middleLayerTest(unittest.TestCase):
         rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
+        
+    def test103_middleLayer_checkTopLayerForEdgePair_AlignSideFaceEdgeWithCenterAndRotateTopFaceForTrigger(self):
+        encodedCube = 'yybogggggyooroboooyybybrbbbrrgbrbrrryggyygroowwwwwwwww'
+        expectedCube = 'rrgogggggyybroboooyooybrbbbyybbrbrrrggogyoyyrwwwwwwwww'
+        rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(rotatedCube, expectedCube)
+    
+    
         
