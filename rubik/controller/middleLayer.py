@@ -4,7 +4,7 @@ import rubik.controller.bottomLayer as bl
 
 def solveMiddleLayer(theCube: Cube) -> str:
 
-    cubeList = list(theCube.get())
+    cubeList = theCube.get()
 
     if verifyMiddleLayerExists(cubeList):
         return ''
@@ -28,3 +28,29 @@ def verifyMiddleLayerExists(cubeList):
 def _alignToBottomLayer(theCube):
     bottomLayerCube = bl.solveBottomLayer(theCube)[0]
     return bottomLayerCube
+
+def _checkTopLayerForEdgePair(cubeList):
+    sideAndTopEdgePairs = [(FTM, UBM), (RTM, UMR), (BTM, UTM), (LTM, UML)]
+    pairFound = False
+    for edgePair in sideAndTopEdgePairs:
+        if cubeList[edgePair[0]] != cubeList[UMM] and cubeList[edgePair[1]] != cubeList[UMM] and not pairFound:
+            requiredSideEdge = edgePair[0]
+            #requiredTopEdge = edgePair[1]
+            pairFound = True
+    if cubeList[requiredSideEdge] != cubeList[FMM]:
+        sideEdgeToCenterRotations, requiredTopEdge = sideEdgeAlignmentRotations(requiredSideEdge, cubeList)
+    cubeList = Cube(''.join(cubeList)).rotate(sideEdgeToCenterRotations)
+    return cubeList, sideEdgeToCenterRotations
+
+
+def sideEdgeAlignmentRotations(requiredSideEdge, cubeList):
+    if cubeList[requiredSideEdge] == cubeList[RMM]:
+        rotations = 'UUU'
+        requiredTopEdgeLocation = UMR
+    elif cubeList[requiredSideEdge] == cubeList[BMM]:
+        rotations = 'UU'
+        requiredTopEdgeLocation = UTM
+    elif cubeList[requiredSideEdge] == cubeList[LMM]:
+        rotations = 'U'
+        requiredTopEdgeLocation = UML
+    return rotations, requiredTopEdgeLocation
