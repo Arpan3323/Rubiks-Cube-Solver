@@ -7,7 +7,7 @@ def solveMiddleLayer(theCube: Cube) -> str:
     cubeList = theCube.get()
 
     if verifyMiddleLayerExists(cubeList):
-        return ''
+        return [cubeList, '']
     
     if bl.verifyBottomLayerExists(cubeList) == False:
         cubeList = _alignToBottomLayer(theCube)
