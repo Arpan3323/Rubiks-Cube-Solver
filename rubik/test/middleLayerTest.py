@@ -46,7 +46,7 @@ class middleLayerTest(unittest.TestCase):
         encodedCube = 'ywgggrwygrrwbowrrbrbobbgwybboorrwyooyybgywgowggybwyroo'
         expectedCube = 'grbbgggggrryyoyoooggbobobbbybrbrrrrroooyygyyywwwwwwwww'
         theCube = cube.Cube(encodedCube)
-        actualCube = ''.join(ml._alignToBottomLayer(theCube))
+        actualCube = ml._alignToBottomLayer(theCube)
         self.assertEquals(actualCube, expectedCube)
         
     def test102_middleLayer_checkTopLayerForEdgePair_ifAnEdgePairIsFoundAlignSideFaceEdgeWithCenter(self):
