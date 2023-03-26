@@ -39,7 +39,7 @@ def _checkTopLayerForEdgePair(cubeList):
             pairFound = True
     if cubeList[requiredSideEdge] != cubeList[FMM]:
         sideEdgeToCenterRotations, requiredTopEdge = sideEdgeAlignmentRotations(requiredSideEdge, cubeList)
-    cubeList = Cube(''.join(cubeList)).rotate(sideEdgeToCenterRotations)
+    cubeList = Cube(cubeList).rotate(sideEdgeToCenterRotations)
     return cubeList, sideEdgeToCenterRotations
 
 
