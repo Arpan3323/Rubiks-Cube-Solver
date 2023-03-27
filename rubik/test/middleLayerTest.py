@@ -64,10 +64,10 @@ class middleLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
         
-    #Mistakenly pressed the Green light when I intended to press a Red light as I just added a new test
+
     def test104_middleLayer_checkTopLayerForEdgePair_AlignSideFaceEdgeWithCenterRotateTopFaceAndTrigger(self):
         encodedCube = 'ybyygygggbgogoroooboggbbbbborgrrbrrryyyyyororwwwwwwwww'
-        expectedCube = 'ogrygyggogogroryooobygbbbbbbgwrrbrrrroyoyygyywwbwwwwww'
+        expectedCube = 'yboygygggbobgogooyrroobbobbwrgrrbrrrbgyyyyroywwwwwwwwg'
         rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
