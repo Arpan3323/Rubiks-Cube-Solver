@@ -57,17 +57,25 @@ class middleLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)'''
         
+    '''The component this test was testing has advanced to its next stage
     def test103_middleLayer_checkTopLayerForEdgePair_AlignSideFaceEdgeWithCenterAndRotateTopFaceForTrigger(self):
         encodedCube = 'yybogggggyooroboooyybybrbbbrrgbrbrrryggyygroowwwwwwwww'
         expectedCube = 'rrgogggggyybroboooyooybrbbbyybbrbrrrggogyoyyrwwwwwwwww'
         rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
-        self.assertEquals(rotatedCube, expectedCube)
+        self.assertEquals(rotatedCube, expectedCube)'''
         
 
     def test104_middleLayer_checkTopLayerForEdgePair_AlignSideFaceEdgeWithCenterRotateTopFaceAndTrigger(self):
         encodedCube = 'ybyygygggbgogoroooboggbbbbborgrrbrrryyyyyororwwwwwwwww'
         expectedCube = 'yboygygggbobgogooyrroobbobbwrgrrbrrrbgyyyyroywwwwwwwwg'
+        rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(rotatedCube, expectedCube)
+        
+    def test105_middleLayer_checkTopLayerForEdgePair_AlignEdgePairPerformTriggerAndFixBottomLayer(self):
+        encodedCube = 'rrbbgbgggybyyoyooogyrrbobbbyyygrrrrrboogyoggowwwwwwwww'
+        expectedCube = 'bgyggbggggbgyoyoooyybrbobbbybygrrrrrooroyrryowwwwwwwww'
         rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
