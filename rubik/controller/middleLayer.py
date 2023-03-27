@@ -108,24 +108,24 @@ def sideEdgeAlignmentRotations(requiredSideEdge, cubeList):
 def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
     if requiredTopEdge == UBM:
         if cubeList[requiredTopEdge] == cubeList[LMM]:
-            rotation = 'u'
+            rotation = f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}'
         elif cubeList[requiredTopEdge] == cubeList[RMM]:
-            rotation = 'U'
+            rotation = f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}'
     if requiredTopEdge == UMR:
         if cubeList[requiredTopEdge] == cubeList[FMM]:
-            rotation = 'u'
+            rotation = f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}'
         elif cubeList[requiredTopEdge] == cubeList[BMM]:
-            rotation = 'U'
+            rotation = f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}'
     if requiredTopEdge == UTM:
         if cubeList[requiredTopEdge] == cubeList[RMM]:
-            rotation = 'u'
+            rotation = f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}'
         elif cubeList[requiredTopEdge] == cubeList[LMM]:
-            rotation = 'U'
+            rotation = f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}'
     if requiredTopEdge == UML:
         if cubeList[requiredTopEdge] == cubeList[BMM]:
-            rotation = 'u'
+            rotation = f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}'
         elif cubeList[requiredTopEdge] == cubeList[FMM]:
-            rotation = 'U'
+            rotation = f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}'
     return rotation 
 
 

@@ -86,16 +86,16 @@ class Cube:
     def leftTrigger(self, leftTriggerPieceLocation):
         cubeList = list(self.cube)
         leftTriggerRotations = ''
-        if leftTriggerPieceLocation in [FTL, FBL]:
+        if leftTriggerPieceLocation in [FTL, FBL, UBM]:
             leftTriggerRotations += 'luL'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation in [RTL, RBL]:
+        elif leftTriggerPieceLocation in [RTL, RBL, UMR]:
             leftTriggerRotations += 'fuF'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation in [BTL, BBL]:
+        elif leftTriggerPieceLocation in [BTL, BBL, UTM]:
             leftTriggerRotations += 'ruR'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation in [LTL, LBL]:
+        elif leftTriggerPieceLocation in [LTL, LBL, UML]:
             leftTriggerRotations += 'buB'
             cubeList = list(self.rotate(leftTriggerRotations))
 
@@ -104,16 +104,16 @@ class Cube:
     def rightTrigger(self, rightTriggerPieceLocation):
         cubeList = list(self.cube)
         rightTriggerRotations = ''
-        if rightTriggerPieceLocation in [FTR, FBR]:
+        if rightTriggerPieceLocation in [FTR, FBR, UBM]:
             rightTriggerRotations += 'RUr'
             cubeList = list(self.rotate(rightTriggerRotations))
-        elif rightTriggerPieceLocation in [RTR, RBR]:
+        elif rightTriggerPieceLocation in [RTR, RBR, UMR]:
             rightTriggerRotations += 'BUb'
             cubeList = list(self.rotate(rightTriggerRotations))
-        elif rightTriggerPieceLocation in [BTR, BBR]:
+        elif rightTriggerPieceLocation in [BTR, BBR, UTM]:
             rightTriggerRotations += 'LUl'
             cubeList = list(self.rotate(rightTriggerRotations))
-        elif rightTriggerPieceLocation in [LTR, LBR]:
+        elif rightTriggerPieceLocation in [LTR, LBR, UML]:
             rightTriggerRotations += 'FUf'
             cubeList = list(self.rotate(rightTriggerRotations))
         
