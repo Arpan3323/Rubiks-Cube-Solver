@@ -26,10 +26,14 @@ from rubik.view.solve import solve
 #    test 104: checks top layer and top face edges, if found, performs U's to align edge on side
 #              face with appropriate center and then performs U or u rotation depending on where 
 #              the matching center for top face edge is and finally calls the trigger.
+#
+#    test 105: checks top layer and top face edges, if found, aligns the edge pair and calls bottom layer
+#              alogrithm to fix bottom layer.
+#
+#    test 106: checks all the edge pairs in top layers and aligns them until no edges are left in the top layer
+#
 #    
-#    Note: make sure to return a tuple containing cube and rotation for test100_middleLayer_checkIfMiddleLayerIsSolved
-#          as solveMiddleLayer is going to return a tuple and solve.py will be looking for a tuple 
-
+#
 
 
 class middleLayerTest(unittest.TestCase):
@@ -66,17 +70,26 @@ class middleLayerTest(unittest.TestCase):
         self.assertEquals(rotatedCube, expectedCube)'''
         
 
+    '''The component this test was testing has advanced to its next stage
     def test104_middleLayer_checkTopLayerForEdgePair_AlignSideFaceEdgeWithCenterRotateTopFaceAndTrigger(self):
         encodedCube = 'ybyygygggbgogoroooboggbbbbborgrrbrrryyyyyororwwwwwwwww'
         expectedCube = 'yboygygggbobgogooyrroobbobbwrgrrbrrrbgyyyyroywwwwwwwwg'
         rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
-        self.assertEquals(rotatedCube, expectedCube)
+        self.assertEquals(rotatedCube, expectedCube)'''
         
     def test105_middleLayer_checkTopLayerForEdgePair_AlignEdgePairPerformTriggerAndFixBottomLayer(self):
         encodedCube = 'rrbbgbgggybyyoyooogyrrbobbbyyygrrrrrboogyoggowwwwwwwww'
         expectedCube = 'bgyggbggggbgyoyoooyybrbobbbybygrrrrrooroyrryowwwwwwwww'
         rotations = ml._checkTopLayerForEdgePair(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(rotatedCube, expectedCube)
+        
+    def test106_middleLayer_checkTopLayerForEdgePair_AlignEdgePairsUntilNoneAreLeftToAlign(self):
+        encodedCube = 'broggbgggyyrooboooggoybobbbboygryrrryryyyrrbgwwwwwwwww'
+        expectedCube = 'yogggggggyryoooooogyybbbbbboyrrrrrrrbgobyybyrwwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotations = ml.solveMiddleLayer(theCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
     
