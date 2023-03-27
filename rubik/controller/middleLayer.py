@@ -45,8 +45,9 @@ def _checkTopLayerForEdgePair(cubeList):
     topEdgeRotations = topEdgeAlignmentRotations(requiredTopEdge, cubeList)
     topLayerEdgePairRotations += topEdgeRotations
     cubeList = Cube(cubeList).rotate(topEdgeRotations)
-
-
+    alignBottomLayer = bl.solveBottomLayer(Cube(cubeList))[1]
+    cubeList = Cube(cubeList).rotate(alignBottomLayer)
+    topLayerEdgePairRotations += alignBottomLayer
     return cubeList, topLayerEdgePairRotations
 
 
