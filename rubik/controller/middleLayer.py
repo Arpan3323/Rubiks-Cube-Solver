@@ -5,6 +5,7 @@ import rubik.controller.bottomLayer as bl
 def solveMiddleLayer(theCube: Cube) -> str:
 
     cubeList = theCube.get()
+    rotations = ''
 
     if verifyMiddleLayerExists(cubeList):
         return [cubeList, '']
@@ -12,7 +13,14 @@ def solveMiddleLayer(theCube: Cube) -> str:
     if bl.verifyBottomLayerExists(cubeList) == False:
         cubeList = _alignToBottomLayer(theCube)
     
-    return 'B'      #TODO:  remove this stubbed value
+    if verifyMiddleLayerExists(cubeList) == False:
+        while(verifyMiddleLayerExists(cubeList) == False):
+            cubeList, topLayerEdgePairRotations = _checkTopLayerForEdgePair(cubeList)
+            #cubeList, middleLayerRotations = _rotateMiddleLayerEdgePairToBottom(cubeList)
+            rotations += topLayerEdgePairRotations #+ middleLayerRotations
+            
+    
+    return cubeList, rotations
 
 def verifyMiddleLayerExists(cubeList):
     return(bl.verifyBottomLayerExists(cubeList) 
