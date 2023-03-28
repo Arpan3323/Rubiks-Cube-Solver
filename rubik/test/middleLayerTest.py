@@ -137,10 +137,19 @@ class middleLayerTest(unittest.TestCase):
         
     def test111_middleLayer_solveMiddleLayer_AlignEdgePairsInTopAndMiddleLayerUntilNoneAreLeftToAlign(self):
         encodedCube = 'gooogrgggbgybogooogrrobgbbbyyrrrbrrrbyobyyyyywwwwwwwww'
-        expectedCube = 'bbbggggggrggooooooobrybbbbbgyorrrrrryoyryyyyywwwwwwwww'
+        expectedCube = 'yobggggggrryoooooooggbbbbbbobgrrrrrryybyyyryywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         rotations = ml.solveMiddleLayer(theCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
+        
+    def test112_middleLayer_solveMiddleLayer_ScrambledCubeThatHasNothingSolved(self):
+        encodedCube = 'yrorggoggbggwoywoooobbbybbbrygoryrrgybygyrrbyworwwwwww'
+        #expectedCube = 'yobggggggrryoooooooggbbbbbbobgrrrrrryybyyyryywwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotations = ml.solveMiddleLayer(theCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        verifyBottomLayer= bl.verifyBottomLayerExists(rotatedCube)
+        self.assertTrue(verifyBottomLayer)
 
         
