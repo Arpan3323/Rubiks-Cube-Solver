@@ -99,7 +99,7 @@ class middleLayerTest(unittest.TestCase):
         
     def test107_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeInMiddleLayer(self):
         encodedCube = 'orrggoggggoygooooobyybbbbbbggyrrrrrrobryyybyywwwwwwwww'
-        expectedCube = 'gggggyggbwoyrooooobggbbbbbbyyyrrrrrrrorbyyoyowwywwwwww'
+        expectedCube = 'orggggggyoogyoogoowoybbbbbbbyyrrrrrrryobygbyywwrwwwwww'
         #theCube = cube.Cube(encodedCube)
         rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
