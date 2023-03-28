@@ -147,6 +147,7 @@ def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
 
 def _checkMiddleLayerForFlippedEdgePair(cubeList):
     middleLayerFlippedEdgeRotations = ''
+    rotations = ''
     #leftEdgePairsForCenters = [(FML, LMR), (RML, FMR), (BML, RMR), (LML, BMR)]
     #rightEdgePairsForCenters = [(FMR, RML), (RMR, BML), (BMR, z), (LMR, )]
 
