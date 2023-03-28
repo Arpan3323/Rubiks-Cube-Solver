@@ -86,16 +86,16 @@ class Cube:
     def leftTrigger(self, leftTriggerPieceLocation):
         cubeList = list(self.cube)
         leftTriggerRotations = ''
-        if leftTriggerPieceLocation in [FTL, FBL, UBM]:
+        if leftTriggerPieceLocation in [FTL, FBL, UBM, FML]:
             leftTriggerRotations += 'luL'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation in [RTL, RBL, UMR]:
+        elif leftTriggerPieceLocation in [RTL, RBL, UMR, RML]:
             leftTriggerRotations += 'fuF'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation in [BTL, BBL, UTM]:
+        elif leftTriggerPieceLocation in [BTL, BBL, UTM, BML]:
             leftTriggerRotations += 'ruR'
             cubeList = list(self.rotate(leftTriggerRotations))
-        elif leftTriggerPieceLocation in [LTL, LBL, UML]:
+        elif leftTriggerPieceLocation in [LTL, LBL, UML, LML]:
             leftTriggerRotations += 'buB'
             cubeList = list(self.rotate(leftTriggerRotations))
 

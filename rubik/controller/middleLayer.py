@@ -137,4 +137,17 @@ def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
             rotation = f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}'
     return rotation 
 
+def _checkMiddleLayerForFlippedEdgePair(cubeList):
+    EdgePairsForSideCenters = [(FML, LMR), (RML, FMR), (BML, RMR), (LML, BMR)]
+    for edgePair in EdgePairsForSideCenters:
+        if cubeList[FMM] != cubeList[edgePair[0]] and cubeList[FMM] == cubeList[edgePair[1]]:
+            cubeList, rotations = Cube(cubeList).leftTrigger(edgePair[0])
+        elif cubeList[RMM] != cubeList[edgePair[0]] and cubeList[RMM] == cubeList[edgePair[1]]:
+            cubeList, rotations = Cube(cubeList).leftTrigger(edgePair[0])
+        elif cubeList[BMM] != cubeList[edgePair[0]] and cubeList[BMM] == cubeList[edgePair[1]]:
+            cubeList, rotations = Cube(cubeList).leftTrigger(edgePair[0])
+        elif cubeList[LMM] != cubeList[edgePair[0]] and cubeList[LMM] == cubeList[edgePair[1]]:
+            cubeList, rotations = Cube(cubeList).leftTrigger(edgePair[0])
+    return ''.join(cubeList), rotations
+
 
