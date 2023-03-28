@@ -139,20 +139,28 @@ def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
 
 def _checkMiddleLayerForFlippedEdgePair(cubeList):
     middleLayerFlippedEdgeRotations = ''
-    #EdgePairsForSideCenters = [(FML, LMR), (RML, FMR), (BML, RMR), (LML, BMR)]
+    #leftEdgePairsForCenters = [(FML, LMR), (RML, FMR), (BML, RMR), (LML, BMR)]
+    #rightEdgePairsForCenters = [(FMR, RML), (RMR, BML), (BMR, z), (LMR, )]
+
+
     #for edgePair in EdgePairsForSideCenters:
     if cubeList[FMM] != cubeList[FML] and cubeList[FMM] == cubeList[LMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(FML)
-        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
+    elif cubeList[FMM] != cubeList[FMR] and cubeList[FMM] == cubeList[RML]:
+        cubeList, rotations = Cube(cubeList).rightTrigger(FMR)
     elif cubeList[RMM] != cubeList[RML] and cubeList[RMM] == cubeList[FMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(RML)
-        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
+    elif cubeList[RMM] != cubeList[RMR] and cubeList[RMM] == cubeList[BML]:
+        cubeList, rotations = Cube(cubeList).rightTrigger(RMR)
     elif cubeList[BMM] != cubeList[BML] and cubeList[BMM] == cubeList[RMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(BML)
-        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
+    elif cubeList[BMM] != cubeList[BMR] and cubeList[BMM] == cubeList[LML]:
+        cubeList, rotations = Cube(cubeList).rightTrigger(BMR)
     elif cubeList[LMM] != cubeList[LML] and cubeList[LMM] == cubeList[BMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(LML)
-        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
+    elif cubeList[LMM] != cubeList[LMR] and cubeList[LMM] == cubeList[FML]:
+        cubeList, rotations = Cube(cubeList).rightTrigger(LMR)
+    cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
     middleLayerFlippedEdgeRotations += rotations + bottomLayerRotations
     return ''.join(cubeList), middleLayerFlippedEdgeRotations
 
