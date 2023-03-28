@@ -32,6 +32,10 @@ from rubik.view.solve import solve
 #
 #    test 106: checks all the edge pairs in top layers and aligns them until no edges are left in the top layer
 #
+#    test 107: checks if component responsible for flipped edge pair in middle layer performs appropriate
+#              face trigger if it finds one in middle layer
+#               
+#
 #    
 #
 
@@ -90,6 +94,14 @@ class middleLayerTest(unittest.TestCase):
         expectedCube = 'yogggggggyryoooooogyybbbbbboyrrrrrrrbgobyybyrwwwwwwwww'
         theCube = cube.Cube(encodedCube)
         rotations = ml.solveMiddleLayer(theCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(rotatedCube, expectedCube)
+        
+    def test107_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeInMiddleLayer(self):
+        encodedCube = 'orrggoggggoygooooobyybbbbbbggyrrrrrrobryyybyywwwwwwwww'
+        expectedCube = 'gggggyggbwoyrooooobggbbbbbbyyyrrrrrrrorbyyoyowwywwwwww'
+        #theCube = cube.Cube(encodedCube)
+        rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
     
