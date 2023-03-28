@@ -125,6 +125,7 @@ class middleLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
     
+    #Mistakenly pressed a green light
     def test110_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeFixBottomLayerAndAlignTopLayer(self):
         encodedCube = 'orrggoggggoygooooobyybbbbbbggyrrrrrrobryyybyywwwwwwwww'
         expectedCube = 'yorggggggyyyoooooooyybbbbbbrrorrrrrrggbyybgybwwwwwwwww'
