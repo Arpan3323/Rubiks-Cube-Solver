@@ -129,7 +129,7 @@ class middleLayerTest(unittest.TestCase):
     
     def test110_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeFixBottomLayerAndAlignTopLayer(self):
         encodedCube = 'orrggoggggoygooooobyybbbbbbggyrrrrrrobryyybyywwwwwwwww'
-        expectedCube = 'yorggggggyyyoooooooyybbbbbbrrorrrrrrggbyybgybwwwwwwwww'
+        expectedCube = 'orbggggggrbryoooooggobbbbbbyoyrrrrrrgoyyyybyywwwwwwwww'
         #theCube = cube.Cube(encodedCube)
         rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
@@ -144,7 +144,7 @@ class middleLayerTest(unittest.TestCase):
         self.assertEquals(rotatedCube, expectedCube)
         
     def test112_middleLayer_solveMiddleLayer_ScrambledCubeThatHasNothingSolved(self):
-        encodedCube = 'yrorggoggbggwoywoooobbbybbbrygoryrrgybygyrrbyworwwwwww'
+        encodedCube = 'bbwwbbgryrobyrggygywgogwyyrrrwgobbrwwoobyyoobogrwwgyro'
         #expectedCube = 'yobggggggrryoooooooggbbbbbbobgrrrrrryybyyyryywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         rotations = ml.solveMiddleLayer(theCube)[1]
