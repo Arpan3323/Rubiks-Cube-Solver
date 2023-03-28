@@ -37,18 +37,23 @@ def _alignToBottomLayer(theCube):
     bottomLayerRotations = bl.solveBottomLayer(theCube)[1]
     return theCube.rotate(bottomLayerRotations)
 
-def _checkTopLayerForEdgePair(cubeList, flippedEdgeRotations = ''):
-    topLayerEdgePairRotations = f'{flippedEdgeRotations}'
+def _checkTopLayerForEdgePair(cubeList):
+    topLayerEdgePairRotations = ''
     sideAndTopEdgePairs = [(FTM, UBM), (RTM, UMR), (BTM, UTM), (LTM, UML)]
     pairFound = False
     for edgePair in sideAndTopEdgePairs:
         if cubeList[edgePair[0]] != cubeList[UMM] and cubeList[edgePair[1]] != cubeList[UMM] and not pairFound:
             requiredSideEdge = edgePair[0]
             pairFound = True
-    if pairFound == False:
-        _checkMiddleLayerForFlippedEdgePair(cubeList)
-        return
-    
+    cubeList, returnedRotations = (
+        edgePairFoundInTopLayer(cubeList, topLayerEdgePairRotations, requiredSideEdge)
+        if pairFound
+        else _checkMiddleLayerForFlippedEdgePair(cubeList)
+    )
+    topLayerEdgePairRotations += returnedRotations
+    return cubeList, topLayerEdgePairRotations
+
+def edgePairFoundInTopLayer(cubeList, topLayerEdgePairRotations, requiredSideEdge):
     sideEdgeToCenterRotations, requiredTopEdge = sideEdgeAlignmentRotations(requiredSideEdge, cubeList)
     if sideEdgeToCenterRotations != '':
         topLayerEdgePairRotations += sideEdgeToCenterRotations
@@ -165,10 +170,9 @@ def _checkMiddleLayerForFlippedEdgePair(cubeList):
         cubeList, rotations = Cube(cubeList).rightTrigger(LMR)
     cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
     middleLayerFlippedEdgeRotations += rotations + bottomLayerRotations
-    _checkTopLayerForEdgePair(''.join(cubeList), middleLayerFlippedEdgeRotations)
+    #_checkTopLayerForEdgePair(''.join(cubeList), middleLayerFlippedEdgeRotations)
     #cubeList, topLayerRotations = _checkTopLayerForEdgePair(cubeList)
     #middleLayerFlippedEdgeRotations += rotations + bottomLayerRotations + topLayerRotations
-
-    #return ''.join(cubeList), middleLayerFlippedEdgeRotations
+    return ''.join(cubeList), middleLayerFlippedEdgeRotations
 
 
