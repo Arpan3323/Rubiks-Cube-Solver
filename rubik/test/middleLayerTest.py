@@ -109,28 +109,37 @@ class middleLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)'''
         
+    '''The component this test was testing has advanced to its next stage
     def test108_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeInMiddleLayerandFixBottomLayer(self):
         encodedCube = 'oyyggggggbgyoooooogbrbbrbbbgrybrrrrryyoyyyborwwwwwwwww'
         expectedCube = 'gbrggggggyryoooooogbobbgbbbboryrrrrryyoyyyyrbwwwwwwwww'
         #theCube = cube.Cube(encodedCube)
         rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
-        self.assertEquals(rotatedCube, expectedCube)
+        self.assertEquals(rotatedCube, expectedCube)'''
         
+    '''The component this test was testing has advanced to its next stage
     def test109_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeFixBottomLayerWhenMultipleFlippedEdges(self):
         encodedCube = 'gooogrgggbgybogooogrrobgbbbyyrrrbrrrbyobyyyyywwwwwwwww'
         expectedCube = 'rroogrgggbgybooooobbyybgbbbgoyrrbrrroyrgyygyywwwwwwwww'
         #theCube = cube.Cube(encodedCube)
         rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
-        self.assertEquals(rotatedCube, expectedCube)
+        self.assertEquals(rotatedCube, expectedCube)'''
     
-    #Mistakenly pressed a green light
     def test110_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeFixBottomLayerAndAlignTopLayer(self):
         encodedCube = 'orrggoggggoygooooobyybbbbbbggyrrrrrrobryyybyywwwwwwwww'
         expectedCube = 'yorggggggyyyoooooooyybbbbbbrrorrrrrrggbyybgybwwwwwwwww'
         #theCube = cube.Cube(encodedCube)
         rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(rotatedCube, expectedCube)
+        
+    def test111_middleLayer_solveMiddleLayer_AlignEdgePairsInTopAndMiddleLayerUntilNoneAreLeftToAlign(self):
+        encodedCube = 'gooogrgggbgybogooogrrobgbbbyyrrrbrrrbyobyyyyywwwwwwwww'
+        expectedCube = 'bbbggggggrggooooooobrybbbbbgyorrrrrryoyryyyyywwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotations = ml.solveMiddleLayer(theCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
 
