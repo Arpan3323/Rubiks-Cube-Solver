@@ -161,7 +161,9 @@ def _checkMiddleLayerForFlippedEdgePair(cubeList):
     elif cubeList[LMM] != cubeList[LMR] and cubeList[LMM] == cubeList[FML]:
         cubeList, rotations = Cube(cubeList).rightTrigger(LMR)
     cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
-    middleLayerFlippedEdgeRotations += rotations + bottomLayerRotations
+    cubeList, topLayerRotations = _checkTopLayerForEdgePair(cubeList)
+    middleLayerFlippedEdgeRotations += rotations + bottomLayerRotations + topLayerRotations
+
     return ''.join(cubeList), middleLayerFlippedEdgeRotations
 
 
