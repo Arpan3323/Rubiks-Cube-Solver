@@ -37,10 +37,8 @@ def _alignToBottomLayer(theCube):
     bottomLayerRotations = bl.solveBottomLayer(theCube)[1]
     return theCube.rotate(bottomLayerRotations)
 
-def _checkTopLayerForEdgePair(cubeList, flippedEdgeRotations = None):
-    topLayerEdgePairRotations = ''
-    if flippedEdgeRotations != None:
-        topLayerEdgePairRotations += flippedEdgeRotations
+def _checkTopLayerForEdgePair(cubeList, flippedEdgeRotations = ''):
+    topLayerEdgePairRotations = f'{flippedEdgeRotations}'
     sideAndTopEdgePairs = [(FTM, UBM), (RTM, UMR), (BTM, UTM), (LTM, UML)]
     pairFound = False
     for edgePair in sideAndTopEdgePairs:
@@ -49,6 +47,7 @@ def _checkTopLayerForEdgePair(cubeList, flippedEdgeRotations = None):
             pairFound = True
     if pairFound == False:
         _checkMiddleLayerForFlippedEdgePair(cubeList)
+        return
     
     sideEdgeToCenterRotations, requiredTopEdge = sideEdgeAlignmentRotations(requiredSideEdge, cubeList)
     if sideEdgeToCenterRotations != '':
