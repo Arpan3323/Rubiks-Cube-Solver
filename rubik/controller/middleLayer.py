@@ -138,16 +138,22 @@ def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
     return rotation 
 
 def _checkMiddleLayerForFlippedEdgePair(cubeList):
+    middleLayerFlippedEdgeRotations = ''
     #EdgePairsForSideCenters = [(FML, LMR), (RML, FMR), (BML, RMR), (LML, BMR)]
     #for edgePair in EdgePairsForSideCenters:
     if cubeList[FMM] != cubeList[FML] and cubeList[FMM] == cubeList[LMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(FML)
+        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
     elif cubeList[RMM] != cubeList[RML] and cubeList[RMM] == cubeList[FMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(RML)
+        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
     elif cubeList[BMM] != cubeList[BML] and cubeList[BMM] == cubeList[RMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(BML)
+        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
     elif cubeList[LMM] != cubeList[LML] and cubeList[LMM] == cubeList[BMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(LML)
-    return ''.join(cubeList), rotations
+        cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
+    middleLayerFlippedEdgeRotations += rotations + bottomLayerRotations
+    return ''.join(cubeList), middleLayerFlippedEdgeRotations
 
 
