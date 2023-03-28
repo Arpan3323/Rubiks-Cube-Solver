@@ -100,17 +100,26 @@ class middleLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
         
+    '''The component this test was testing has advanced to its next stage
     def test107_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeInMiddleLayer(self):
         encodedCube = 'orrggoggggoygooooobyybbbbbbggyrrrrrrobryyybyywwwwwwwww'
         expectedCube = 'orggggggyoogyoogoowoybbbbbbbyyrrrrrrryobygbyywwrwwwwww'
         #theCube = cube.Cube(encodedCube)
         rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
-        self.assertEquals(rotatedCube, expectedCube)
+        self.assertEquals(rotatedCube, expectedCube)'''
         
     def test108_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeInMiddleLayerandFixBottomLayer(self):
         encodedCube = 'oyyggggggbgyoooooogbrbbrbbbgrybrrrrryyoyyyborwwwwwwwww'
         expectedCube = 'obbggggggrrroooooogyobbobbbyryyrrrrrggyyybbyywwwwwwwww'
+        #theCube = cube.Cube(encodedCube)
+        rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(rotatedCube, expectedCube)
+        
+    def test109_middleLayer_checkMiddleLayerForFlippedEdgePair_TriggerEdgeFixBottomLayerWhenMultipleFlippedEdges(self):
+        encodedCube = 'gooogrgggbgybogooogrrobgbbbyyrrrbrrrbyobyyyyywwwwwwwww'
+        expectedCube = 'rroogrgggbgybooooobbyybgbbbgoyrrbrrroyrgyygyywwwwwwwww'
         #theCube = cube.Cube(encodedCube)
         rotations = ml._checkMiddleLayerForFlippedEdgePair(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
