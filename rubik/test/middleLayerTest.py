@@ -143,8 +143,8 @@ class middleLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(rotatedCube, expectedCube)
         
-    def test112_middleLayer_solveMiddleLayer_ScrambledCubeThatHasNothingSolved(self):
-        encodedCube = 'bbwwbbgryrobyrggygywgogwyyrrrwgobbrwwoobyyoobogrwwgyro'
+    def test112_middleLayer_solveMiddleLayer_FullMiddleLayerSolve(self):
+        encodedCube = 'goyybobbborygrbrrrrrbrgygggrgyooboooyygyygobbwwwwwwwww'
         #expectedCube = 'yobggggggrryoooooooggbbbbbbobgrrrrrryybyyyryywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         rotations = ml.solveMiddleLayer(theCube)[1]
