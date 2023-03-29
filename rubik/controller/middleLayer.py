@@ -87,7 +87,7 @@ def sideEdgeAlignmentRotations(requiredSideEdge, cubeList):
         (LTM, BMM): ('U', UTM),
     }
     for edgeAndCenter, (rotations, requiredTopEdgeLocation) in rotationsAndTopEdgeLocation.items():
-        if cubeList[edgeAndCenter[0]] == cubeList[edgeAndCenter[1]]:
+        if cubeList[edgeAndCenter[0]] == cubeList[edgeAndCenter[1]] and edgeAndCenter[0] == requiredSideEdge:
             return rotations, requiredTopEdgeLocation
     '''if requiredSideEdge == FTM:
         if cubeList[requiredSideEdge] == cubeList[FMM]:
