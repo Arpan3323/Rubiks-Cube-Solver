@@ -48,19 +48,19 @@ def _checkTopLayerForEdgePair(cubeList):
             requiredSideEdge = edgePair[0]
             pairFound = True
     cubeList, returnedRotations = (
-        edgePairFoundInTopLayer(cubeList, topLayerEdgePairRotations, requiredSideEdge)
+        _edgePairFoundInTopLayer(cubeList, topLayerEdgePairRotations, requiredSideEdge)
         if pairFound
         else _checkMiddleLayerForFlippedEdgePair(cubeList)
     )
     topLayerEdgePairRotations += returnedRotations
     return cubeList, topLayerEdgePairRotations
 
-def edgePairFoundInTopLayer(cubeList, topLayerEdgePairRotations, requiredSideEdge):
-    sideEdgeToCenterRotations, requiredTopEdge = sideEdgeAlignmentRotations(requiredSideEdge, cubeList)
+def _edgePairFoundInTopLayer(cubeList, topLayerEdgePairRotations, requiredSideEdge):
+    sideEdgeToCenterRotations, requiredTopEdge = _sideEdgeAlignmentRotations(requiredSideEdge, cubeList)
     if sideEdgeToCenterRotations != '':
         topLayerEdgePairRotations += sideEdgeToCenterRotations
         cubeList = Cube(cubeList).rotate(sideEdgeToCenterRotations)
-    topEdgeRotations = topEdgeAlignmentRotations(requiredTopEdge, cubeList)
+    topEdgeRotations = _topEdgeAlignmentRotations(requiredTopEdge, cubeList)
     topLayerEdgePairRotations += topEdgeRotations
     cubeList = Cube(cubeList).rotate(topEdgeRotations)
     alignBottomLayer = bl.solveBottomLayer(Cube(cubeList))[1]
@@ -69,7 +69,7 @@ def edgePairFoundInTopLayer(cubeList, topLayerEdgePairRotations, requiredSideEdg
     return cubeList, topLayerEdgePairRotations
 
 
-def sideEdgeAlignmentRotations(requiredSideEdge, cubeList):
+def _sideEdgeAlignmentRotations(requiredSideEdge, cubeList):
     rotationsAndTopEdgeLocation = {
         (FTM, FMM): ('', UBM),
         (FTM, RMM): ('UUU', UMR),
@@ -92,7 +92,7 @@ def sideEdgeAlignmentRotations(requiredSideEdge, cubeList):
         if cubeList[edgeAndCenter[0]] == cubeList[edgeAndCenter[1]] and edgeAndCenter[0] == requiredSideEdge:
             return rotations, requiredTopEdgeLocation
     
-def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
+def _topEdgeAlignmentRotations(requiredTopEdge, cubeList):
     matchingTopEdgeAndCenter = {
         (UBM, LMM): f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}',
         (UBM, RMM): f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}',
