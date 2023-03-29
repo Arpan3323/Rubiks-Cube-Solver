@@ -153,21 +153,21 @@ def _checkMiddleLayerForFlippedEdgePair(cubeList):
 
 
     #for edgePair in EdgePairsForSideCenters:
-    if cubeList[FMM] != cubeList[FML] and cubeList[FMM] == cubeList[LMR]:
+    if cubeList[FMM] != cubeList[FML]:# and cubeList[FMM] == cubeList[LMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(FML)
-    elif cubeList[FMM] != cubeList[FMR] and cubeList[FMM] == cubeList[RML]:
+    elif cubeList[FMM] != cubeList[FMR]:# and cubeList[FMM] == cubeList[RML]:
         cubeList, rotations = Cube(cubeList).rightTrigger(FMR)
-    elif cubeList[RMM] != cubeList[RML] and cubeList[RMM] == cubeList[FMR]:
+    elif cubeList[RMM] != cubeList[RML]:# and cubeList[RMM] == cubeList[FMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(RML)
-    elif cubeList[RMM] != cubeList[RMR] and cubeList[RMM] == cubeList[BML]:
+    elif cubeList[RMM] != cubeList[RMR]:# and cubeList[RMM] == cubeList[BML]:
         cubeList, rotations = Cube(cubeList).rightTrigger(RMR)
-    elif cubeList[BMM] != cubeList[BML] and cubeList[BMM] == cubeList[RMR]:
+    elif cubeList[BMM] != cubeList[BML]:# and cubeList[BMM] == cubeList[RMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(BML)
-    elif cubeList[BMM] != cubeList[BMR] and cubeList[BMM] == cubeList[LML]:
+    elif cubeList[BMM] != cubeList[BMR]:# and cubeList[BMM] == cubeList[LML]:
         cubeList, rotations = Cube(cubeList).rightTrigger(BMR)
-    elif cubeList[LMM] != cubeList[LML] and cubeList[LMM] == cubeList[BMR]:
+    elif cubeList[LMM] != cubeList[LML]:# and cubeList[LMM] == cubeList[BMR]:
         cubeList, rotations = Cube(cubeList).leftTrigger(LML)
-    elif cubeList[LMM] != cubeList[LMR] and cubeList[LMM] == cubeList[FML]:
+    elif cubeList[LMM] != cubeList[LMR]:# and cubeList[LMM] == cubeList[FML]:
         cubeList, rotations = Cube(cubeList).rightTrigger(LMR)
     cubeList, bottomLayerRotations = bl.solveBottomLayer(Cube(''.join(cubeList)))
     middleLayerFlippedEdgeRotations += rotations + bottomLayerRotations
