@@ -152,4 +152,13 @@ class middleLayerTest(unittest.TestCase):
         verifyBottomLayer= bl.verifyBottomLayerExists(rotatedCube)
         self.assertTrue(verifyBottomLayer)
 
+    def test113_middleLayer_solveMiddleLayer_FullMiddleLayerSolveWhenCubeHasNoPairsInTopOrMiddle(self):
+        encodedCube = 'ryywgwrwbbborbbggowwrgroyrworwyoogbwyggoyrbgrobyywobyg'
+        #expectedCube = 'yobggggggrryoooooooggbbbbbbobgrrrrrryybyyyryywwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotations = ml.solveMiddleLayer(theCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        verifyBottomLayer= bl.verifyBottomLayerExists(rotatedCube)
+        self.assertTrue(verifyBottomLayer)
+
         
