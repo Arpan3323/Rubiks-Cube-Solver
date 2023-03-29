@@ -7,7 +7,7 @@ import rubik.controller.bottomCross as bc
 
 
 
-def cubeRotator(cube):
+'''def cubeRotator(cube):
     rotations = ("FfRrBbLlUu")
     rotationList = []
     
@@ -35,7 +35,15 @@ theCube = Cube(encodedCube)
 rotations = bc.solveBottomCross(theCube)
 rotatedCube = Cube(encodedCube).rotate(rotations)
 verifyBottomCross = bc.verifyBottomCrossExists(list(rotatedCube))
-print(verifyBottomCross)
+#print(verifyBottomCross)
 #self.assertTrue()
-#self.assertEqual(rotatedCube, expectedCube)
+#self.assertEqual(rotatedCube, expectedCube)'''
 
+cube = '7BBNgN7NEEEY7EEggYNN7g7YB7NY7NBYYgENBggYB7Eg7YEBBNYEBg'
+cube = cube.replace(cube[4], 'g')
+cube = cube.replace(cube[13], 'b')
+cube = cube.replace(cube[22], 'r')
+cube = cube.replace(cube[31], 'o')
+cube = cube.replace(cube[40], 'y')
+cube = cube.replace(cube[49], 'w')
+print(cube)
