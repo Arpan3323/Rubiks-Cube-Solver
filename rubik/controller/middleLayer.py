@@ -144,7 +144,20 @@ def sideEdgeAlignmentRotations(requiredSideEdge, cubeList):
     return rotations, requiredTopEdgeLocation'''
 
 def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
-    if requiredTopEdge == UBM:
+    matchingTopEdgeAndCenter = {
+        (UBM, LMM): f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}',
+        (UBM, RMM): f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}',
+        (UMR, FMM): f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}',
+        (UMR, BMM): f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}',
+        (UTM, RMM): f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}',
+        (UTM, LMM): f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}',
+        (UML, BMM): f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}',
+        (UML, FMM): f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}',
+    }
+    for topEdgeAndCenter, rotation in matchingTopEdgeAndCenter.items():
+        if cubeList[topEdgeAndCenter[0]] == cubeList[topEdgeAndCenter[1]] and topEdgeAndCenter[0] == requiredTopEdge:
+            return rotation
+    '''if requiredTopEdge == UBM:
         if cubeList[requiredTopEdge] == cubeList[LMM]:
             rotation = f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}'
         elif cubeList[requiredTopEdge] == cubeList[RMM]:
@@ -164,7 +177,7 @@ def topEdgeAlignmentRotations(requiredTopEdge, cubeList):
             rotation = f'u{Cube(cubeList).leftTrigger(requiredTopEdge)[1]}'
         elif cubeList[requiredTopEdge] == cubeList[FMM]:
             rotation = f'U{Cube(cubeList).rightTrigger(requiredTopEdge)[1]}'
-    return rotation 
+    return rotation''' 
 
 def _checkMiddleLayerForFlippedEdgePair(cubeList):
     middleLayerFlippedEdgeRotations = ''
