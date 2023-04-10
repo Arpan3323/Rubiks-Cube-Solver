@@ -14,8 +14,10 @@ from rubik.view.solve import solve
 
 #Happy Path Tests
 # test 100: check rotations returned when up face already has a cross
-
+#
 # test 101: align the incoming cube to middleLayer configuration if it does not already exist
+#
+# test 102: if incoming cube does not have top cross, check if it has neighbor edges that match UMM
 
 
 
@@ -35,3 +37,9 @@ class upFaceCrossTest(unittest.TestCase):
         theCube = cube.Cube(encodedCube)
         actualCube = ufc._alignMiddleLayer(theCube)
         self.assertEquals(expectedCube, actualCube)
+        
+    def test102_createTopCross_checkIfThereAreNeighborEdgesOnTopFaceThatMatchUMM(self):
+        encodedCube = 'byyggggggryoooooooygbbbbbbbrrorrrrrryygyybyogwwwwwwwww'
+        #theCube = cube.Cube(encodedCube)
+        checkForNieghbors = ufc._createTopCross(encodedCube)
+        self.assertTrue(checkForNieghbors)
