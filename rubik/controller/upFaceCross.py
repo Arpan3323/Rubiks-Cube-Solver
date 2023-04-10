@@ -25,20 +25,29 @@ def _alignMiddleLayer(theCube):
     return theCube.rotate(middleLayerRotations)
 
 def _createTopCross(cubeString):
+    cubeString, rotations = _checkTopForNeighbors(cubeString)
+    return cubeString, rotations
+
+    
+
+def _checkTopForNeighbors(cubeString):
     topNeighborEdges = [(UBM, UMR, UML), (UMR, UBM, UTM), (UTM, UMR, UML), (UML, UTM, UBM)]
     neighboursFound = False
     for edge in topNeighborEdges:
-        if (cubeString[edge[0]] == cubeString[UMM] and cubeString[edge[1]] == cubeString[UMM] 
-            and not neighboursFound):
-            firstNeighbor = edge[0]
-            secondNeighbor = edge[1]
-            neighboursFound = True
-        elif (cubeString[edge[0]] == cubeString[UMM] and cubeString[edge[2]] == cubeString[UMM] 
-              and not neighboursFound):
-            firstNeighbor = edge[0]
-            secondNeighbor = edge[2]
-            neighboursFound = True
-    return neighboursFound
+        if cubeString[edge[0]] == cubeString[UMM]:
+            if cubeString[edge[1]] == cubeString[UMM] and not neighboursFound:
+                firstNeighbor, secondNeighbor = edge[0], edge[1]
+                neighboursFound = True
+            elif cubeString[edge[2]] == cubeString[UMM] and not neighboursFound:
+                firstNeighbor, secondNeighbor = edge[0], edge[2]
+                neighboursFound = True
+    if neighboursFound:
+        cubeString, rotations = _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor)
+        cubeString, CrossRotations = _performCrossRotations(cubeString)
+        rotationsForNeighbors = rotations + CrossRotations
+        return cubeString, rotationsForNeighbors
+
+
 
 def _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor):
     neighborRotations = {
