@@ -4,14 +4,16 @@ import rubik.controller.middleLayer as ml
 
 def solveUpCross(theCube: Cube) -> str:
     cubeString = theCube.get()
-
     if verifyTopCrossExists(cubeString):
         return [cubeString, '']
-    
     if ml.verifyMiddleLayerExists(cubeString) == False:
         cubeString = _alignMiddleLayer(theCube)
-      
-    return 'L'      #TODO:  remove this stubbed value
+    rotations = ''
+    if verifyTopCrossExists(cubeString) == False:
+        cubeString, topCrossRotations = _createTopCross(cubeString)
+        rotations += topCrossRotations
+
+    return cubeString, rotations
 
 def verifyTopCrossExists(cubeString):
     return(ml.verifyMiddleLayerExists(cubeString)
