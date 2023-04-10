@@ -101,6 +101,7 @@ class upFaceCrossTest(unittest.TestCase):
         encodedCube = 'oygggggggyoyoooooogyrbbbbbbyryrrrrrrbboyyybgrwwwwwwwww'
         expectedCube = 'ygyggggggobgooooooyoybbbbbbgrrrrrrrroyryyybybwwwwwwwww'
         rotations = ufc._createTopCross(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
     
     
