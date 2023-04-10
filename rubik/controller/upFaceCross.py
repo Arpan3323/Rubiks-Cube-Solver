@@ -7,6 +7,9 @@ def solveUpCross(theCube: Cube) -> str:
 
     if verifyTopCrossExists(cubeString):
         return [cubeString, '']
+    
+    if ml.verifyMiddleLayerExists(cubeString) == False:
+        cubeString = _alignMiddleLayer(theCube)
       
     return 'L'      #TODO:  remove this stubbed value
 
@@ -16,3 +19,7 @@ def verifyTopCrossExists(cubeString):
            and cubeString[UMR] == cubeString[UMM]
            and cubeString[UTM] == cubeString[UMM]
            and cubeString[UML] == cubeString[UMM])
+
+def _alignMiddleLayer(theCube):
+    middleLayerRotations = ml.solveMiddleLayer(theCube)[1]
+    return theCube.rotate(middleLayerRotations)
