@@ -80,7 +80,8 @@ def _checkTopForAdjacentEdges(cubeString):
             cubeString = Cube(cubeString).rotate('U')
             adjacentEdgeRotations += 'U'
         cubeString, crossRotations = _performCrossRotations(cubeString)
-        adjacentEdgeRotations += crossRotations
+        cubeString, rotations = _checkTopForNeighbors(cubeString)
+        adjacentEdgeRotations += crossRotations + rotations
         return cubeString, adjacentEdgeRotations
     else:
         cubeString, crossRotations = _performCrossRotations(cubeString)
