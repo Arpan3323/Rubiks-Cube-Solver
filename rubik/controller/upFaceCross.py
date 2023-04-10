@@ -79,9 +79,16 @@ def _checkTopForAdjacentEdges(cubeString):
         if firstEdge == UMR:
             cubeString = Cube(cubeString).rotate('U')
             adjacentEdgeRotations += 'U'
-        cubeString, rotations = _performCrossRotations(cubeString)
-        adjacentEdgeRotations += rotations
-    return cubeString, adjacentEdgeRotations
+        cubeString, crossRotations = _performCrossRotations(cubeString)
+        adjacentEdgeRotations += crossRotations
+        return cubeString, adjacentEdgeRotations
+    else:
+        cubeString, crossRotations = _performCrossRotations(cubeString)
+        cubeString, rotations = _checkTopForAdjacentEdges(cubeString)
+        adjacentEdgeRotations += crossRotations + rotations
+        return cubeString, adjacentEdgeRotations
+    
+
 
         
 
