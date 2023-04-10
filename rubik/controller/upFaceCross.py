@@ -57,3 +57,8 @@ def _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor):
     if rotations != '': cubeString = Cube(cubeString).rotate(neighborRotations[edges])
     return cubeString, rotations
 
+def _performCrossRotations(cubeString):
+    topCrossRotations = 'FURurf'
+    cubeString = Cube(cubeString).rotate(topCrossRotations)
+    return cubeString, topCrossRotations
+
