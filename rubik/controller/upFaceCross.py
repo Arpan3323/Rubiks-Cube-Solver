@@ -41,11 +41,17 @@ def _checkTopForNeighbors(cubeString):
             elif cubeString[edge[2]] == cubeString[UMM] and not neighboursFound:
                 firstNeighbor, secondNeighbor = edge[0], edge[2]
                 neighboursFound = True
+    rotationsForNeighbors = ''
     if neighboursFound:
         cubeString, rotations = _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor)
         cubeString, CrossRotations = _performCrossRotations(cubeString)
         rotationsForNeighbors = rotations + CrossRotations
-        return cubeString, rotationsForNeighbors
+        #return cubeString, rotationsForNeighbors
+    else:
+        cubeString, rotations = _checkTopForAdjacentEdges(cubeString)
+        rotationsForNeighbors = rotations
+        #return cubeString, rotations
+    return cubeString, rotationsForNeighbors
 
 
 
