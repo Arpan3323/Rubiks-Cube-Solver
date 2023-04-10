@@ -25,8 +25,8 @@ def _alignMiddleLayer(theCube):
     return theCube.rotate(middleLayerRotations)
 
 def _createTopCross(cubeString):
-    cubeString, rotations = _checkTopForNeighbors(cubeString)
-    return cubeString, rotations
+    cubeString, topCrossRotations = _checkTopForNeighbors(cubeString)
+    return cubeString, topCrossRotations
 
     
 
