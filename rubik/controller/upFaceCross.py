@@ -40,3 +40,20 @@ def _createTopCross(cubeString):
             neighboursFound = True
     return neighboursFound
 
+def _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor):
+    neighborRotations = {
+        (UBM, UMR) : 'UU',
+        (UBM, UML) : 'U',
+        #(UMR, UBM) : 'UU',
+        #(UMR, UTM) : 'UUU',
+        (UTM, UMR) : 'UUU',
+        #(UTM, UML) : '',
+        (UML, UTM) : '',
+        #(UML, UBM) : 'U',
+    }
+    for edges in neighborRotations:
+        if (firstNeighbor in edges and secondNeighbor in edges):
+            rotations = neighborRotations[edges]
+    if rotations != '': cubeString = Cube(cubeString).rotate(neighborRotations[edges])
+    return cubeString, rotations
+
