@@ -66,6 +66,25 @@ def _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor):
     if rotations != '': cubeString = Cube(cubeString).rotate(neighborRotations[edges])
     return cubeString, rotations
 
+def _checkTopForAdjacentEdges(cubeString):
+    topAdjacentEdges = [(UBM, UTM), (UMR, UML)]
+    adjacentEdgesFound = False
+    adjacentEdgeRotations = ''
+    for edges in topAdjacentEdges:
+        if (cubeString[edges[0]] == cubeString[UMM] and cubeString[edges[1]] == cubeString[UMM] 
+            and not adjacentEdgesFound):
+            adjacentEdgesFound = True
+            firstEdge, secondEdge = edges[0], edges[1]
+    if adjacentEdgesFound:
+        if firstEdge == UMR:
+            cubeString = Cube(cubeString).rotate('U')
+            adjacentEdgeRotations += 'U'
+        cubeString, rotations = _performCrossRotations(cubeString)
+        adjacentEdgeRotations += rotations
+    return cubeString, adjacentEdgeRotations
+
+        
+
 def _performCrossRotations(cubeString):
     topCrossRotations = 'FURurf'
     cubeString = Cube(cubeString).rotate(topCrossRotations)
