@@ -18,6 +18,8 @@ from rubik.view.solve import solve
 # test 101: align the incoming cube to middleLayer configuration if it does not already exist
 #
 # test 102: if incoming cube does not have top cross, check if it has neighbor edges that match UMM
+#
+# test 103: align top face neighbor edges to 9 o'clock and 12 o'clock
 
 
 
@@ -43,3 +45,10 @@ class upFaceCrossTest(unittest.TestCase):
         #theCube = cube.Cube(encodedCube)
         checkForNieghbors = ufc._createTopCross(encodedCube)
         self.assertTrue(checkForNieghbors)
+
+    def test103_alignTopNeighbors_checkIfNeighborEdgesOnTopFaceAreAligned(self):
+        encodedCube = 'ryoggggggygboooooorrobbbbbbbyyrrrrrryyyoyygbgwwwwwwwww'
+        expectedCube = 'byyggggggryoooooooygbbbbbbbrrorrrrrryygyybyogwwwwwwwww'
+        rotationsToAlignNieghbors = ufc._alignTopNeighbors(encodedCube, UMR, UTM)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotationsToAlignNieghbors)
+        self.assertEquals(expectedCube, rotatedCube)
