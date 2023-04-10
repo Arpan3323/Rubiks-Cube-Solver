@@ -23,3 +23,20 @@ def verifyTopCrossExists(cubeString):
 def _alignMiddleLayer(theCube):
     middleLayerRotations = ml.solveMiddleLayer(theCube)[1]
     return theCube.rotate(middleLayerRotations)
+
+def _createTopCross(cubeString):
+    topNeighborEdges = [(UBM, UMR, UML), (UMR, UBM, UTM), (UTM, UMR, UML), (UML, UTM, UBM)]
+    neighboursFound = False
+    for edge in topNeighborEdges:
+        if (cubeString[edge[0]] == cubeString[UMM] and cubeString[edge[1]] == cubeString[UMM] 
+            and not neighboursFound):
+            firstNeighbor = edge[0]
+            secondNeighbor = edge[1]
+            neighboursFound = True
+        elif (cubeString[edge[0]] == cubeString[UMM] and cubeString[edge[2]] == cubeString[UMM] 
+              and not neighboursFound):
+            firstNeighbor = edge[0]
+            secondNeighbor = edge[2]
+            neighboursFound = True
+    return neighboursFound
+
