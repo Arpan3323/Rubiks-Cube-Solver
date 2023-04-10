@@ -20,6 +20,8 @@ from rubik.view.solve import solve
 # test 102: if incoming cube does not have top cross, check if it has neighbor edges that match UMM
 #
 # test 103: align top face neighbor edges to 9 o'clock and 12 o'clock
+#
+# test 104: checks that the component responsible for performing top cross rotations(FURurf) is functioning correctly
 
 
 
@@ -51,4 +53,11 @@ class upFaceCrossTest(unittest.TestCase):
         expectedCube = 'byyggggggryoooooooygbbbbbbbrrorrrrrryygyybyogwwwwwwwww'
         rotationsToAlignNieghbors = ufc._alignTopNeighbors(encodedCube, UMR, UTM)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotationsToAlignNieghbors)
+        self.assertEquals(expectedCube, rotatedCube)
+        
+    def test104_performCrossRotations_PerformTheSpecificRotationsForTopCross(self):
+        encodedCube = 'yyyggggggryoooooooyrybbbbbbobrrrrrrrbygyyobggwwwwwwwww'
+        expectedCube = 'yorggggggyryooooooogybbbbbbgbgrrrrrroybyyyrybwwwwwwwww'
+        rotationsForTopCross = ufc._performCrossRotations(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotationsForTopCross)
         self.assertEquals(expectedCube, rotatedCube)
