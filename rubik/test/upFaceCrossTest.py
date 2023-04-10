@@ -105,7 +105,7 @@ class upFaceCrossTest(unittest.TestCase):
         self.assertEquals(expectedCube, rotatedCube)
         
     def test111_solveUpCross_CreateACrossOnTopIfItDoesExists(self):
-        encodedCube = 'rowygyyyoobwooggwgrboybgwwbbgyrrbwbbywboyrgwgrryowgorr'
+        encodedCube = 'yybggggggyygooooooogrbbbbbbyogrrrrrrbyyyybrrowwwwwwwww'
         expectedCube = 'bbgggggggygrooooooyrobbbbbbyoorrrrrrgybyyyyyrwwwwwwwww'
         theCube = cube.Cube(encodedCube)
         rotations = ufc.solveUpCross(theCube)[1]
