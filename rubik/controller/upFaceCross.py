@@ -30,8 +30,6 @@ def _createTopCross(cubeString):
     cubeString, topCrossRotations = _checkTopForNeighbors(cubeString)
     return cubeString, topCrossRotations
 
-    
-
 def _checkTopForNeighbors(cubeString):
     topNeighborEdges = [(UBM, UMR, UML), (UMR, UBM, UTM), (UTM, UMR, UML), (UML, UTM, UBM)]
     neighboursFound = False
@@ -54,8 +52,6 @@ def _checkTopForNeighbors(cubeString):
         rotationsForNeighbors = rotations
         #return cubeString, rotations
     return cubeString, rotationsForNeighbors
-
-
 
 def _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor):
     neighborRotations = {
@@ -97,10 +93,6 @@ def _checkTopForAdjacentEdges(cubeString):
         adjacentEdgeRotations += crossRotations + rotations
         return cubeString, adjacentEdgeRotations
     
-
-
-        
-
 def _performCrossRotations(cubeString):
     topCrossRotations = 'FURurf'
     cubeString = Cube(cubeString).rotate(topCrossRotations)
