@@ -71,7 +71,14 @@ class upFaceCrossTest(unittest.TestCase):
         
     def test106_checkTopForAdjacentEdges_checksTopFaceToForAdjacentEdgesAndAlignsThemWithFrontFace(self):
         encodedCube = 'oygggggggyoyoooooogyrbbbbbbyryrrrrrrbboyyybgrwwwwwwwww'
-        expectedCube = 'yoygggggggyrooooooyrybbbbbboygrrrrrrbybgybryowwwwwwwww'
+        expectedCube = 'ybgggggggyryoooooooyybbbbbbbyorrrrrrrobgyygyrwwwwwwwww'
+        rotations = ufc._checkTopForAdjacentEdges(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
+        
+    def test107_checkTopForAdjacentEdges_checksTopFaceToForAdjacentEdgesIfNotFoundPerfromsCrossRotationAndChecksAgain(self):
+        encodedCube = 'oyyggggggbyooooooobygbbbbbbyygrrrrrrrbyoygyrrwwwwwwwww'
+        expectedCube = 'gbrggggggyrbooooooyyybbbbbbryyrrrrrrggooyyoybwwwwwwwww'
         rotations = ufc._checkTopForAdjacentEdges(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
