@@ -48,6 +48,11 @@ def _createTopSurface(cubeString):
             cubeString, newFishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
             cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
             topSurfaceRotations += newFishRotations + secondSurfacerotations
+    else:
+        cubeString, topLayerRotations = _alignTopLayer(cubeString)
+        cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
+        cubeString, crossRotations = _createTopSurface(cubeString)
+        topSurfaceRotations = topLayerRotations + firstSurfaceRotations + crossRotations
     return cubeString, topSurfaceRotations
 
 def _isOnlyCross(cubeString):
