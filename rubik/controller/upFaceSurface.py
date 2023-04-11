@@ -48,3 +48,7 @@ def _alignTopLayer(cubeString):
             cubeString = Cube(cubeString).rotate('U')
             rotations += 'U'
         return cubeString, rotations
+    
+def _performSurfaceRotations(cubeString):
+    rotations = 'RUrURUUr'
+    return Cube(cubeString).rotate(rotations), rotations
