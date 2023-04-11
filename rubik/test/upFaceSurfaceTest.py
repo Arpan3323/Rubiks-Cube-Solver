@@ -51,11 +51,19 @@ class upFaceSurfaceTest(unittest.TestCase):
     def test104_performSurfaceRotations_PerformTheSpecificRotationsForSolvingTopSurface(self):
         encodedCube = 'bogggggggygyooooooorobbbbbbybyrrrrrrgybyyyryrwwwwwwwww'
         expectedCube = 'boygggggggbyoooooobgybbbbbbrrorrrrrrgyryyyyyowwwwwwwww'
-        rotationsForTopCross = ufs._performSurfaceRotations(encodedCube)[1]
-        rotatedCube = cube.Cube(encodedCube).rotate(rotationsForTopCross)
+        rotationsForTopSurface = ufs._performSurfaceRotations(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotationsForTopSurface)
         self.assertEquals(expectedCube, rotatedCube)
         
     def test105_isFish_CheckIfTopSurfaceHasAFish(self):
         encodedCube = 'boygggggggbyoooooobgybbbbbbrrorrrrrrgyryyyyyowwwwwwwww'
         checkForFish = ufs._isFish(encodedCube)
         self.assertTrue(checkForFish)
+        
+    def test106_alignFish_RotatesTopUntilFishHeadIsOrientedCorrectlyOnUpBottomLeft(self):
+        encodedCube = 'gbyggggggbgyoooooorrobbbbbbboyrrrrrryygyyyoyrwwwwwwwww'
+        expectedCube = 'boygggggggbyoooooobgybbbbbbrrorrrrrrgyryyyyyowwwwwwwww'
+        fishHead = UTL
+        rotations = ufs._alignFish(encodedCube, fishHead)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
