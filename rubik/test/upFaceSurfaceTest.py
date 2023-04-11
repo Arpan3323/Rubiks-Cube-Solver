@@ -47,3 +47,10 @@ class upFaceSurfaceTest(unittest.TestCase):
         rotations = ufs._alignTopLayer(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
+    
+    def test104_performSurfaceRotations_PerformTheSpecificRotationsForSolvingTopSurface(self):
+        encodedCube = 'bogggggggygyooooooorobbbbbbybyrrrrrrgybyyyryrwwwwwwwww'
+        expectedCube = 'boygggggggbyoooooobgybbbbbbrrorrrrrrgyryyyyyowwwwwwwww'
+        rotationsForTopCross = ufs._performSurfaceRotations(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotationsForTopCross)
+        self.assertEquals(expectedCube, rotatedCube)
