@@ -17,7 +17,11 @@ def solveUpSurface(theCube: Cube) -> str:
     if not ufc.verifyTopCrossExists(cubeString):
         cubeString = _alignToTopCross(theCube)
     
-    return 'U'      #TODO:  remove this stubbed value
+    rotations = ''
+    if not verifyTopSurfaceExists(cubeString):
+        cubeString, rotations = _createTopSurface(cubeString)
+    
+    return cubeString, rotations
 
 def verifyTopSurfaceExists(cubeString):
     return(
@@ -40,6 +44,10 @@ def _createTopSurface(cubeString):
         cubeString, fishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
         cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
         topSurfaceRotations = CrossAlignRotations + firstSurfaceRotations + fishRotations + secondSurfacerotations
+        if not verifyTopSurfaceExists(cubeString):
+            cubeString, newFishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
+            cubeString, thirdSurfacerotations = _performSurfaceRotations(cubeString)
+            topSurfaceRotations += newFishRotations + thirdSurfacerotations
     elif _isFish(cubeString)[0]:
         cubeString, fishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
         cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
