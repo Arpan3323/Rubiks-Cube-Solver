@@ -74,3 +74,13 @@ class upFaceSurfaceTest(unittest.TestCase):
         rotations = ufs._createTopSurface(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
+        
+    def test108_createTopSurface_IfAFishAlreadyExistsCheckIfRotatingOnceWillSolve(self):
+        encodedCube = 'ybbbbbbbbyrgrrrrrroorggggggyggoooooobyyyyyryowwwwwwwww'
+        expectedCube = 'ggobbbbbbbrgrrrrrrobbggggggrorooooooyyyyyyyyywwwwwwwww'
+        rotations = ufs._createTopSurface(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
+        
+        
+        
