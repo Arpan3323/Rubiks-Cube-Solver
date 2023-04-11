@@ -67,3 +67,10 @@ class upFaceSurfaceTest(unittest.TestCase):
         rotations = ufs._alignFish(encodedCube, fishHead)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
+        
+    def test107_createTopSurface_IfOnlyCrossExistsAlignsItCreatesFishAndSolvesTopSurface(self):
+        encodedCube = 'ybyggggggogbbbbbbbyoyrrrrrrrrroooooooygyyybygwwwwwwwww'
+        expectedCube = 'gggggggggbrrbbbbbbobbrrrrrrrooooooooyyyyyyyyywwwwwwwww'
+        rotations = ufs._createTopSurface(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
