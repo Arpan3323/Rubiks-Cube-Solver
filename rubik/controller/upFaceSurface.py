@@ -32,6 +32,16 @@ def _alignToTopCross(theCube):
     topCrossRotations = ufc.solveUpCross(theCube)[1]
     return theCube.rotate(topCrossRotations)
 
+def _createTopSurface(cubeString):
+    topSurfaceRotations = ''
+    if _isOnlyCross(cubeString):
+        cubeString, CrossAlignRotations = _alignTopLayer(cubeString)
+        cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
+        cubeString, fishRotations = _isFish(cubeString)
+        cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
+        topSurfaceRotations = CrossAlignRotations + firstSurfaceRotations + fishRotations + secondSurfacerotations
+    return cubeString, topSurfaceRotations
+
 def _isOnlyCross(cubeString):
     return(
         ufc.verifyTopCrossExists(cubeString)
@@ -42,12 +52,12 @@ def _isOnlyCross(cubeString):
     )
 
 def _alignTopLayer(cubeString):
-    if _isOnlyCross(cubeString):
-        rotations = ''
-        while cubeString[LTR] != cubeString[UMM]:
-            cubeString = Cube(cubeString).rotate('U')
-            rotations += 'U'
-        return cubeString, rotations
+    #if _isOnlyCross(cubeString):
+    rotations = ''
+    while cubeString[LTR] != cubeString[UMM]:
+        cubeString = Cube(cubeString).rotate('U')
+        rotations += 'U'
+    return cubeString, rotations
     
 def _performSurfaceRotations(cubeString):
     rotations = 'RUrURUUr'
