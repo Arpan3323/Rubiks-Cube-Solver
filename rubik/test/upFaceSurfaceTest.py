@@ -54,3 +54,8 @@ class upFaceSurfaceTest(unittest.TestCase):
         rotationsForTopCross = ufs._performSurfaceRotations(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotationsForTopCross)
         self.assertEquals(expectedCube, rotatedCube)
+        
+    def test105_isFish_CheckIfTopSurfaceHasAFish(self):
+        encodedCube = 'boygggggggbyoooooobgybbbbbbrrorrrrrrgyryyyyyowwwwwwwww'
+        checkForFish = ufs._isFish(cubeString)
+        self.assertTrue(checkForFish)
