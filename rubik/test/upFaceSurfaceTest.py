@@ -81,6 +81,13 @@ class upFaceSurfaceTest(unittest.TestCase):
         rotations = ufs._createTopSurface(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
+    
+    def test109_createTopSurface_WhenTopHasCrossAndMoreThanOneCornerThatMatchTopCenter(self):
+        encodedCube = 'rrobbbbbbyborrrrrrbgyggggggroboooooogyyyyyyygwwwwwwwww'
+        expectedCube = 'ooobbbbbbbrrrrrrrrgbbggggggrggooooooyyyyyyyyywwwwwwwww'
+        rotations = ufs._createTopSurface(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
         
         
         
