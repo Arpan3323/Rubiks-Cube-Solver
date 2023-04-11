@@ -65,7 +65,7 @@ def _isFish(cubeString):
     if cornerCount == 1 and fishHead != UBL:
         cubeString, rotations = _alignFish(cubeString, fishHead)
         fishRotations += rotations
-    return cubeString, rotations
+    return cubeString, fishRotations
 
 def _alignFish(cubeString, fishHead):
     fishAlignmentRotations = {
