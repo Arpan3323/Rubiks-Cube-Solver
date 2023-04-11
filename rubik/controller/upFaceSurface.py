@@ -56,12 +56,22 @@ def _performSurfaceRotations(cubeString):
 def _isFish(cubeString):
     topCorners = [UBL, UBR, UTL, UTR]
     cornerCount = 0
+    fishRotations = ''
     if ufc.verifyTopCrossExists(cubeString):
         for corner in topCorners:
             if cubeString[corner] == cubeString[UMM]:
                 fishHead = corner
                 cornerCount += 1
-    return cornerCount == 1
+    if cornerCount == 1 and fishHead != UBL:
+        cubeString, rotations = _alignFish(cubeString, fishHead)
+        fishRotations += rotations
+    return cubeString, rotations
 
-def _alignFish(cubeString):
-    pass
+def _alignFish(cubeString, fishHead):
+    fishAlignmentRotations = {
+        UBR : 'U',
+        UTR : 'UU',
+        UTL : 'UUU',
+    }
+    cubeString = Cube(cubeString).rotate(fishAlignmentRotations[fishHead])
+    return cubeString, fishAlignmentRotations[fishHead]
