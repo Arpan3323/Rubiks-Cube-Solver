@@ -52,3 +52,13 @@ def _alignTopLayer(cubeString):
 def _performSurfaceRotations(cubeString):
     rotations = 'RUrURUUr'
     return Cube(cubeString).rotate(rotations), rotations
+
+def _isFish(cubeString):
+    topCorners = [UBL, UBR, UTL, UTR]
+    cornerCount = 0
+    if ufc.verifyTopCrossExists(cubeString):
+        for corner in topCorners:
+            if cubeString[corner] == cubeString[UMM]:
+                fishHead = corner
+                cornerCount += 1
+    return cornerCount == 1
