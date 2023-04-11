@@ -57,5 +57,5 @@ class upFaceSurfaceTest(unittest.TestCase):
         
     def test105_isFish_CheckIfTopSurfaceHasAFish(self):
         encodedCube = 'boygggggggbyoooooobgybbbbbbrrorrrrrrgyryyyyyowwwwwwwww'
-        checkForFish = ufs._isFish(cubeString)
+        checkForFish = ufs._isFish(encodedCube)
         self.assertTrue(checkForFish)
