@@ -93,8 +93,9 @@ class upFaceSurfaceTest(unittest.TestCase):
         encodedCube = 'orrgggggggbyoooooobobbbbbbbyggrrrrrroyryyyyyywwwwwwwww'
         expectedCube = 'gobggggggrrooooooobggbbbbbbobrrrrrrryyyyyyyyywwwwwwwww'
         theCube = cube.Cube(encodedCube)
-        actualCube = ufs.solveUpSurface(theCube)
-        self.assertEquals(expectedCube, actualCube)
+        rotations = ufs.solveUpSurface(theCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
         
         
         
