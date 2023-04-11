@@ -31,3 +31,12 @@ def verifyTopSurfaceExists(cubeString):
 def _alignToTopCross(theCube):
     topCrossRotations = ufc.solveUpCross(theCube)[1]
     return theCube.rotate(topCrossRotations)
+
+def _isOnlyCross(cubeString):
+    return(
+        ufc.verifyTopCrossExists(cubeString)
+        and cubeString[UBL] != cubeString[UMM]
+        and cubeString[UBR] != cubeString[UMM]
+        and cubeString[UTL] != cubeString[UMM]
+        and cubeString[UTR] != cubeString[UMM]
+    )
