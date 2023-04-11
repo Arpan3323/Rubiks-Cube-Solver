@@ -89,5 +89,12 @@ class upFaceSurfaceTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
         
+    def test110_solveUpCross_SolveTopSurfaceIfItDoesNotExists(self):
+        encodedCube = 'oorwgroryybbgoygyowywbbybrwoogorbrwbgrrgyoywbywrgwggbw'
+        expectedCube = 'ooyggggggggyoooooobrrbbbbbbgbyrrrrrryyryyybyowwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        actualCube = ufs._alignToTopCross(theCube)
+        self.assertEquals(expectedCube, actualCube)
+        
         
         
