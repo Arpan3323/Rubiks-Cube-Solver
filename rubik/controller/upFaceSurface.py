@@ -45,6 +45,6 @@ def _alignTopLayer(cubeString):
     if _isOnlyCross(cubeString):
         rotations = ''
         while cubeString[LTR] != cubeString[UMM]:
-            cubeString = cubeString.rotate('U')
+            cubeString = Cube(cubeString).rotate('U')
             rotations += 'U'
         return cubeString, rotations
