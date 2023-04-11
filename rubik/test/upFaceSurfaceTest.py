@@ -40,3 +40,10 @@ class upFaceSurfaceTest(unittest.TestCase):
         encodedCube = 'ybyggggggbogooooooygybbbbbbororrrrrrbyryyygyrwwwwwwwww'
         checkForCross = ufs._isOnlyCross(encodedCube)
         self.assertTrue(checkForCross)
+        
+    def test103_alignTopLayer_rotatesTopFaceUntilACornerPieceIsInLeftTopRight(self):
+        encodedCube = 'ybyggggggbogooooooygybbbbbbororrrrrrbyryyygyrwwwwwwwww'
+        expectedCube = 'bogggggggygyooooooorobbbbbbybyrrrrrrgybyyyryrwwwwwwwww'
+        rotations = ufs._alignTopLayer(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
