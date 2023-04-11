@@ -93,7 +93,7 @@ class upFaceSurfaceTest(unittest.TestCase):
         encodedCube = 'orrgggggggbyoooooobobbbbbbbyggrrrrrroyryyyyyywwwwwwwww'
         expectedCube = 'gobggggggrrooooooobggbbbbbbobrrrrrrryyyyyyyyywwwwwwwww'
         theCube = cube.Cube(encodedCube)
-        actualCube = ufs._alignToTopCross(theCube)
+        actualCube = ufs.solveUpSurface(theCube)
         self.assertEquals(expectedCube, actualCube)
         
         
