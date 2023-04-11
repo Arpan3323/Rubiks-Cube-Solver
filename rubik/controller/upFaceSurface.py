@@ -62,3 +62,6 @@ def _isFish(cubeString):
                 fishHead = corner
                 cornerCount += 1
     return cornerCount == 1
+
+def _alignFish(cubeString):
+    pass
