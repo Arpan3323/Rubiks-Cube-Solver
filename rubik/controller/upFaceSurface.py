@@ -37,9 +37,17 @@ def _createTopSurface(cubeString):
     if _isOnlyCross(cubeString):
         cubeString, CrossAlignRotations = _alignTopLayer(cubeString)
         cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
-        cubeString, fishRotations = _isFish(cubeString)
+        cubeString, fishRotations = _isFish(cubeString)[0][1]
         cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
         topSurfaceRotations = CrossAlignRotations + firstSurfaceRotations + fishRotations + secondSurfacerotations
+    elif _isFish(cubeString)[0]:
+        cubeString, fishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
+        cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
+        topSurfaceRotations = fishRotations + firstSurfaceRotations
+        if not verifyTopSurfaceExists(cubeString):
+            cubeString, newFishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
+            cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
+            topSurfaceRotations += newFishRotations + secondSurfacerotations
     return cubeString, topSurfaceRotations
 
 def _isOnlyCross(cubeString):
@@ -66,22 +74,21 @@ def _performSurfaceRotations(cubeString):
 def _isFish(cubeString):
     topCorners = [UBL, UBR, UTL, UTR]
     cornerCount = 0
-    fishRotations = ''
+    #fishRotations = ''
     if ufc.verifyTopCrossExists(cubeString):
         for corner in topCorners:
             if cubeString[corner] == cubeString[UMM]:
                 fishHead = corner
                 cornerCount += 1
-    if cornerCount == 1 and fishHead != UBL:
-        cubeString, rotations = _alignFish(cubeString, fishHead)
-        fishRotations += rotations
-    return cubeString, fishRotations
+    return (True, fishHead) if cornerCount == 1 else (False, '')
 
 def _alignFish(cubeString, fishHead):
     fishAlignmentRotations = {
         UBR : 'U',
         UTR : 'UU',
         UTL : 'UUU',
+        UBL : '',
     }
-    cubeString = Cube(cubeString).rotate(fishAlignmentRotations[fishHead])
+    if fishHead != UBL:
+        cubeString = Cube(cubeString).rotate(fishAlignmentRotations[fishHead])
     return cubeString, fishAlignmentRotations[fishHead]
