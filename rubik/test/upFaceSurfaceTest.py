@@ -35,3 +35,8 @@ class upFaceSurfaceTest(unittest.TestCase):
         theCube = cube.Cube(encodedCube)
         actualCube = ufs._alignToTopCross(theCube)
         self.assertEquals(expectedCube, actualCube)
+        
+    def test102_isOnlyCross_CheckIfCrossExistsOnTopAndNoCornersMatchTopCenter(self):
+        encodedCube = 'ybyggggggbogooooooygybbbbbbororrrrrrbyryyygyrwwwwwwwww'
+        checkForCross = ufs._isOnlyCross(encodedCube)
+        self.assertTrue(checkForCross)
