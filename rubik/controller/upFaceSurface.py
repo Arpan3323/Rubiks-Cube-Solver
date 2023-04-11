@@ -14,6 +14,9 @@ def solveUpSurface(theCube: Cube) -> str:
     if verifyTopSurfaceExists(cubeString):
         return cubeString, ''
     
+    if not ufc.verifyTopCrossExists(cubeString):
+        cubeString = _alignToTopCross(theCube)
+    
     return 'U'      #TODO:  remove this stubbed value
 
 def verifyTopSurfaceExists(cubeString):
@@ -24,3 +27,7 @@ def verifyTopSurfaceExists(cubeString):
         and cubeString[UTL] == cubeString[UMM]
         and cubeString[UTR] == cubeString[UMM]
     )
+
+def _alignToTopCross(theCube):
+    topCrossRotations = ufc.solveUpCross(theCube)[1]
+    return theCube.rotate(topCrossRotations)
