@@ -23,47 +23,20 @@ def rotate(parms):
     
     #checking if the cube cube is empty, None, consists of characters outside [A-Z][a-z][0-9], or 
     #contains exactly 54 characters
-    if (theCube.validateCube(encodedCube) == False):
+    if ((theCube.validateCube(encodedCube) == False) 
+        or (theCube.validateUniqueCenters(encodedCube) == False)
+        or (theCube.validateNineOfEachCubeCharacters(encodedCube) == False)):
             result['status'] = "error: invalid cube"
-
-            #checking if both cube and direction are invalid
-            if not all(char in validDirections for char in directions):
+            if (directions != None) and (not all(char in validDirections for char in directions)):
                 result['status'] = "error: invalid cube and invalid rotation"
-                return result
-            
-            return result
-    
-    #checking if the cube has six unique center faces
-    if (theCube.validateUniqueCenters(encodedCube) == False):
-            result['status'] = "error: invalid cube"
-        
-            #checking if both cube and direction are invalid
-            if not all(char in validDirections for char in directions):
-                result['status'] = "error: invalid cube and invalid rotation"
-                return result
-            
-            return result
-    
-    #checking if each character is repeated exactly 9 times
-    if theCube.validateNineOfEachCubeCharacters(encodedCube) == False:
-        result['status'] = "error: invalid cube"
+            return result   
      
-        #checking if both cube and direction are invalid
-        if not all(char in validDirections for char in directions):
-            result['status'] = "error: invalid cube and invalid rotation"
-            return result
-            
-        return result
-    
-    
-    #checking if the incoming directions are valid, [FfRrBbLlUu]
-    if (directions != None) and (not all(char in validDirections for char in directions)):
+    elif (directions != None) and (not all(char in validDirections for char in directions)):
         result['status'] = "error: invalid rotation"
         return result
     
     theCube = Cube(encodedCube)
     theCube.rotate(directions)
-    
     result['cube'] = theCube.get()
     result['status'] = 'ok'                     
     return result
