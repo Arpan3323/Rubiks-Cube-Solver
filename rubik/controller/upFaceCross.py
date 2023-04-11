@@ -46,23 +46,17 @@ def _checkTopForNeighbors(cubeString):
         cubeString, rotations = _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor)
         cubeString, CrossRotations = _performCrossRotations(cubeString)
         rotationsForNeighbors = rotations + CrossRotations
-        #return cubeString, rotationsForNeighbors
     else:
         cubeString, rotations = _checkTopForAdjacentEdges(cubeString)
         rotationsForNeighbors = rotations
-        #return cubeString, rotations
     return cubeString, rotationsForNeighbors
 
 def _alignTopNeighbors(cubeString, firstNeighbor, secondNeighbor):
     neighborRotations = {
         (UBM, UMR) : 'UU',
         (UBM, UML) : 'U',
-        #(UMR, UBM) : 'UU',
-        #(UMR, UTM) : 'UUU',
         (UTM, UMR) : 'UUU',
-        #(UTM, UML) : '',
         (UML, UTM) : '',
-        #(UML, UBM) : 'U',
     }
     for edges in neighborRotations:
         if (firstNeighbor in edges and secondNeighbor in edges):
