@@ -43,13 +43,14 @@ class SolveTest(TestCase):
         actualString = _generateToken(parms['cube'], result['solution'])
         self.assertEqual(stringToHash, actualString)'''
         
+    '''The method that is bieng tested has advanced to its next stage
     def test102_generateToken_checkTheGenratedHash(self):
         parms ={}
         parms['cube'] = 'robbbbbbbrrorrrrrryboggggggbgyooooooyygyyygyywwwwwwwww'
         result = solve(parms)
         hashedString = _generateToken(parms['cube'], result['solution'])
         actualHash = 'bbda5da96687bcf13a4905ea1ff07536a73a2bb92ca79b5c3cd36d3d8881717f'
-        self.assertEqual(hashedString, actualHash)
+        self.assertEqual(hashedString, actualHash)'''
         
     def test103_generateToken_checkTheLengthOfRandomSubstringChosenFromHash(self):
         parms ={}
@@ -58,6 +59,16 @@ class SolveTest(TestCase):
         substring = _generateToken(parms['cube'], result['solution'])
         substringLength = 8 
         self.assertEqual(len(substring), substringLength)
+        
+    def test104_solve_checkIntegrity(self):
+        parms = {}
+        parms['cube'] = 'gowbgybwogwwrobwyyrrrybobyrywybrryrobwbgyoogrwbggwoggo'
+        result = solve(parms)
+        integrityLength = 8
+        self.assertEqual('', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertTrue(result['integrity'] != '')
+        self.assertEqual(integrityLength, len(result['integrity']))
                 
     def test901_solve_invalidCube(self):
         parms = {}
