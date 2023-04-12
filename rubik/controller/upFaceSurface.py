@@ -41,27 +41,27 @@ def _createTopSurface(cubeString):
     if _isOnlyCross(cubeString):
         cubeString, CrossAlignRotations = _alignTopLayer(cubeString)
         cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
-        cubeString, fishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
-        cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
-        topSurfaceRotations = CrossAlignRotations + firstSurfaceRotations + fishRotations + secondSurfacerotations
-        if not verifyTopSurfaceExists(cubeString):
-            cubeString, newFishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
-            cubeString, thirdSurfacerotations = _performSurfaceRotations(cubeString)
-            topSurfaceRotations += newFishRotations + thirdSurfacerotations
+        cubeString, fishRotations = solveFish(cubeString)
+        topSurfaceRotations = CrossAlignRotations + firstSurfaceRotations + fishRotations
     elif _isFish(cubeString)[0]:
-        cubeString, fishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
-        cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
-        topSurfaceRotations = fishRotations + firstSurfaceRotations
-        if not verifyTopSurfaceExists(cubeString):
-            cubeString, newFishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
-            cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
-            topSurfaceRotations += newFishRotations + secondSurfacerotations
+        cubeString, topSurfaceRotations = solveFish(cubeString)
     else:
         cubeString, topLayerRotations = _alignTopLayer(cubeString)
         cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
         cubeString, crossRotations = _createTopSurface(cubeString)
         topSurfaceRotations = topLayerRotations + firstSurfaceRotations + crossRotations
     return cubeString, topSurfaceRotations
+
+def solveFish(cubeString):
+    rotationsForFish = ''
+    cubeString, fishAlignRotations = _alignFish(cubeString, _isFish(cubeString)[1])
+    cubeString, firstSurfaceRotations = _performSurfaceRotations(cubeString)
+    rotationsForFish = fishAlignRotations + firstSurfaceRotations
+    if not verifyTopSurfaceExists(cubeString):
+        cubeString, newFishRotations = _alignFish(cubeString, _isFish(cubeString)[1])
+        cubeString, secondSurfacerotations = _performSurfaceRotations(cubeString)
+        rotationsForFish += newFishRotations + secondSurfacerotations
+    return cubeString, rotationsForFish
 
 def _isOnlyCross(cubeString):
     return(
@@ -73,7 +73,6 @@ def _isOnlyCross(cubeString):
     )
 
 def _alignTopLayer(cubeString):
-    #if _isOnlyCross(cubeString):
     rotations = ''
     while cubeString[LTR] != cubeString[UMM]:
         cubeString = Cube(cubeString).rotate('U')
@@ -87,7 +86,6 @@ def _performSurfaceRotations(cubeString):
 def _isFish(cubeString):
     topCorners = [UBL, UBR, UTL, UTR]
     cornerCount = 0
-    #fishRotations = ''
     if ufc.verifyTopCrossExists(cubeString):
         for corner in topCorners:
             if cubeString[corner] == cubeString[UMM]:
