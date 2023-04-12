@@ -45,3 +45,8 @@ def solve(parms):
     result['integrity'] = ''                    #iteration 3
                      
     return result
+
+def _generateToken(encodedCube, solution):
+    username = 'azs0239'
+    stringToHash = encodedCube + solution + username
+    return stringToHash
