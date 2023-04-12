@@ -5,6 +5,7 @@ from rubik.controller.upFaceCross import solveUpCross
 from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
 from rubik.model.cube import Cube
+import hashlib
 
 def solve(parms):
     """Return rotates needed to solve input cube"""
@@ -49,4 +50,7 @@ def solve(parms):
 def _generateToken(encodedCube, solution):
     username = 'azs0239'
     stringToHash = encodedCube + solution + username
-    return stringToHash
+    sha256Hash = hashlib.sha256()
+    sha256Hash.update(stringToHash.encode())
+    fullToken = sha256Hash.hexdigest()
+    return fullToken
