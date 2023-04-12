@@ -44,7 +44,7 @@ def solve(parms):
     
     result['solution'] = rotations
     result['status'] = 'ok'    
-    result['integrity'] = ''                    #iteration 3
+    result['integrity'] = _generateToken(encodedCube, result['solution'])
                      
     return result
 
