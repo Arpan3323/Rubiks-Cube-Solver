@@ -4,7 +4,6 @@ from rubik.model.cube import Cube
 import random
 import itertools
 import rubik.controller.bottomCross as bc
-import numpy as np
 
 
 
@@ -47,4 +46,3 @@ cube = cube.replace(cube[22], 'r')
 cube = cube.replace(cube[31], 'o')
 cube = cube.replace(cube[40], 'y')
 cube = cube.replace(cube[49], 'w')
-print(str(np.arange(2048)))
