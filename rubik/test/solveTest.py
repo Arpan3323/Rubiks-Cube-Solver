@@ -30,6 +30,16 @@ class SolveTest(TestCase):
         self.assertEqual('', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertEqual('', result['integrity'])
+        
+    def test101_generateToken_checkTheStringToHash(self):
+        parms ={}
+        parms['cube'] = 'robbbbbbbrrorrrrrryboggggggbgyooooooyygyyygyywwwwwwwww'
+        result = solve(parms)
+        #solution = 'RUrURUUrRUrURUUrRUrURUUr'
+        username = 'azs0239'
+        stringToHash = parms['cube'] + result['solution'] + username
+        actualString = _generateToken(parms['cube'], result['solution'])
+        self.assertEqual(stringToHash, actualString)
                 
     def test901_solve_invalidCube(self):
         parms = {}
