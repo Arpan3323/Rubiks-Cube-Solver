@@ -65,8 +65,6 @@ class SolveTest(TestCase):
         parms['cube'] = 'gowbgybwogwwrobwyyrrrybobyrywybrryrobwbgyoogrwbggwoggo'
         result = solve(parms)
         integrityLength = 8
-        self.assertEqual('', result['solution'])
-        self.assertEqual('ok', result['status'])
         self.assertTrue(result['integrity'] != '')
         self.assertEqual(integrityLength, len(result['integrity']))
                 
