@@ -9,22 +9,13 @@ import hashlib
 import random
 
 def solve(parms):
-    """Return rotates needed to solve input cube"""
     result = {}
-    
-    #checking the dictionary for extra keys
-    numberOfAllowedKeys = 1
-    keyList = parms.keys()
-    if (len(keyList)) > numberOfAllowedKeys:
+    if _isExtraKey(parms):
         result['status'] = "error: extraneous key detected"
         return result
-     
+  
     encodedCube = parms.get('cube')
     theCube = Cube(encodedCube)
-    
-    #Validating the cube by returning error if it is none, contains less than 54 chars, 
-    #is not an alphabet or digit, does not have unique centers, or does not have 9 chars of each type
-    
     validateCubeString =  theCube.validateCube(encodedCube)
     validateNineUniqueCubeChar = theCube.validateNineOfEachCubeCharacters(encodedCube) 
     
@@ -45,7 +36,6 @@ def solve(parms):
     result['solution'] = rotations
     result['status'] = 'ok'    
     result['integrity'] = _generateToken(encodedCube, result['solution'])
-                     
     return result
 
 def _generateToken(encodedCube, solution):
@@ -57,3 +47,8 @@ def _generateToken(encodedCube, solution):
     startIndex = random.randint(0, len(fullToken) - 8)
     subToken = fullToken[startIndex:startIndex + 8]
     return subToken
+
+def _isExtraKey(parms):
+    numberOfAllowedKeys = 1
+    keyList = parms.keys()
+    return (len(keyList)) > numberOfAllowedKeys
