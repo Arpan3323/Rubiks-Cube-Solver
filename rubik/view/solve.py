@@ -6,6 +6,7 @@ from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
 from rubik.model.cube import Cube
 import hashlib
+import random
 
 def solve(parms):
     """Return rotates needed to solve input cube"""
@@ -53,4 +54,6 @@ def _generateToken(encodedCube, solution):
     sha256Hash = hashlib.sha256()
     sha256Hash.update(stringToHash.encode())
     fullToken = sha256Hash.hexdigest()
-    return fullToken
+    startIndex = random.randint(0, len(fullToken) - 8)
+    subToken = fullToken[startIndex:startIndex + 8]
+    return subToken
