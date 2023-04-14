@@ -67,6 +67,14 @@ class SolveTest(TestCase):
         integrityLength = 8
         self.assertTrue(result['integrity'] != '')
         self.assertEqual(integrityLength, len(result['integrity']))
+        
+    def test105_solve_FailedCustomerAcceptanceTest_ExceptionThrownForStringConcatenation(self):
+        parms = {}
+        parms['cube'] = 'S4qwSSx4SxqSw499xxqx4xxq4qxw9q49xw9qS44SwS9S49wwwqq99w'
+        result = solve(parms)
+        #self.assertEqual('', result['solution'])
+        self.assertEqual('ok', result['status'])
+    
                 
     def test901_solve_invalidCube(self):
         parms = {}
