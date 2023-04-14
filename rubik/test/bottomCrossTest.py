@@ -146,3 +146,12 @@ class BottomCrossTest(unittest.TestCase):
         rotatedCube = Cube(encodedCube).rotate(rotations)
         verifyBottomCross = bc.verifyBottomCrossExists(list(rotatedCube))
         self.assertTrue(verifyBottomCross)
+        
+    def test112_bottomCross_FailedCustomerAcceptanceTest_ExceptionThrownForStringConcatenation(self):
+        encodedCube = 'S4qwSSx4SxqSw499xxqx4xxq4qxw9q49xw9qS44SwS9S49wwwqq99w'
+        theCube = Cube(encodedCube)
+        rotations = bc.solveBottomCross(theCube)
+        rotatedCube = Cube(encodedCube).rotate(rotations)
+        verifyBottomCross = bc.verifyBottomCrossExists(list(rotatedCube))
+        self.assertTrue(verifyBottomCross)
+    
