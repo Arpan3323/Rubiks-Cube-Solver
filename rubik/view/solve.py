@@ -29,8 +29,8 @@ def solve(parms):
     rotations += solveBottomCross(theCube)      #iteration 2
     rotations += solveBottomLayer(theCube)[1]   #iteration 3
     rotations += solveMiddleLayer(theCube)[1]     #iteration 4
-    rotations += solveUpCross(theCube)[1]          #iteration 5
-    rotations += solveUpSurface(theCube)[1]        #iteration 5
+    rotations += solveUpCross(_cubeAfterEachIncrement(encodedCube, rotations))[1]          #iteration 5
+    rotations += solveUpSurface(_cubeAfterEachIncrement(encodedCube, rotations))[1]        #iteration 5
     #rotations += solveUpperLayer(theCube)       #iteration 6
     
     result['solution'] = rotations
@@ -52,3 +52,9 @@ def _isExtraKey(parms):
     numberOfAllowedKeys = 1
     keyList = parms.keys()
     return (len(keyList)) > numberOfAllowedKeys
+
+def _cubeAfterEachIncrement(encodedCube, rotations):
+    if rotations == '':
+        return Cube(encodedCube)
+    rotatedCube = Cube(encodedCube).rotate(rotations)
+    return Cube(rotatedCube)
