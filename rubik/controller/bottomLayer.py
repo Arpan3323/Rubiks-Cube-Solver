@@ -57,22 +57,8 @@ def _rotatePieceFromTopFaceToSideFace(cubeList):
 
     for corners in topAndDownStackedCorners:
         if cubeList[corners[0]] == cubeList[DMM]:
-            #if (cubeList[corners[1]] != cubeList[DMM]):
             cubeList, rotationsWhenPiecesAreStacked = Cube(''.join(cubeList)).rightTrigger(corners[0])
             topToSideRotations += rotationsWhenPiecesAreStacked
-            #else:
-            #    downFaceCorner = corners[1]
-            #    cornerToRotate = corners[0]
-            #    while cubeList[cornerToRotate] == cubeList[downFaceCorner]:
-            #        cornerToRotate, downFaceCorner = _stackedCornerLocation(downFaceCorner, cornerToRotate)
-                    #Rotations before trigger
-            #        topToSideRotations  += 'U'
-            #        cubeList = Cube(''.join(cubeList)).rotate('U')
-                #topToSideRotations += rotationsBeforeTrigger
-            #    cubeList, rotationsAfterTrigger = Cube(''.join(cubeList)).rightTrigger(cornerToRotate)
-            #    topToSideRotations += rotationsAfterTrigger
-                #rotationsAfterTrigger += returnedRotations
-                #topToSideRotations += rotationsBeforeTrigger + rotationsAfterTrigger
     cubeList, topLayerRotations = _rotateTopLayerPieceToBottom(cubeList)
     topToSideRotations += topLayerRotations
 
