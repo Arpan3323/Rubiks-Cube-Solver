@@ -225,7 +225,7 @@ class BottomLayerTest(unittest.TestCase):
     def test117_bottomLayer_FailedCustomerAcceptanceTest_ExceptionThrownForStringConcatenation(self):
         encodedCube = 'S4qwSSx4SxqSw499xxqx4xxq4qxw9q49xw9qS44SwS9S49wwwqq99w'
         theCube = cube.Cube(encodedCube)
-        rotations = bl.solveBottomLayer(theCube)
+        rotations = bl.solveBottomLayer(theCube)[1]
         rotatedCube = theCube.rotate(rotations)
         verifyBottomLayer = bl.verifyBottomLayerExists(list(rotatedCube))
         self.assertTrue(verifyBottomLayer)
