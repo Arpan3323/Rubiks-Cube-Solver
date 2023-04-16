@@ -74,6 +74,13 @@ class SolveTest(TestCase):
         result = solve(parms)
         #self.assertEqual('', result['solution'])
         self.assertEqual('ok', result['status'])
+        
+    def test106_solve_FailedCustomerAcceptanceTest_ExceptionThrownNonIterableNoneTypeObject(self):
+        parms = {}
+        parms['cube'] = 'yggbgyrggyrrgbobboobbyrrgrrybrooyoobgrygyyboowwwwwwwww'
+        result = solve(parms)
+        #self.assertEqual('', result['solution'])
+        self.assertEqual('ok', result['status'])
     
                 
     def test901_solve_invalidCube(self):
