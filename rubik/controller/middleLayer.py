@@ -34,7 +34,11 @@ def verifyMiddleLayerExists(cubeList):
 
 def _alignToBottomLayer(theCube):
     bottomLayerRotations = bl.solveBottomLayer(theCube)[1]
-    return theCube.rotate(bottomLayerRotations)
+    return (
+        theCube.rotate(bottomLayerRotations)
+        if bottomLayerRotations != ''
+        else theCube.get()
+    )
 
 #checks if any edge pair is in the top layer. If found, captures it and sends it to edgePairFoundInTopLayer
 #if not found, calls the component _checkMiddleLayerForFlippedEdgePair to check if any flipped edge pair exists
