@@ -45,8 +45,8 @@ class upperLayerTest(unittest.TestCase):
         
     def test103_findMatchingTopCorners_alignToTopSurface(self):
         encodedCube = 'rogggggggbgrbbbbbbororrrrrrgbbooooooyyyyyyyyywwwwwwwww'
-        cornersReturned = ul._findMatchingTopCorners(encodedCube)
-        expectedResult = [BTL, BTR]
-        self.assertEquals(expectedResult, cornersReturned)
+        actualReturn = ul._findMatchingTopCorners(encodedCube)
+        expectedReturn = [BTL, BTR]
+        self.assertEquals(expectedReturn, actualReturn)
         
     
