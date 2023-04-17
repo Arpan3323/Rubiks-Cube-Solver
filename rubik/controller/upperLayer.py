@@ -50,3 +50,20 @@ def _findMatchingTopCorners(cubeString):
     for corners in topLayerCorners:
         if cubeString[corners[0]] == cubeString[corners[1]]:
             return corners
+        
+def _alignTopCorners(cubeString):
+    matchingTopCorners = _findMatchingTopCorners(cubeString)
+    alignmentRotations = ''
+    if matchingTopCorners != None:
+        leftCorner = matchingTopCorners[0]
+        distanceToCenter = 4
+        newCornerLocation = 9
+        offsetForFrontCorner = 27
+        while(cubeString[leftCorner] != cubeString[leftCorner + distanceToCenter]):
+            cubeString = Cube(cubeString).rotate('U')
+            alignmentRotations += 'U'
+            if leftCorner != 0:
+                leftCorner = leftCorner - newCornerLocation
+            else:
+                leftCorner = leftCorner + offsetForFrontCorner
+    return cubeString, alignmentRotations
