@@ -48,4 +48,5 @@ def _alignToTopSurface(theCube):
 def _findMatchingTopCorners(cubeString):
     topLayerCorners = [(FTL, FTR), (RTL, RTR), (BTL, BTR), (LTL, LTR)]
     for corners in topLayerCorners:
-        return corners if cubeString[corners[0]] == cubeString[corners[1]] else False
+        if cubeString[corners[0]] == cubeString[corners[1]]:
+            return corners
