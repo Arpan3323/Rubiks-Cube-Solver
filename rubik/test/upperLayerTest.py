@@ -14,6 +14,8 @@ from rubik.model.constants import *
 #    test 100: check if top corners are aligned on each face
 #    
 #    test 101: checks the rotations returned when top layer exists
+#
+#    test 102: align to solved up face surface configuration if it does not already exists
 
 
 class upperLayerTest(unittest.TestCase):
@@ -31,4 +33,10 @@ class upperLayerTest(unittest.TestCase):
         actualRotation = ul.solveUpperLayer(theCube)[1]
         expectedRotations = ''
         self.assertEquals(actualRotation, expectedRotations)
-    
+        
+    def test102_upperLayer_alignToTopSurface(self):
+        encodedCube = 'rrrogbybwyrgybrobbwgywrororooyrogogggwbwyboybbggywwwyw'
+        expectedCube = 'brbggggggrgrbbbbbbooorrrrrrgbgooooooyyyyyyyyywwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        actualCube = ul._alignToTopSurface(theCube)
+        self.assertEquals(expectedCube, actualCube)
