@@ -10,6 +10,10 @@ def solveUpperLayer(theCube: Cube) -> str:
         input:  an instance of the cube class with up-face surface solved
         output: the rotations required to solve the upper layer  
     '''  
+    cubeString = theCube.get()
+    if verifyTopLayerExists(cubeString):
+        return cubeString, ''
+    
     return 'D'      #TODO:  remove this stubbed value
 
 def verifyTopCornersAligned(cubeString):
@@ -23,4 +27,13 @@ def verifyTopCornersAligned(cubeString):
         and cubeString[BTR] == cubeString[BMM]
         and cubeString[LTL] == cubeString[LMM]
         and cubeString[LTR] == cubeString[LMM]
+    )
+
+def verifyTopLayerExists(cubeString):
+    return(
+        verifyTopCornersAligned(cubeString)
+        and cubeString[FTM] == cubeString[FMM]
+        and cubeString[RTM] == cubeString[RMM]
+        and cubeString[BTM] == cubeString[BMM]
+        and cubeString[LTM] == cubeString[LMM]
     )
