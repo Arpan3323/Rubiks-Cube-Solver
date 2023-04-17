@@ -1,5 +1,6 @@
-import rubik.model.constants
+from rubik.model.constants import *
 from rubik.model.cube import Cube
+import rubik.controller.upFaceSurface as ufs
 
 def solveUpperLayer(theCube: Cube) -> str:
     '''
@@ -10,3 +11,16 @@ def solveUpperLayer(theCube: Cube) -> str:
         output: the rotations required to solve the upper layer  
     '''  
     return 'D'      #TODO:  remove this stubbed value
+
+def verifyTopCornersAligned(cubeString):
+    return(
+        ufs.verifyTopSurfaceExists(cubeString)
+        and cubeString[FTL] == cubeString[FMM]
+        and cubeString[FTR] == cubeString[FMM]
+        and cubeString[RTL] == cubeString[RMM]
+        and cubeString[RTR] == cubeString[RMM]
+        and cubeString[BTL] == cubeString[BMM]
+        and cubeString[BTR] == cubeString[BMM]
+        and cubeString[LTL] == cubeString[LMM]
+        and cubeString[LTR] == cubeString[LMM]
+    )
