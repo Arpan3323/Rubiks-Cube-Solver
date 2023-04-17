@@ -14,6 +14,9 @@ def solveUpperLayer(theCube: Cube) -> str:
     if verifyTopLayerExists(cubeString):
         return cubeString, ''
     
+    if not ufs.verifyTopSurfaceExists(cubeString):
+        cubeString = _alignToTopSurface(theCube)
+    
     return 'D'      #TODO:  remove this stubbed value
 
 def verifyTopCornersAligned(cubeString):
@@ -37,3 +40,7 @@ def verifyTopLayerExists(cubeString):
         and cubeString[BTM] == cubeString[BMM]
         and cubeString[LTM] == cubeString[LMM]
     )
+
+def _alignToTopSurface(theCube):
+    topSurfaceRotations = ufs.solveUpSurface(theCube)[1]
+    return theCube.rotate(topSurfaceRotations)
