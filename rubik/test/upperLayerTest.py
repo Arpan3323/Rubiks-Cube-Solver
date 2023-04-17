@@ -43,10 +43,17 @@ class upperLayerTest(unittest.TestCase):
         actualCube = ul._alignToTopSurface(theCube)
         self.assertEquals(expectedCube, actualCube)
         
-    def test103_findMatchingTopCorners_alignToTopSurface(self):
+    def test103_findMatchingTopCorners_checkIfTopLayerHasMatchingCorners(self):
         encodedCube = 'rogggggggbgrbbbbbbororrrrrrgbbooooooyyyyyyyyywwwwwwwww'
         actualReturn = ul._findMatchingTopCorners(encodedCube)
-        expectedReturn = [BTL, BTR]
+        expectedReturn = (BTL, BTR)
         self.assertEquals(expectedReturn, actualReturn)
+        
+    def test104_alignTopCorners_alignMatchingCornersWithAppropriateFace(self):
+        encodedCube = 'borggggggogbbbbbbbrrorrrrrrgbgooooooyyyyyyyyywwwwwwwww'
+        expectedCube = 'gbgggggggborbbbbbbogbrrrrrrrroooooooyyyyyyyyywwwwwwwww'
+        rotations = ul._alignTopCorners(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
         
     
