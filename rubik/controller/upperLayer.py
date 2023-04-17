@@ -44,3 +44,8 @@ def verifyTopLayerExists(cubeString):
 def _alignToTopSurface(theCube):
     topSurfaceRotations = ufs.solveUpSurface(theCube)[1]
     return theCube.rotate(topSurfaceRotations)
+
+def _findMatchingTopCorners(cubeString):
+    topLayerCorners = [(FTL, FTR), (RTL, RTR), (BTL, BTR), (LTL, LTR)]
+    for corners in topLayerCorners:
+        return corners if cubeString[corners[0]] == cubeString[corners[1]] else False
