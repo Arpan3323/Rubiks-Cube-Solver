@@ -112,5 +112,12 @@ class upperLayerTest(unittest.TestCase):
         actualFace = ul._findCompletedFace(encodedCube)
         self.assertEquals(expectedFace, actualFace)
         
+    def test113_performTopLayerRotations_performsAppropriateRotationsToAlignEdgesInTopLayer(self):
+        encodedCube = 'grgggggggobooooooobobbbbbbbrgrrrrrrryyyyyyyyywwwwwwwww'
+        expectedCube = 'gbgggggggogooooooobobbbbbbbrrrrrrrrryyyyyyyyywwwwwwwww'
+        solvedFace = None
+        rotations = ul._performTopLayerRotations(encodedCube, solvedFace)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
         
     
