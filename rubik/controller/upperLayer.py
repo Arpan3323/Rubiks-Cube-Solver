@@ -47,10 +47,11 @@ def _alignToTopSurface(theCube):
 
 def _orientTopCorners(cubeString):
     orientCornerRotations = ''
-    cubeString, cornerAlignRotations, alignedCornerLocation = _alignTopCorners(cubeString)
-    cubeString, cornerRotations = _performCornerRotations(cubeString, alignedCornerLocation)
-    cubeString, fishRotations = ufs.solveFish(cubeString)
-    orientCornerRotations = cornerAlignRotations + cornerRotations + fishRotations
+    while not verifyTopCornersAligned(cubeString):
+        cubeString, cornerAlignRotations, alignedCornerLocation = _alignTopCorners(cubeString)
+        cubeString, cornerRotations = _performCornerRotations(cubeString, alignedCornerLocation)
+        cubeString, fishRotations = ufs.solveUpSurface(Cube(cubeString))
+        orientCornerRotations += cornerAlignRotations + cornerRotations + fishRotations
     return cubeString, orientCornerRotations
 
 
@@ -80,6 +81,8 @@ def _alignTopCorners(cubeString):
         return cubeString, alignmentRotations, None
     
 def _performCornerRotations(cubeString, alignedCornerLocation):
+    if verifyTopCornersAligned(cubeString):
+        return cubeString, ''
     rotationsForCorners = {
         FTL: 'fUBuFUb',
         RTL: 'rULuRUl',
