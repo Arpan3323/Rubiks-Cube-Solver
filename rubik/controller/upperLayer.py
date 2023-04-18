@@ -49,6 +49,14 @@ def _alignToTopSurface(theCube):
     topSurfaceRotations = ufs.solveUpSurface(theCube)[1]
     return theCube.rotate(topSurfaceRotations)
 
+def _orientTopLayer(cubeString):
+    orientLayerRotations = ''
+    if not verifyTopLayerExists(cubeString):
+        if not verifyTopCornersAligned(cubeString):
+            cubeString, rotations = _orientTopCorners(cubeString)
+            orientLayerRotations += rotations
+    return cubeString, orientLayerRotations
+
 def _orientTopCorners(cubeString):
     orientCornerRotations = ''
     while not verifyTopCornersAligned(cubeString):
