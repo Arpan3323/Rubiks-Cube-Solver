@@ -82,7 +82,7 @@ class SolveTest(TestCase):
         #self.assertEqual('', result['solution'])
         self.assertEqual('ok', result['status'])
     
-     def test107_solve_checkRotaionsForTopCornerConfiguration(self):
+    def test107_solve_checkRotaionsForTopCornerConfiguration(self):
         parms = {}
         parms['cube'] = 'ogogggggggogbbbbbbbrbrrrrrrrbrooooooyyyyyyyyywwwwwwwww'
         result = solve(parms)
