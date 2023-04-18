@@ -53,8 +53,11 @@ def _orientTopLayer(cubeString):
     orientLayerRotations = ''
     if not verifyTopLayerExists(cubeString):
         if not verifyTopCornersAligned(cubeString):
-            cubeString, rotations = _orientTopCorners(cubeString)
-            orientLayerRotations += rotations
+            cubeString, cornerRotations = _orientTopCorners(cubeString)
+            orientLayerRotations += cornerRotations
+        while not verifyTopLayerExists(cubeString):
+            cubeString, edgeRotations = _performTopLayerRotations(cubeString, _findCompletedFace(cubeString))
+            orientLayerRotations += edgeRotations
     return cubeString, orientLayerRotations
 
 def _orientTopCorners(cubeString):
