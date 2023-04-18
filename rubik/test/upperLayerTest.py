@@ -127,4 +127,12 @@ class upperLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
         
+    def test115_upperLayer_solveTopLayer(self):
+        encodedCube = 'gbbggggggrgooooooobrgbbbbbboorrrrrrryyyyyyyyywwwwwwwww'
+        expectedCube = 'gggggggggooooooooobbbbbbbbbrrrrrrrrryyyyyyyyywwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotations = ul.solveUpperLayer(theCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
+        
     
