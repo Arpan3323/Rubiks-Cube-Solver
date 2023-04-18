@@ -119,5 +119,18 @@ def _findCompletedFace(cubeString):
             faceToReturn = solvedFace
             break
     return faceToReturn
+
+def _performTopLayerRotations(cubeString, solvedFace):
+    if verifyTopLayerExists(cubeString):
+        return cubeString, ''
+    rotationsForFaces = {
+        FMM: 'BBUlRBBrLUBB',
+        RMM: 'LLUfBLLbFULL',
+        BMM: 'FFUrLFFlRUFF',
+        LMM: 'RRUbFRRfBURR',
+        None: 'FFUrLFFlRUFF'
+    }
+    rotations = rotationsForFaces[solvedFace]
+    return Cube(cubeString).rotate(rotations), rotations
             
         
