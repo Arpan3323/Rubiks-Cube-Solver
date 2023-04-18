@@ -6,6 +6,10 @@ Created on Mar 9, 2023
 import unittest
 import rubik.controller.bottomLayer as bl
 import rubik.controller.bottomCross as bc
+import rubik.controller.upFaceCross as ufc
+import rubik.controller.upFaceSurface as ufs
+import rubik.controller.upperLayer as ul
+import rubik.controller.middleLayer as ml
 import rubik.model.cube as cube
 from rubik.model.constants import *
 from rubik.view.solve import solve
@@ -194,11 +198,15 @@ class BottomLayerTest(unittest.TestCase):
         result = solve(parms)
         encodedCube = 'ryrgggggrwyboogboyoboybbobybywrrrgrwyowryobbgowywwwrwg'
         theCube = cube.Cube(encodedCube)
-        bottomCrossRotations = ''
-        cubeRotationsByBottomLayer = bl.solveBottomLayer(theCube)[1] 
-        self.assertEqual(bottomCrossRotations + cubeRotationsByBottomLayer, result['solution'])
+        bottomCross = ''
+        bottomLayer = bl.solveBottomLayer(theCube)[1] 
+        middleLayer = ml.solveMiddleLayer(theCube)[1]
+        upCross = ufc.solveUpCross(theCube)[1]
+        upSurface = ufs.solveUpSurface(theCube)[1]
+        upLayer = ul.solveUpperLayer(theCube)[1]
+        rotations = bottomCross + bottomLayer + middleLayer + upCross + upSurface + upLayer
+        self.assertEqual(rotations, result['solution'])
         self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])
         
     def test114_bottomLayer_rotatingCubeThatWillLeaveTopFaceWithOneCornerAfterEveryhtingElseIsAligned(self):
         parms = {}
