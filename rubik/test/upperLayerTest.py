@@ -72,7 +72,7 @@ class upperLayerTest(unittest.TestCase):
     
     def test107__orientTopCorners_alignCornersAndPerformCornerRotaions(self):
         encodedCube = 'rrgggggggborbbbbbbogorrrrrrgbbooooooyyyyyyyyywwwwwwwww'
-        expectedCube = 'rryggggggroybbbbbbogyrrrrrrgbboooooobygyyyyyowwwwwwwww'
+        expectedCube = 'grgggggggbbbbbbbbbrorrrrrrrogoooooooyyyyyyyyywwwwwwwww'
         rotations = ul._orientTopCorners(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
@@ -80,6 +80,13 @@ class upperLayerTest(unittest.TestCase):
     def test108__orientTopCorners_alignCornersPerformCornerRotaionsAndSolveFish(self):
         encodedCube = 'bobggggggrbobbbbbbggrrrrrrrorgooooooyyyyyyyyywwwwwwwww'
         expectedCube = 'rgrggggggobobbbbbbgrgrrrrrrbobooooooyyyyyyyyywwwwwwwww'
+        rotations = ul._orientTopCorners(encodedCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
+        
+    def test109__orientTopCorners_alignCornersPerformCornerRotaionsAndSolveFishUntilCornersAreAligned(self):
+        encodedCube = 'ggbggggggrbooooooobogbbbbbborrrrrrrryyyyyyyyywwwwwwwww'
+        expectedCube = 'gogggggggobooooooobgbbbbbbbrrrrrrrrryyyyyyyyywwwwwwwww'
         rotations = ul._orientTopCorners(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
