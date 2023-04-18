@@ -3,13 +3,6 @@ from rubik.model.cube import Cube
 import rubik.controller.upFaceSurface as ufs
 
 def solveUpperLayer(theCube: Cube) -> str:
-    '''
-        This is the top-level function  for rotating
-        a cube so that the entire upper layer is solved.
-        
-        input:  an instance of the cube class with up-face surface solved
-        output: the rotations required to solve the upper layer  
-    '''  
     cubeString = theCube.get()
     if verifyTopLayerExists(cubeString):
         return cubeString, ''
@@ -18,8 +11,8 @@ def solveUpperLayer(theCube: Cube) -> str:
         cubeString = _alignToTopSurface(theCube)
     
     rotations = ''
-    if not verifyTopCornersAligned(cubeString):
-        cubeString, rotations = _orientTopCorners(cubeString)
+    if not verifyTopLayerExists(cubeString):
+        cubeString, rotations = _orientTopLayer(cubeString)
     
     return cubeString, rotations
 
@@ -51,13 +44,12 @@ def _alignToTopSurface(theCube):
 
 def _orientTopLayer(cubeString):
     orientLayerRotations = ''
-    if not verifyTopLayerExists(cubeString):
-        if not verifyTopCornersAligned(cubeString):
-            cubeString, cornerRotations = _orientTopCorners(cubeString)
-            orientLayerRotations += cornerRotations
-        while not verifyTopLayerExists(cubeString):
-            cubeString, edgeRotations = _performTopLayerRotations(cubeString, _findCompletedFace(cubeString))
-            orientLayerRotations += edgeRotations
+    if not verifyTopCornersAligned(cubeString):
+        cubeString, cornerRotations = _orientTopCorners(cubeString)
+        orientLayerRotations += cornerRotations
+    while not verifyTopLayerExists(cubeString):
+        cubeString, edgeRotations = _performTopLayerRotations(cubeString, _findCompletedFace(cubeString))
+        orientLayerRotations += edgeRotations
     return cubeString, orientLayerRotations
 
 def _orientTopCorners(cubeString):
