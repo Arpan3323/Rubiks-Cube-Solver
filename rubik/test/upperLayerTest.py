@@ -79,7 +79,7 @@ class upperLayerTest(unittest.TestCase):
     
     def test108__orientTopCorners_alignCornersPerformCornerRotaionsAndSolveFish(self):
         encodedCube = 'bobggggggrbobbbbbbggrrrrrrrorgooooooyyyyyyyyywwwwwwwww'
-        expectedCube = 'rgrggggggobobbbbbbgrgrrrrrrbobooooooyyyyyyyyywwwwwwwww'
+        expectedCube = 'grgggggggbobbbbbbbrgrrrrrrroboooooooyyyyyyyyywwwwwwwww'
         rotations = ul._orientTopCorners(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
@@ -105,6 +105,12 @@ class upperLayerTest(unittest.TestCase):
         rotations = ul._orientTopLayer(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
+        
+    def test112_findCompletedFace_findAFaceThatHasBeenSolved(self):
+        encodedCube = 'grgggggggbgbbbbbbbrbrrrrrrroooooooooyyyyyyyyywwwwwwwww'
+        expectedFace = LMM
+        actualFace = ul._findCompletedFace(encodedCube)
+        self.assertEquals(expectedFace, actualFace)
         
         
     
