@@ -106,7 +106,7 @@ class upperLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
         
-    def test112_findCompletedFace_findAFaceThatHasBeenSolved(self):
+    def test112_findCompletedFace_returnCenterPieceOfFaceThatHasBeenSolved(self):
         encodedCube = 'grgggggggbgbbbbbbbrbrrrrrrroooooooooyyyyyyyyywwwwwwwww'
         expectedFace = LMM
         actualFace = ul._findCompletedFace(encodedCube)
