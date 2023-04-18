@@ -69,3 +69,14 @@ def _alignTopCorners(cubeString):
         return cubeString, alignmentRotations, leftCorner
     else:
         return cubeString, alignmentRotations, None
+    
+def _performCornerRotations(cubeString, alignedCornerLocation):
+    rotationsForCorners = {
+        FTL: 'fUBuFUb',
+        RTL: 'rULuRUl',
+        BTL: 'bUFuBUf',
+        LTL: 'lURuLUr',
+        None: 'lURuLUr',
+    }
+    rotations = rotationsForCorners[alignedCornerLocation]
+    return Cube(cubeString).rotate(rotations), rotations
