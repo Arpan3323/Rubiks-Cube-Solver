@@ -49,7 +49,8 @@ def _orientTopCorners(cubeString):
     orientCornerRotations = ''
     cubeString, cornerAlignRotations, alignedCornerLocation = _alignTopCorners(cubeString)
     cubeString, cornerRotations = _performCornerRotations(cubeString, alignedCornerLocation)
-    orientCornerRotations = cornerAlignRotations + cornerRotations
+    cubeString, fishRotations = ufs.solveFish(cubeString)
+    orientCornerRotations = cornerAlignRotations + cornerRotations + fishRotations
     return cubeString, orientCornerRotations
 
 
