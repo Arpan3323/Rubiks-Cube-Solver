@@ -90,6 +90,14 @@ class upperLayerTest(unittest.TestCase):
         rotations = ul._orientTopCorners(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
+    
+    def test110_upperLayer_alignCornersInTopLayers(self):
+        encodedCube = 'rooggggggbrroooooogggbbbbbbobbrrrrrryyyyyyyyywwwwwwwww'
+        expectedCube = 'gggggggggooooooooobbbbbbbbbrrrrrrrrryyyyyyyyywwwwwwwww'
+        theCube = cube.Cube(encodedCube)
+        rotations = ul.solveUpperLayer(theCube)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
         
         
     
