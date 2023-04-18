@@ -66,4 +66,6 @@ def _alignTopCorners(cubeString):
                 leftCorner = leftCorner - newCornerLocation
             else:
                 leftCorner = leftCorner + offsetForFrontCorner
-    return cubeString, alignmentRotations
+        return cubeString, alignmentRotations, leftCorner
+    else:
+        return cubeString, alignmentRotations, None
