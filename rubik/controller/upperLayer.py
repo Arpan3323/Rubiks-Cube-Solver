@@ -109,10 +109,10 @@ def _findCompletedFace(cubeString):
     lastIndex = 1
     faceToReturn = None
     facesToCheck = {
-        FMM : (cubeString[FTL:FBR + lastIndex]) == cubeString[FMM],
-        RMM: (cubeString[RTL:RBR + lastIndex] == cubeString[RMM]),
-        BMM : (cubeString[BTL:BBR + lastIndex] == cubeString[BMM]),
-        LMM: (cubeString[LTL:LBR + lastIndex] == cubeString[LMM]),
+        FMM : all(pieces == cubeString[FMM]  for pieces in (cubeString[FTL:FBR + lastIndex])),
+        RMM: all(pieces == cubeString[RMM]  for pieces in (cubeString[RTL:RBR + lastIndex])),
+        BMM : all(pieces == cubeString[BMM]  for pieces in (cubeString[BTL:BBR + lastIndex])),
+        LMM: all(pieces == cubeString[LMM]  for pieces in (cubeString[LTL:LBR + lastIndex])),
     }
     for solvedFace in facesToCheck:
         if facesToCheck[solvedFace]:
