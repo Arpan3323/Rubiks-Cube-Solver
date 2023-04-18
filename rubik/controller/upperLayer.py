@@ -104,3 +104,20 @@ def _performCornerRotations(cubeString, alignedCornerLocation):
     }
     rotations = rotationsForCorners[alignedCornerLocation]
     return Cube(cubeString).rotate(rotations), rotations
+
+def _findCompletedFace(cubeString):
+    lastIndex = 1
+    faceToReturn = None
+    facesToCheck = {
+        FMM : (cubeString[FTL:FBR + lastIndex]) == cubeString[FMM],
+        RMM: (cubeString[RTL:RBR + lastIndex] == cubeString[RMM]),
+        BMM : (cubeString[BTL:BBR + lastIndex] == cubeString[BMM]),
+        LMM: (cubeString[LTL:LBR + lastIndex] == cubeString[LMM]),
+    }
+    for solvedFace in facesToCheck:
+        if facesToCheck[solvedFace]:
+            faceToReturn = solvedFace
+            break
+    return faceToReturn
+            
+        
