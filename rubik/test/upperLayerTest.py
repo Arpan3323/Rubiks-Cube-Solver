@@ -62,4 +62,12 @@ class upperLayerTest(unittest.TestCase):
         expectedLocation = FTL
         self.assertEquals(expectedLocation, cornerLocation)
         
+    def test106__performCornerRotations_performCornerRotationsDependingOnTheLocationOfCornersAfterAlignment(self):
+        encodedCube = 'bggggggggobroooooogobbbbbbbrrorrrrrryyyyyyyyywwwwwwwww'
+        expectedCube = 'obyggggggboyooooooorybbbbbbrggrrrrrrgybyyyyyrwwwwwwwww'
+        alignedCornerLocation = None
+        rotations = ul._performCornerRotations(encodedCube, alignedCornerLocation)[1]
+        rotatedCube = cube.Cube(encodedCube).rotate(rotations)
+        self.assertEquals(expectedCube, rotatedCube)
+        
     
