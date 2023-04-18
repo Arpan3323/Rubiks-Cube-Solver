@@ -82,6 +82,14 @@ class SolveTest(TestCase):
         #self.assertEqual('', result['solution'])
         self.assertEqual('ok', result['status'])
     
+     def test107_solve_checkRotaionsForTopCornerConfiguration(self):
+        parms = {}
+        parms['cube'] = 'ogogggggggogbbbbbbbrbrrrrrrrbrooooooyyyyyyyyywwwwwwwww'
+        result = solve(parms)
+        self.assertEqual('U', result['solution'])
+        self.assertEqual('ok', result['status'])
+        self.assertTrue(result['integrity'] != '')
+    
                 
     def test901_solve_invalidCube(self):
         parms = {}
