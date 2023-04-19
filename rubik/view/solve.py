@@ -48,9 +48,3 @@ def _isExtraKey(parms):
     numberOfAllowedKeys = 1
     keyList = parms.keys()
     return (len(keyList)) > numberOfAllowedKeys
-
-'''def _cubeAfterEachIncrement(encodedCube, rotations):
-    if rotations == '':
-        return Cube(encodedCube)
-    rotatedCube = Cube(encodedCube).rotate(rotations)
-    return Cube(rotatedCube)'''
