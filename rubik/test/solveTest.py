@@ -33,7 +33,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertTrue(result['integrity'] in fullToken)
         
-    '''The method that is bieng tested has advanced to its next stage. Please see test103
+    '''The method that is bieng tested has advanced to its next stage. Please see test102
     def test101_generateToken_checkTheStringToHash(self):
         parms ={}
         parms['cube'] = 'robbbbbbbrrorrrrrryboggggggbgyooooooyygyyygyywwwwwwwww'
@@ -44,14 +44,13 @@ class SolveTest(TestCase):
         actualString = _generateToken(parms['cube'], result['solution'])
         self.assertEqual(stringToHash, actualString)'''
         
-    '''The method that is bieng tested has advanced to its next stage. Please see test103
     def test102_generateToken_checkTheGenratedHash(self):
         parms ={}
         parms['cube'] = 'robbbbbbbrrorrrrrryboggggggbgyooooooyygyyygyywwwwwwwww'
         result = solve(parms)
-        hashedString = _generateToken(parms['cube'], result['solution'])
-        actualHash = 'bbda5da96687bcf13a4905ea1ff07536a73a2bb92ca79b5c3cd36d3d8881717f'
-        self.assertEqual(hashedString, actualHash)'''
+        hashedString = _generateToken(parms['cube'], result['solution'])[1]
+        actualHash = 'b1703720f88e9f95859399dc5a223e476d0805a36eba3a22b3728f1627c33e21'
+        self.assertEqual(hashedString, actualHash)
         
     def test103_generateToken_checkTheLengthOfRandomSubstringChosenFromHash(self):
         parms ={}
