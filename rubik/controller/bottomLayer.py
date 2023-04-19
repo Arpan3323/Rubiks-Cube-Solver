@@ -64,8 +64,6 @@ def _rotatePieceFromTopFaceToSideFace(cubeList):
 
     return cubeList, topToSideRotations
 
-#After the top face is rotated 'U' this finction returns the new location of the corner piece as well as the new location
-#of the down face corner piece that is right below the top face corner piece
 def _stackedCornerLocation(downFaceCorner, cornerToRotate):
     if cornerToRotate == UTL:
         cornerToRotate = UTR
