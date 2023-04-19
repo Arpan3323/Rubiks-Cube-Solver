@@ -33,7 +33,7 @@ class SolveTest(TestCase):
         self.assertEqual('ok', result['status'])
         self.assertTrue(result['integrity'] in fullToken)
         
-    '''The method that is bieng tested has advanced to its next stage
+    '''The method that is bieng tested has advanced to its next stage. Please see test103
     def test101_generateToken_checkTheStringToHash(self):
         parms ={}
         parms['cube'] = 'robbbbbbbrrorrrrrryboggggggbgyooooooyygyyygyywwwwwwwww'
@@ -44,7 +44,7 @@ class SolveTest(TestCase):
         actualString = _generateToken(parms['cube'], result['solution'])
         self.assertEqual(stringToHash, actualString)'''
         
-    '''The method that is bieng tested has advanced to its next stage
+    '''The method that is bieng tested has advanced to its next stage. Please see test103
     def test102_generateToken_checkTheGenratedHash(self):
         parms ={}
         parms['cube'] = 'robbbbbbbrrorrrrrryboggggggbgyooooooyygyyygyywwwwwwwww'
@@ -58,8 +58,10 @@ class SolveTest(TestCase):
         parms['cube'] = 'oryggggggbggooooooooybbbbbbrbyrrrrrrgyyyyybyrwwwwwwwww'
         result = solve(parms)
         substring = _generateToken(parms['cube'], result['solution'])[0]
+        fullToken = _generateToken(parms['cube'], result['solution'])[1]
         substringLength = 8 
         self.assertEqual(len(substring), substringLength)
+        self.assertTrue(substring in fullToken)
         
     def test104_solve_checkIntegrity(self):
         parms = {}
