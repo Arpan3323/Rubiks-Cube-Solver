@@ -58,7 +58,6 @@ def _orientTopCorners(cubeString):
         orientCornerRotations += cornerAlignRotations + cornerRotations + fishRotations
     return cubeString, orientCornerRotations
 
-
 def _findMatchingTopCorners(cubeString):
     topLayerCorners = [(FTL, FTR), (RTL, RTR), (BTL, BTR), (LTL, LTR)]
     for corners in topLayerCorners:
@@ -69,20 +68,26 @@ def _alignTopCorners(cubeString):
     matchingTopCorners = _findMatchingTopCorners(cubeString)
     alignmentRotations = ''
     if matchingTopCorners != None:
-        leftCorner = matchingTopCorners[0]
-        distanceToCenter = 4
-        newCornerLocation = 9
-        offsetForFrontCorner = 27
-        while(cubeString[leftCorner] != cubeString[leftCorner + distanceToCenter]):
-            cubeString = Cube(cubeString).rotate('U')
-            alignmentRotations += 'U'
-            if leftCorner != 0:
-                leftCorner = leftCorner - newCornerLocation
-            else:
-                leftCorner = leftCorner + offsetForFrontCorner
-        return cubeString, alignmentRotations, leftCorner
+        return rotateMatchingCorners(
+            matchingTopCorners, cubeString, alignmentRotations
+        )
     else:
         return cubeString, alignmentRotations, None
+
+def rotateMatchingCorners(matchingTopCorners, cubeString, alignmentRotations):
+    leftCorner = matchingTopCorners[0]
+    distanceToCenter = 4
+    newCornerLocation = 9
+    offsetForFrontCorner = 27
+    while (cubeString[leftCorner] != cubeString[leftCorner + distanceToCenter]):
+        cubeString = Cube(cubeString).rotate('U')
+        alignmentRotations += 'U'
+        leftCorner = (
+            leftCorner - newCornerLocation
+            if leftCorner != 0
+            else leftCorner + offsetForFrontCorner
+        )
+    return cubeString, alignmentRotations, leftCorner
     
 def _performCornerRotations(cubeString, alignedCornerLocation):
     if verifyTopCornersAligned(cubeString):
