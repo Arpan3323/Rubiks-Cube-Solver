@@ -99,12 +99,13 @@ class upperLayerTest(unittest.TestCase):
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
         self.assertEquals(expectedCube, rotatedCube)
         
+    ''' The component being tested has advanced to its next stage and now aligns th whole top layer
     def test111_orientTopLayer_IfCornersNotInPlaceAlignsThemFirst(self):
         encodedCube = 'borggggggorbbbbbbbrborrrrrrgggooooooyyyyyyyyywwwwwwwww'
         expectedCube = 'gggggggggbrbbbbbbbrorrrrrrroboooooooyyyyyyyyywwwwwwwww'
         rotations = ul._orientTopLayer(encodedCube)[1]
         rotatedCube = cube.Cube(encodedCube).rotate(rotations)
-        self.assertEquals(expectedCube, rotatedCube)
+        self.assertEquals(expectedCube, rotatedCube)'''
         
     def test112_findCompletedFace_returnCenterPieceOfFaceThatHasBeenSolved(self):
         encodedCube = 'grgggggggbgbbbbbbbrbrrrrrrroooooooooyyyyyyyyywwwwwwwww'
