@@ -35,7 +35,7 @@ def solve(parms):
     
     result['solution'] = rotations
     result['status'] = 'ok'    
-    result['integrity'] = _generateToken(encodedCube, result['solution'])
+    result['integrity'] = _generateToken(encodedCube, result['solution'])[0]
     return result
 
 def _generateToken(encodedCube, solution):
@@ -46,7 +46,7 @@ def _generateToken(encodedCube, solution):
     fullToken = sha256Hash.hexdigest()
     startIndex = random.randint(0, len(fullToken) - 8)
     subToken = fullToken[startIndex:startIndex + 8]
-    return subToken
+    return subToken, fullToken
 
 def _isExtraKey(parms):
     numberOfAllowedKeys = 1
