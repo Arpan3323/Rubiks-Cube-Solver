@@ -6,7 +6,7 @@ from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
 from rubik.model.cube import Cube
 import hashlib
-import random
+import secrets
 
 def solve(parms):
     result = {}
@@ -44,7 +44,7 @@ def _generateToken(encodedCube, solution):
     sha256Hash = hashlib.sha256()
     sha256Hash.update(stringToHash.encode())
     fullToken = sha256Hash.hexdigest()
-    startIndex = random.randint(0, len(fullToken) - 8)
+    startIndex = secrets.randbelow(len(fullToken) - 7)
     subToken = fullToken[startIndex:startIndex + 8]
     return subToken, fullToken
 
