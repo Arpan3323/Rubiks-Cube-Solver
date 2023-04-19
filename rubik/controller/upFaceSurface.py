@@ -3,13 +3,7 @@ from rubik.model.cube import Cube
 import rubik.controller.upFaceCross as ufc
 
 def solveUpSurface(theCube: Cube) -> str:
-    '''
-        This is the top-level function  for rotating
-        a cube so that the up face is solved.
-        
-        input:  an instance of the cube class with up-face cross solved
-        output: the rotations required to solve the up surface  
-    '''  
+     
     cubeString = theCube.get()
     if verifyTopSurfaceExists(cubeString):
         return cubeString, ''
