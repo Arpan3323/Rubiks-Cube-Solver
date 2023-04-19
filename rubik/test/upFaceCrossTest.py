@@ -37,7 +37,7 @@ class upFaceCrossTest(unittest.TestCase):
 
     def test101_solveUpCross_alignToMiddleLayer(self):
         encodedCube = 'wyyoggbgrrrbroogyoobgbbywryogbbrwbgrywwyywrogyowwwrobg'
-        expectedCube = 'rbrggggggyogoooooooyobbbbbbbyyrrrrrryrygyygybwwwwwwwww'
+        expectedCube = 'yyrgggggggybooooooyyrbbbbbbyyorrrrrrbrobyoggywwwwwwwww'
         theCube = cube.Cube(encodedCube)
         actualCube = ufc._alignMiddleLayer(theCube)
         self.assertEquals(expectedCube, actualCube)
