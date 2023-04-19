@@ -57,7 +57,7 @@ class SolveTest(TestCase):
         parms ={}
         parms['cube'] = 'oryggggggbggooooooooybbbbbbrbyrrrrrrgyyyyybyrwwwwwwwww'
         result = solve(parms)
-        substring = _generateToken(parms['cube'], result['solution'])
+        substring = _generateToken(parms['cube'], result['solution'])[0]
         substringLength = 8 
         self.assertEqual(len(substring), substringLength)
         
@@ -87,7 +87,7 @@ class SolveTest(TestCase):
         parms = {}
         parms['cube'] = 'ogogggggggogbbbbbbbrbrrrrrrrbrooooooyyyyyyyyywwwwwwwww'
         result = solve(parms)
-        self.assertEqual('U', result['solution'])
+        self.assertEqual('UFFUrLFFlRUFFRRUbFRRfBURR', result['solution'])
         self.assertEqual('ok', result['status'])
         self.assertTrue(result['integrity'] != '')
     
