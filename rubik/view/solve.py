@@ -13,18 +13,15 @@ def solve(parms):
     if _isExtraKey(parms):
         result['status'] = "error: extraneous key detected"
         return result
-  
     encodedCube = parms.get('cube')
     theCube = Cube(encodedCube)
     validateCubeString =  theCube.validateCube(encodedCube)
     validateNineUniqueCubeChar = theCube.validateNineOfEachCubeCharacters(encodedCube) 
-    
     if((validateCubeString == False) or 
       (validateNineUniqueCubeChar == False) or 
       (theCube.validateUniqueCenters(encodedCube) == False)):
         result['status'] = 'error: invalid cube'
         return result
-    
     rotations = ''
     rotations += solveBottomCross(theCube)      #iteration 2
     rotations += solveBottomLayer(theCube)[1]   #iteration 3
@@ -32,7 +29,6 @@ def solve(parms):
     rotations += solveUpCross(theCube)[1]          #iteration 5
     rotations += solveUpSurface(theCube)[1]        #iteration 5
     rotations += solveUpperLayer(theCube)[1]       #iteration 6
-    
     result['solution'] = rotations
     result['status'] = 'ok'    
     result['integrity'] = _generateToken(encodedCube, result['solution'])[0]
