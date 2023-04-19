@@ -28,9 +28,10 @@ class SolveTest(TestCase):
         parms = {}
         parms['cube'] = 'gggggggggbbbbbbbbbrrrrrrrrroooooooooyyyyyyyyywwwwwwwww'
         result = solve(parms)
+        fullToken = _generateToken(parms['cube'], result['solution'])[1]
         self.assertEqual('', result['solution'])
         self.assertEqual('ok', result['status'])
-        self.assertEqual('', result['integrity'])
+        self.assertTrue(result['integrity'] in fullToken)
         
     '''The method that is bieng tested has advanced to its next stage
     def test101_generateToken_checkTheStringToHash(self):
