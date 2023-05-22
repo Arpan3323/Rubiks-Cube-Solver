@@ -1,2 +1,2 @@
-# SoftwareProcessRubik
-Spring 2023 Rubik Project Repository
+# Rubik's Cube
+A flask microservice that solves a rubik's cube by returning the rotations required to solve an input rubik's cube
