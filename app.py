@@ -20,7 +20,7 @@ app = Flask(__name__)
 @app.route('/')
 def default():
     '''Return welcome information'''
-    return 'welcome to secure software process'
+    return 'Welcome'
 
 #-----------------------------------
 #  The following code is invoked with the path portion of the URL matches
