@@ -6,7 +6,7 @@ needed to transform the input cube to a solved state.
 '''
 import os
 import json
-from flask import Flask, request
+from flask import Flask, request, render_template
 from rubik.view.solve import solve
 from rubik.view.rotate import rotate
 
@@ -20,7 +20,9 @@ app = Flask(__name__)
 @app.route('/')
 def default():
     '''Return welcome information'''
-    return 'Welcome'
+    welcomeMessage = "Welcome to the 3x3 Rubik's Cube Solver"
+    return render_template('index.html', welcomeMessage = welcomeMessage)
+    #return 'Welcome'
 
 #-----------------------------------
 #  The following code is invoked with the path portion of the URL matches
@@ -30,7 +32,8 @@ def default():
 @app.route('/about')
 def about():
     '''Return author information'''
-    return str(_getAuthor())
+    return render_template('index.html', author = _getAuthor())
+    #return str(_getAuthor())
 
 #-----------------------------------
 #  The following code is invoked when the path portion of the URL matches
