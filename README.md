@@ -1,7 +1,7 @@
 # Rubik's Cube Solver
 
 ## About
-A flask microservice that solves a rubik's cube by returning the rotations required to solve an input rubik's cube. Developed using [Test-Driven-Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development).
+A Flask microservice that solves a rubik's cube by returning the rotations required to solve an input rubik's cube. Developed using [Test-Driven-Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development).
 
 ## Usage
 ### Accessing through URL
