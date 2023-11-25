@@ -13,7 +13,7 @@ To get the rotations required to solve a rubik's cube, you can simply pass your 
 ```
 https://rubikscubesolver.azurewebsites.net/rubik/solve?cube=<cube>
 ```
-#### Example:
+#### Example using URL:
 - Input: `https://rubikscubesolver.azurewebsites.net/rubik/solve?cube=grgggggggobooooooobobbbbbbbrgrrrrrrryyyyyyyyywwwwwwwww`
 
     - The `<cube>` parameter here has been replaced with the string `"grgggggggobooooooobobbbbbbbrgrrrrrrryyyyyyyyywwwwwwwww"`. This represents the color configuration of the Rubik's cube. The order of the characters represents the order of the colors on each face of your Rubik's cube, starting from the front face and going to the right, back, left, top, and bottom faces. For each face, start by noting the color at the top left corner and end by noting the color at the bottom right corner. The colors are represented as follows:
